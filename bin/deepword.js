@@ -32,7 +32,7 @@ function getPath(name) {
 
 function main(name) {
     const filename = getPath(name);
-    const DIR = __dirname + '/../assets/';
+    const DIR = __dirname + '/../public/';
     const dword = require('../');
     const http = require('http');
     const express = require('express');
