@@ -15,11 +15,11 @@ else if (/^(-h|--help)$/.test(arg))
     help();
 else
     checkFile(arg, (error) => {
-       if (!error)
+        if (!error)
             main(arg);
         else
             console.error(error.message);
-   });
+    });
 
 function getPath(name) {
     const reg = /^(~|\/)/;
@@ -67,7 +67,7 @@ function main(name) {
                 console.error(error.message);
             else
                 edSocket.emit('file', filename, data);
-            });
+        });
     });
     
     console.log('url: http://' + ip + ':' + port);
