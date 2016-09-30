@@ -23,13 +23,12 @@
   },
   "scripts": {
     "lint": "redrun lint:*",
-    "fixlint": "redrun -p lint:* --fix",
+    "fix:lint": "redrun -p lint:* --fix",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint:eslint-lib": "eslint lib",
     "6to5:lib": "babel lib -d legacy/lib",
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "postpublish": "npm i -g",
     "build": "redrun 6to5:* legacy:*",
     "legacy:index": "echo \"module.exports = require('./lib/server.js');\" > legacy/index.js",
     "legacy:package": "echo \"module.exports = require('../package');\" > legacy/package.js"
