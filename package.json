@@ -1,6 +1,6 @@
 {
   "name": "deepword",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Web editor based on Monaco",
   "main": "server/index.js",
   "repository": {
@@ -40,7 +40,7 @@
     "6to5:lib": "babel server -d legacy/server",
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "build": "redrun 6to5:* legacy:*",
+    "build": "redrun 6to5:* legacy:* build:client",
     "bundle:js": "rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
     "build:client": "redrun bundle:* minify:*",
     "minify:html": "minify html/index.html > dist/index.html",
