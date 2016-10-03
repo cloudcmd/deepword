@@ -32,8 +32,8 @@ function getPath(name) {
 
 function main(name) {
     const filename = getPath(name);
-    const DIR = __dirname + '/../public/';
-    const dword = require('../');
+    const DIR = __dirname + '/../dist/';
+    const dword = require('..');
     const http = require('http');
     const express = require('express');
     const io = require('socket.io');

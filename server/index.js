@@ -2,11 +2,14 @@
 
 const DIR_ROOT = __dirname + '/..';
 const path = require('path');
+
 const join = require('join-io');
 const mollify = require('mollify');
 const restafary = require('restafary');
 const socketFile = require('socket-file');
 const express = require('express');
+
+const storage = require('./storage');
 
 const {Router} = express;
 
@@ -71,11 +74,9 @@ function serve(options, req, res, next) {
     
     req.url = req.url.replace(prefix, '');
     
-    const URL = '/deepword.js';
-    const PATH = '/lib/client.js';
-    
-    if (url === URL)
-        req.url = PATH;
+    if (/^\/deepword\.(js|map|css)$/.test(req.url)) {
+        req.url = '/dist' + req.url;
+    }
     
     next();
 }
@@ -98,14 +99,10 @@ function joinFn(req, res, next) {
 }
 
 function configFn(options, req, res, next) {
-    const CONFIG = '/options.json';
     const o = optionsStorage();
     const isOnline    = checkOption(o.online);
     const isDiff      = checkOption(o.diff);
     const isZip       = checkOption(o.pack);
-    
-    if (req.url !== CONFIG)
-        return next();
     
     res .type('json')
         .send({
@@ -139,25 +136,15 @@ function minifyFn(req, res, next) {
     const isMin = checkOption(options.isMin);
     
     if (!isMin)
-        next();
+        return next();
     
-    return minifyFunc(req, res, () => {
+    return minifyFunc(req, res, (req, res) => {
         staticFn(req, res);
     });
 }
 
 function staticFn(req, res) {
-    const url = path.normalize(DIR_ROOT + req.url);
-    res.sendFile(url);
-}
-
-function storage() {
-    let value;
-    return (data) => {
-        if (data)
-            value = data;
-        else
-            return value;
-    };
+    const file = path.normalize(DIR_ROOT + req.url);
+    res.sendFile(file);
 }
 
