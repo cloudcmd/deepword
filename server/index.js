@@ -73,8 +73,10 @@ function serve(options, req, res, next) {
         return next();
     
     req.url = req.url.replace(prefix, '');
+    console.log(req.url);
     
-    if (/^\/deepword\.(js|map|css)$/.test(req.url)) {
+    if (/^\/deepword\.(js(\.map)?|css)$/.test(req.url)) {
+        console.log('!!!!');
         req.url = '/dist' + req.url;
     }
     

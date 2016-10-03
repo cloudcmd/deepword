@@ -21,9 +21,15 @@
   "bin": {
     "deepword": "bin/deepword.js"
   },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "babel": {
     "presets": [
-      "es2015-rollup"
+      "es2015-rollup",
+      "es2017"
     ]
   },
   "scripts": {
@@ -35,11 +41,13 @@
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
     "build": "redrun 6to5:* legacy:*",
-    "build:client": "rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
+    "bundle:js": "rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
+    "build:client": "redrun bundle:* minify:*",
     "minify:html": "minify html/index.html > dist/index.html",
-    "watch:client": "npm run build:client -- -w",
-    "watch": "nodemon -e html -w html -x",
-    "watch:html": "redrun watch -- \"redrun minify:html\"",
+    "watch:js": "redrun watcher:js -- \"redrun bundle:js\"",
+    "watcher:html": "nodemon -e html -w html -x",
+    "watcher:js": "nodemon -w client -w .rollup.js -x",
+    "watch:html": "redrun watcher:html -- \"redrun minify:html\"",
     "legacy:index": "echo \"module.exports = require('./server');\" > legacy/index.js"
   },
   "dependencies": {
@@ -61,12 +69,15 @@
     "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-es2015-rollup": "^1.2.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
     "eslint": "^3.6.1",
     "jonny": "^1.0.1",
     "load.js": "git+https://github.com/coderaiser/load.js.git",
     "loadremote": "git+https://github.com/cloudcmd/loadremote.git",
     "minify": "^2.0.11",
     "nodemon": "^1.10.2",
+    "pify": "^2.3.0",
     "redrun": "^5.8.4",
     "requirejs": "^2.3.2",
     "rollup": "^0.36.1",

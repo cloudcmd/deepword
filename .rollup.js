@@ -10,16 +10,17 @@ export default {
     entry: 'client/index.js',
     moduleName: 'deepword',
     plugins: [
-        commonjs({
-            include: 'node_modules/**'
-        }),
-        nodeResolve({
-            exnext: true
-        }),
         babel({
             exclude: 'node_modules/**'
         }),
-        //uglify({}, minify)
+        commonjs({
+            include: [
+                'node_modules/**',
+                'client/**'
+            ]
+        }),
+        nodeResolve(),
+        uglify({}, minify)
     ]
 };
 
