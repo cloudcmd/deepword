@@ -5,14 +5,9 @@ import deepword from './deepword';
 import loadScript from './load-script';
 import pify from 'pify';
 
-
 const story = Story();
+const noArg = (fn) => () => fn(null);
 
-/*
-story.loadHash((a) => {
-    console.log(a);
-});
-*/
 
 function callWith(fn, arg) {
     return () => {
@@ -35,20 +30,22 @@ export default function(el, options = {}, callback = options) {
 
 function load(prefix, fn) {
     loadScript(`${prefix}/node_modules/monaco-editor/min/vs/loader.js`, () => {
-        require.config({ paths: { 'vs': '/deepword/node_modules/monaco-editor/min/vs' }});
-        require(['vs/editor/editor.main'], (/* no need in args */) => {
-            fn();
+        const {require} = window;
+        const local = '/deepword/node_modules/monaco-editor/min/vs';
+        
+        require.config({
+            paths: {
+                vs: local
+            }
         });
+        
+        require(['vs/editor/editor.main'], noArg(fn));
     });
 }
 
 function init(el) {
     return monaco.editor.create(el, {
-        value: [
-            'function x() {',
-            '\tconsole.log("Hello world!");',
-            '}'
-        ].join('\n'),
+        value: '',
         language: 'javascript',
         scrollBeyondLastLine: false
     });

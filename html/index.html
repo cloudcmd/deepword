@@ -16,9 +16,16 @@
             
             var el = document.querySelector('[data-name=container]');
             
-            deepword(el, function() {
-                console.log('deepword loaded');
+            deepword(el, function(editor) {
+                var value = [
+                    'function x() {',
+                    '\tconsole.log("Hello world!");',
+                    '}'
+                ].join('\n');
+                
+                editor.setValue(value);
             });
+            
             window.removeEventListener('load', load);
         });
     </script>

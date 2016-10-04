@@ -2,8 +2,6 @@
 
 import restafary from 'restafary/lib/client';
 
-console.log(restafary);
-
 export default function Story() {
     if (!(this instanceof Story))
         return new Story();
