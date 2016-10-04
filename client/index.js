@@ -8,7 +8,6 @@ import pify from 'pify';
 const story = Story();
 const noArg = (fn) => () => fn(null);
 
-
 function callWith(fn, arg) {
     return () => {
         fn(arg);
