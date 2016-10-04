@@ -18,19 +18,21 @@ export default function(el, options, callback = options) {
     
     const prefix = options.prefix || '/deepword';
     const log = (e) => console.error(e);
-    const loadAllPromise = pify(loadAll);
-    const loadMonacoPromise = pify(loadMonaco);
+    
     const getElement = () => el;
     const getPrefix = () => prefix;
-    const loadMonacoLoaderPromise = pify(loadMonacoLoader);
-    const loadAllMonaco = Promise.resolve(prefix)
-        .then(loadMonacoLoaderPromise)
+    
+    const loadAllMonaco = Promise
+        .resolve(prefix)
+        .then(pify(loadMonacoLoader))
         .then(getPrefix)
-        .then(loadMonacoPromise)
+        .then(pify(loadMonaco))
+    
+    const loadAll = pify(loadAllScripts)(prefix);
     
     Promise.all([
         loadAllMonaco,
-        loadAllPromise(prefix)
+        loadAll
     ]).then(getElement)
         .then(parseElement)
         .then(init)
@@ -39,7 +41,7 @@ export default function(el, options, callback = options) {
         .catch(log)
 }
 
-function loadAll(prefix, fn) {
+function loadAllScripts(prefix, fn) {
     const names = [
         'smalltalk/dist/smalltalk.min.js',
         'smalltalk/dist/smalltalk.min.css'
