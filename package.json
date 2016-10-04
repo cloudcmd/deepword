@@ -70,6 +70,7 @@
     "ashify": "^1.0.1",
     "express": "^4.14.0",
     "join-io": "^1.4.0",
+    "load.js": "^1.1.4",
     "mollify": "^1.0.4",
     "monaco-editor": "^0.6.1",
     "os-homedir": "^1.0.0",
@@ -77,6 +78,7 @@
     "readjson": "^1.1.0",
     "rendy": "^1.1.0",
     "restafary": "^1.6.0",
+    "smalltalk": "^2.1.3",
     "socket-file": "^1.3.0",
     "socket.io": "^1.4.3",
     "try-catch": "^1.0.0"
@@ -90,7 +92,6 @@
     "browserify": "^13.1.0",
     "eslint": "^3.6.1",
     "jonny": "^1.0.1",
-    "load.js": "git+https://github.com/coderaiser/load.js.git",
     "loadremote": "git+https://github.com/cloudcmd/loadremote.git",
     "minify": "^2.0.11",
     "minifyify": "^7.3.3",
@@ -106,7 +107,6 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0",
-    "smalltalk": "^2.1.3",
     "uglify-js": "^2.7.3",
     "watchify": "^3.7.0"
   }
