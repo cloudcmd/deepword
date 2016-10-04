@@ -4,14 +4,14 @@
   "description": "Web editor based on Monaco",
   "main": "server/index.js",
   "config": {
-    "plugins": "-p [ minifyify --map deepword.js.map --output dist/deepword.js.map ]" ,
+    "plugins": "-p [ minifyify --map deepword.js.map --output dist/deepword.js.map ]",
     "compile": {
       "client": "--dg false -s deepword -r ./client/index.js:deepword.js ./client/index.js -d -o dist/deepword.js"
     }
   },
   "bin": {
     "deepword": "bin/deepword.js",
-    "_deepword": "legacy/bin/deepword.js"
+    "deepword_": "legacy/bin/deepword.js"
   },
   "browserify": {
     "transform": [
@@ -35,18 +35,21 @@
     "6to5:lib": "babel server -d legacy/server",
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "build": "redrun 6to5:* legacy:* compile:client",
+    "build": "redrun dir 6to5:* legacy:* compile:client:min bundle:css",
     "rollup:bundle:js": "rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
     "build:client": "redrun compile:* minify:*",
-    "compile:client": "browserify $npm_package_config_compile_client $npm_package_config_plugins",
-    "watch:client": "watchify -v $npm_package_config_compile_client $npm_package_config_plugins",
+    "compile:client": "browserify $npm_package_config_compile_client",
+    "compile:client:min": "browserify $npm_package_config_compile_client $npm_package_config_plugins",
+    "watch:client": "watchify -v $npm_package_config_compile_client",
     "minify:html": "minify html/index.html > dist/index.html",
+    "bundle:css": "cat node_modules/smalltalk/dist/smalltalk.min.css > dist/deepword.css",
     "rollup:watch:js": "redrun watcher:js -- \"redrun bundle:js\"",
     "watch:html": "redrun watcher:html -- \"redrun minify:html\"",
     "watch": "redrun -p watch:*",
     "watcher:html": "nodemon -e html -w html -x",
     "watcher:js": "nodemon -w client -w .rollup.js -x",
-    "legacy:index": "echo \"module.exports = require('./server');\" > legacy/index.js"
+    "legacy:index": "echo \"module.exports = require('./server');\" > legacy/index.js",
+    "dir": "mkdirp dist"
   },
   "repository": {
     "type": "git",
@@ -103,6 +106,7 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0",
+    "smalltalk": "^2.1.3",
     "uglify-js": "^2.7.3",
     "watchify": "^3.7.0"
   }
