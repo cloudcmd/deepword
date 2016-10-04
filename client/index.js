@@ -55,12 +55,10 @@ function loadMonacoLoader(prefix, fn) {
 
 function loadMonaco(prefix, fn) {
     const {require} = window;
-    const local = `${prefix}/node_modules/monaco-editor/min/vs`;
+    const vs = `${prefix}/node_modules/monaco-editor/min/vs`;
     
     require.config({
-        paths: {
-            vs: local
-        }
+        paths: { vs }
     });
     
     require(['vs/editor/editor.main'], noArg(fn));
