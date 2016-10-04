@@ -1,9 +1,12 @@
 'use strict';
 
-import smalltalk from 'smalltalk/dist/smalltalk.min';
-
 module.exports = function goToLine() {
-    const empty = () => {};
+    const {smalltalk} = window;
+    
+    const empty = (e) => {
+        if (e)
+            throw e;
+    };
     const msg = 'Enter line number:';
     const {lineNumber} = this._monaco.getPosition();
         
