@@ -73,12 +73,11 @@ function serve(options, req, res, next) {
         return next();
     
     req.url = req.url.replace(prefix, '');
-    console.log(req.url);
     
-    if (/^\/deepword\.(js(\.map)?|css)$/.test(req.url)) {
-        console.log('!!!!');
+    const regExp = /^\/deepword\.(js(\.map)?|css)$/;
+    
+    if (regExp.test(req.url))
         req.url = '/dist' + req.url;
-    }
     
     next();
 }
