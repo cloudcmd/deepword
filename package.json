@@ -90,6 +90,7 @@
     "babel-preset-es2015-rollup": "^1.2.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
+    "currify": "^1.0.0",
     "eslint": "^3.6.1",
     "jonny": "^1.0.1",
     "loadremote": "git+https://github.com/cloudcmd/loadremote.git",
