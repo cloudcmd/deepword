@@ -1,3 +1,15 @@
+2016.10.04, v0.3.0
+
+feature:
+- (index) rm deepword.css
+- (index) add ability to load smalltalk separately from bundle
+- (package) add load.js from npm
+- (client) add goToLine
+- (package) scripts: compile:client, compile:client:min
+- (deepword) add getValue, setValue
+- (package) add browserify
+
+
 2016.10.03, v0.2.1
 
 feature:
