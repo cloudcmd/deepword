@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browserify": {
+      "plugins": [
+        [
+          "add-module-exports",
+          "transform-runtime",
+          {
+            "polyfill": false,
+            "regenerator": true
+          }
+        ]
+      ],
+      "presets": [
+        "es2015",
+        "es2017"
+      ]
+    },
+    "rollup": {
+      "plugins": [
+        [
+          "transform-runtime",
+          {
+            "polyfill": false,
+            "regenerator": true
+          }
+        ]
+      ],
+      "presets": [
+        "es2015-rollup",
+        "es2017"
+      ]
+    }
+  }
+}

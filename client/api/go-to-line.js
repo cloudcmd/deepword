@@ -3,7 +3,7 @@
 import smalltalk from 'smalltalk/legacy';
 import '../../node_modules/smalltalk/dist/smalltalk.min.css';
 
-module.exports = function goToLine() {
+export default function goToLine() {
     const empty = (e) => {
         if (e)
             throw e;

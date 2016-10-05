@@ -19,22 +19,6 @@
       "babelify"
     ]
   },
-  "babel": {
-    "plugins": [
-      "add-module-exports",
-      [
-        "transform-runtime",
-        {
-          "polyfill": false,
-          "regenerator": true
-        }
-      ]
-    ],
-    "presets": [
-      "es2015",
-      "es2017"
-    ]
-  },
   "scripts": {
     "lint": "redrun lint:*",
     "fix:lint": "redrun -p lint:* --fix",
@@ -44,13 +28,14 @@
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
     "build": "redrun dir 6to5:* legacy:* compile:client:min",
-    "rollup:bundle:js": "rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
-    "build:client": "redrun compile:* minify:*",
+    "build:client:shake": "BABEL_ENV=rollup rollup -u deepword -c .rollup-dev.js -m -f umd -o dist/deepword.js",
+    "build:client:shake:min": "BABEL_ENV=rollup rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
+    "build:client": "BABEL_ENV=browserify redrun compile:client:min minify:*",
     "compile:client": "browserify $npm_package_config_compile_client",
     "compile:client:min": "browserify $npm_package_config_compile_client $npm_package_config_plugins",
-    "watch:client": "watchify -v $npm_package_config_compile_client",
+    "watch:client": "BABEL_ENV=browserify watchify -v $npm_package_config_compile_client",
     "minify:html": "minify html/index.html > dist/index.html",
-    "rollup:watch:js": "redrun watcher:js -- \"redrun bundle:js\"",
+    "watch:client:shake": "npm run build:client:shake -- -w",
     "watch:html": "redrun watcher:html -- \"redrun minify:html\"",
     "watch": "redrun -p watch:*",
     "watcher:html": "nodemon -e html -w html -x",
@@ -114,9 +99,11 @@
     "rollup-plugin-amd": "^1.1.1",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.4",
+    "rollup-plugin-css-only": "0.0.4",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0",
+    "rollupify": "^0.3.4",
     "uglify-js": "^2.7.3",
     "watchify": "^3.7.0"
   }
