@@ -3,7 +3,7 @@
 import Story from './story';
 import deepword from './deepword';
 import pify from 'pify';
-import load from 'load.js';
+import loadScript from './load-script';
 import currify from 'currify';
 
 const transformName = currify((prefix, name) => {
@@ -13,7 +13,7 @@ const transformName = currify((prefix, name) => {
 const story = Story();
 const noArg = (fn) => () => fn(null);
 
-export default function(el, options, callback = options) {
+export default (el, options, callback = options) => {
     options = options || {};
     
     const prefix = options.prefix || '/deepword';
@@ -21,19 +21,14 @@ export default function(el, options, callback = options) {
     
     const getElement = () => el;
     const getPrefix = () => prefix;
+    const monacoLoader = pify(loadMonacoLoader);
+    const monaco = pify(loadMonaco);
     
-    const loadAllMonaco = Promise
-        .resolve(prefix)
-        .then(pify(loadMonacoLoader))
+    Promise.resolve(prefix)
+        .then(monacoLoader)
         .then(getPrefix)
-        .then(pify(loadMonaco))
-    
-    const loadAll = pify(loadAllScripts)(prefix);
-    
-    Promise.all([
-        loadAllMonaco,
-        loadAll
-    ]).then(getElement)
+        .then(monaco)
+        .then(getElement)
         .then(parseElement)
         .then(init)
         .then(deepword)
@@ -41,18 +36,9 @@ export default function(el, options, callback = options) {
         .catch(log)
 }
 
-function loadAllScripts(prefix, fn) {
-    const names = [
-        'smalltalk/dist/smalltalk.min.js',
-        'smalltalk/dist/smalltalk.min.css'
-    ].map(transformName(prefix));
-    
-    load.parallel(names, fn);
-}
-
 function loadMonacoLoader(prefix, fn) {
     const name = 'monaco-editor/min/vs/loader.js';
-    load.js(transformName(prefix, name), fn);
+    loadScript(transformName(prefix, name), fn);
 }
 
 function loadMonaco(prefix, fn) {

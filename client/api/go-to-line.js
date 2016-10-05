@@ -1,8 +1,9 @@
 'use strict';
 
+import smalltalk from 'smalltalk/legacy';
+import '../../node_modules/smalltalk/dist/smalltalk.min.css';
+
 module.exports = function goToLine() {
-    const {smalltalk} = window;
-    
     const empty = (e) => {
         if (e)
             throw e;
