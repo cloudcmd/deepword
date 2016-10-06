@@ -1,3 +1,14 @@
+2016.10.06, v0.4.0
+
+feature:
+- (package) build: compile:client:min -> build:client:shake:min
+- (deepword) add socket.io support
+- (html) add link
+- (lib) rm
+- (babelrc) add: separate browserify and rollup builds
+- (client) put smalltalk to the bundle
+
+
 2016.10.04, v0.3.0
 
 feature:
