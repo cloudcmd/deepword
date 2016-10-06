@@ -14,7 +14,8 @@ const story = Story();
 const noArg = (fn) => () => fn(null);
 
 export default (el, options, callback = options) => {
-    options = options || {};
+    if (typeof options === 'function');
+        options = {};
     
     const prefix = options.prefix || '/deepword';
     const log = (e) => console.error(e);
@@ -31,7 +32,7 @@ export default (el, options, callback = options) => {
         .then(getElement)
         .then(parseElement)
         .then(init)
-        .then(deepword)
+        .then(deepword(options))
         .then(callback)
         .catch(log)
 }

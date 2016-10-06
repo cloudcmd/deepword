@@ -1,17 +1,26 @@
 'use strict';
 
+import currify from 'currify';
 import loadScript from './load-script';
 import goToLine from './api/go-to-line';
+import _initSocket from './api/_init-socket';
 
-export default Deepword;
+export default currify(Deepword);
 
-function Deepword(monaco) {
+function Deepword(options, monaco) {
     if (!(this instanceof Deepword))
-        return new Deepword(monaco);
+        return new Deepword(options, monaco);
     
     this._monaco = monaco;
     this._TITLE = 'Deepword';
+    
+    const {prefix, socketPath} = options;
+    
+    this._initSocket(prefix, socketPath);
 };
+
+Deepword.prototype.goToLine = goToLine;
+Deepword.prototype._initSocket = _initSocket;
 
 Deepword.prototype.setValue = function(value) {
     this._monaco.setValue(value);
@@ -31,6 +40,4 @@ Deepword.prototype.getCursor = function() {
         row: lineNumber
     }
 }
-
-Deepword.prototype.goToLine = goToLine;
 
