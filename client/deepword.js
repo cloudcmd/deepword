@@ -7,12 +7,15 @@ import _initSocket from './api/_init-socket';
 
 export default currify(Deepword);
 
-function Deepword(options, monaco) {
+function Deepword(options, editor) {
     if (!(this instanceof Deepword))
-        return new Deepword(options, monaco);
+        return new Deepword(options, editor);
     
     this._monaco = monaco;
     this._TITLE = 'Deepword';
+    
+    this._editor = editor;
+    this._value = '';
     
     const {prefix, socketPath} = options;
     
@@ -23,13 +26,14 @@ Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;
 
 Deepword.prototype.setValue = function(value) {
-    this._monaco.setValue(value);
+    this._editor.setValue(value);
+    this._value = value;
     
     return this;
 };
 
 Deepword.prototype.getValue = function(value) {
-    return this._monaco.getValue(value);
+    return this._editor.getValue(value);
 };
 
 Deepword.prototype.getCursor = function() {

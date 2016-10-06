@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import builtins from 'rollup-plugin-node-builtins';
 
 import {minify} from 'uglify-js'
 
@@ -10,7 +11,8 @@ export default {
     moduleName: 'deepword',
     plugins: [
         babel({
-            exclude: 'node_modules/**'
+            exclude: 'node_modules/**',
+            runtimeHelpers: true
         }),
         commonjs({
             include: [
@@ -19,6 +21,7 @@ export default {
             ]
         }),
         nodeResolve(),
+        builtins(),
         postcss({
             extenstions: ['.css']
         })

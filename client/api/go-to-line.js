@@ -9,7 +9,7 @@ export default function goToLine() {
             throw e;
     };
     const msg = 'Enter line number:';
-    const {lineNumber} = this._monaco.getPosition();
+    const {lineNumber} = this._editor.getPosition();
         
     smalltalk
         .prompt(this._TITLE, msg, lineNumber)
@@ -20,14 +20,14 @@ export default function goToLine() {
             const reveal = true;
             const revealVerticalInCenter = true;
             
-            this._monaco.setPosition({
+            this._editor.setPosition({
                 lineNumber,
                 column
             }, reveal, revealVerticalInCenter);
         })
         .catch(empty)
         .then(() => {
-            this._monaco.focus();
+            this._editor.focus();
         });
     
     return this;

@@ -14,13 +14,6 @@
             var el = document.querySelector('[data-name=container]');
             
             deepword(el, function(editor) {
-                var value = [
-                    'function x() {',
-                    '\tconsole.log("Hello world!");',
-                    '}'
-                ].join('\n');
-                
-                editor.setValue(value);
                 window.editor = editor;
             });
             
