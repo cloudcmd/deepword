@@ -33,7 +33,7 @@ function getPath(name) {
 function main(name) {
     const filename = getPath(name);
     const DIR = __dirname + '/../dist/';
-    const dword = require('..');
+    const deepword = require('..');
     const http = require('http');
     const express = require('express');
     const io = require('socket.io');
@@ -51,7 +51,7 @@ function main(name) {
                 '0.0.0.0';
     
     app .use(express.static(DIR))
-        .use(dword({
+        .use(deepword({
             minify: false,
             online: false
         }));
@@ -59,10 +59,10 @@ function main(name) {
     server.listen(port, ip);
     
     const socket = io.listen(server);
-    const edSocket = dword.listen(socket);
+    const edSocket = deepword.listen(socket);
     
-    edSocket.on('connection', function() {
-        fs.readFile(name, 'utf8', function(error, data) {
+    edSocket.on('connection', () => {
+        fs.readFile(name, 'utf8', (error, data) => {
             if (error)
                 console.error(error.message);
             else
