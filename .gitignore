@@ -3,6 +3,8 @@ npm-debug.log
 dist
 legacy
 
+!client/node_modules
+
 # vim
 *.swp.*
 *.swp

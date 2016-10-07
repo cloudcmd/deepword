@@ -1,8 +1,7 @@
 'use strict';
 
 import currify from 'currify';
-import modeForPath from '../../../common/mode-for-path';
-
+import modeForPath from 'mode-for-path';
 
 export default currify((monaco, eddy, name, data) => {
     const {languages} = monaco;
