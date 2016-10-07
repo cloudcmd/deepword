@@ -36,9 +36,9 @@ export default function _initSocket(prefix = '/deepword', socketPath = '') {
         this._onSave(null, msg);
     });
     
-    const {_monaco, _editor} = this;
+    const {_monaco, _eddy} = this;
     
-    socket.on('file', onFile(_monaco, _editor));
+    socket.on('file', onFile(_monaco, _eddy));
     
     socket.on('err', (error) => {
         smalltalk.alert(this._TITLE, error);

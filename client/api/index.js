@@ -8,7 +8,7 @@ export default currify(Deepword);
 
 function Deepword(options, eddy) {
     if (!(this instanceof Deepword))
-        return new Deepword(options, editor);
+        return new Deepword(options, eddy);
     
     this._monaco = monaco;
     this._TITLE = 'Deepword';
