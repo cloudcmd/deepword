@@ -1,3 +1,16 @@
+2016.10.07, v0.6.0
+
+fix:
+- (client) _editor -> _eddy
+
+feature:
+- (mode-for-path) mv to client/node_modules
+- (rollup) add conditional
+- (client) add automaticLayout
+- (gitignore) add swp
+- (_init-socket) add on-file
+
+
 2016.10.06, v0.5.0
 
 feature:
