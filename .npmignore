@@ -1,3 +1,9 @@
-!dist
-!legacy
 .*
+test
+client
+common
+
+# vim files
+*.swp.*
+*.swp
+

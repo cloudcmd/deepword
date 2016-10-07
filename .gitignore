@@ -3,3 +3,6 @@ npm-debug.log
 dist
 legacy
 
+# vim
+*.swp.*
+*.swp
