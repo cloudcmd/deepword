@@ -6,7 +6,9 @@ const byExtension = (ext) => ({extensions}) => {
     return ~extensions.indexOf(ext);
 }
 
-export default (name, langs) => {
+module.exports = (name, langs) => {
+    check(name, langs);
+    
     const ext = path.extname(name);
     const empty = {
         id: ''
@@ -17,3 +19,10 @@ export default (name, langs) => {
     return (mode || empty).id
 };
 
+function check(name, langs) {
+    if (typeof name !== 'string')
+        throw Error('name should be string!');
+    
+    if (!Array.isArray(langs))
+        throw Error('langs should be an array!');
+}
