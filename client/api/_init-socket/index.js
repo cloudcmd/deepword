@@ -2,7 +2,7 @@
 
 import io from 'socket.io-client/socket.io.js';
 import smalltalk from 'smalltalk/legacy';
-import modeForPath from '../mode-for-path';
+import onFile from './on-file';
 
 const getHost = () => {
     const l = location;
@@ -36,27 +36,12 @@ export default function _initSocket(prefix = '/deepword', socketPath = '') {
         this._onSave(null, msg);
     });
     
-    socket.on('file', (name, data) => {
-        this.setValue(data);
-        const {languages} = this._monaco;
-        const mode = modeForPath(name, languages.getLanguages());
-        const {_editor} = this;
-        const oldModel = _editor.getModel();
-        
-        if (mode) {
-            const model = this._monaco.editor.createModel(this._value, mode.id);
-            _editor.setModel(model);
-            oldModel.dispose();
-        }
-        
-        /*
-        this.setModeForPath(name)
-            .setValueFirst(name, data)
-            .moveCursorTo(0, 0);
-            */
-    });
+    const {_monaco, _editor} = this;
+    
+    socket.on('file', onFile(_monaco, _editor));
     
     socket.on('err', (error) => {
         smalltalk.alert(this._TITLE, error);
     });
 };
+

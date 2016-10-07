@@ -9,10 +9,11 @@ export default function goToLine() {
             throw e;
     };
     const msg = 'Enter line number:';
-    const {lineNumber} = this._editor.getPosition();
+    const {_eddy, _TITLE} = this;
+    const {lineNumber} = _eddy.getPosition();
         
     smalltalk
-        .prompt(this._TITLE, msg, lineNumber)
+        .prompt(_TITLE, msg, lineNumber)
         .then((line) => {
             const lineNumber = Number(line);
             const column = 0;
@@ -20,14 +21,14 @@ export default function goToLine() {
             const reveal = true;
             const revealVerticalInCenter = true;
             
-            this._editor.setPosition({
+            _eddy.setPosition({
                 lineNumber,
                 column
             }, reveal, revealVerticalInCenter);
         })
         .catch(empty)
         .then(() => {
-            this._editor.focus();
+            _eddy.focus();
         });
     
     return this;

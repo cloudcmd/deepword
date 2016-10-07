@@ -1,15 +1,19 @@
 'use strict';
 
-import path from 'path';
+const path = require('path');
+
 const byExtension = (ext) => ({extensions}) => {
     return ~extensions.indexOf(ext);
 }
 
 export default (name, langs) => {
     const ext = path.extname(name);
+    const empty = {
+        id: ''
+    }
     
-    return langs
-        .filter(byExtension(ext))
-        .pop();
+    const [mode] = langs.filter(byExtension(ext));
+    
+    return (mode || empty).id
 };
 

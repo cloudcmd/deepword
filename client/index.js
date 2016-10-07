@@ -1,7 +1,7 @@
 'use strict';
 
 import Story from './story';
-import deepword from './deepword';
+import api from './api';
 import pify from 'pify';
 import loadScript from './load-script';
 import currify from 'currify';
@@ -32,7 +32,7 @@ export default (el, options, callback = options) => {
         .then(getElement)
         .then(parseElement)
         .then(init)
-        .then(deepword(options))
+        .then(api(options))
         .then(callback)
         .catch(log)
 }
@@ -56,7 +56,6 @@ function loadMonaco(prefix, fn) {
 function init(el) {
     return monaco.editor.create(el, {
         value: '',
-        language: 'javascript',
         scrollBeyondLastLine: false
     });
 }
