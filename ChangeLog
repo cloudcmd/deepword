@@ -1,3 +1,12 @@
+2016.10.08, v0.6.2
+
+fix:
+- (pacakage) babel-preset-es2017
+
+feature:
+- (html) rm minify
+
+
 2016.10.08, v0.6.1
 
 fix:
