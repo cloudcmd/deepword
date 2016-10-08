@@ -105,6 +105,9 @@ function configFn(options, req, res, next) {
     const isDiff      = checkOption(o.diff);
     const isZip       = checkOption(o.pack);
     
+    if (url.indexOf('/config.json'))
+        return next();
+    
     res .type('json')
         .send({
             diff: isDiff,
