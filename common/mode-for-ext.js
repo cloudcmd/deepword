@@ -1,15 +1,13 @@
 'use strict';
 
-const {extname} = require('path');
-
 const byExtension = (ext) => ({extensions}) => {
     return ~extensions.indexOf(ext);
-}
+};
 
-module.exports = (name, langs) => {
-    check(name, langs);
+//export default (ext, langs) => {
+module.exports = (ext, langs) => {
+    check(ext, langs);
     
-    const ext = extname(name);
     const empty = {
         id: ''
     }
@@ -19,10 +17,11 @@ module.exports = (name, langs) => {
     return (mode || empty).id
 };
 
-function check(name, langs) {
-    if (typeof name !== 'string')
-        throw Error('name should be string!');
+function check(ext, langs) {
+    if (typeof ext!== 'string')
+        throw Error('ext should be string!');
     
     if (!Array.isArray(langs))
         throw Error('langs should be an array!');
 }
+

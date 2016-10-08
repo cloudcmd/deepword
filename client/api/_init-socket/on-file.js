@@ -1,7 +1,13 @@
 'use strict';
 
+import {extname} from 'path';
+
 import currify from 'currify';
-import modeForPath from 'mode-for-path';
+import modeForExt from '../../../common/mode-for-ext';
+
+const modeForPath = (name, langs) => {
+    return modeForExt(extname(name), langs);
+};
 
 export default currify((monaco, eddy, name, data) => {
     const {languages} = monaco;

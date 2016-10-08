@@ -4,11 +4,12 @@ import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import builtins from 'rollup-plugin-node-builtins';
 import uglify from 'rollup-plugin-uglify';
-import conditional from 'rollup-plugin-conditional';
 
-import {minify} from 'uglify-js';
+const noop = () => {};
+const onlyIf = (a, plugin) => a ? plugin : noop;
 
 const {NODE_ENV} = process.env;
+const isProd = NODE_ENV === 'production';
 
 export default {
     entry: 'client/index.js',
@@ -16,23 +17,19 @@ export default {
     plugins: [
         commonjs({
             include: [
-                'client/**',
+                'common/**',
                 'node_modules/**',
             ]
         }),
-        babel({
+        onlyIf(isProd, babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true
-        }),
+        })),
         nodeResolve(),
         builtins(),
         postcss({
             extenstions: ['.css']
         }),
-        conditional({
-            condition: NODE_ENV === 'production',
-            plugin: uglify({}, minify)
-        })
+        onlyIf(isProd, uglify())
     ]
 };
-

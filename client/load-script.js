@@ -1,7 +1,6 @@
 'use strict';
 
-module.exports = function loadScript(srcs, callback) {
-    let i;
+export default (srcs, callback) => {
     const func = () => {
         --i;
         
@@ -12,7 +11,7 @@ module.exports = function loadScript(srcs, callback) {
     if (typeof srcs === 'string')
         srcs = [srcs];
     
-    i = srcs.length;
+    let i = srcs.length;
     
     srcs.forEach((src) => {
         const element = document.createElement('script');
