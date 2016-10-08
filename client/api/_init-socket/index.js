@@ -43,5 +43,5 @@ export default function _initSocket(prefix = '/deepword', socketPath = '') {
     socket.on('err', (error) => {
         smalltalk.alert(this._TITLE, error);
     });
-};
+}
 

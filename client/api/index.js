@@ -10,6 +10,8 @@ function Deepword(options, eddy) {
     if (!(this instanceof Deepword))
         return new Deepword(options, eddy);
     
+    const {monaco} = window;
+    
     this._monaco = monaco;
     this._TITLE = 'Deepword';
     
@@ -18,7 +20,7 @@ function Deepword(options, eddy) {
     const {prefix, socketPath} = options;
     
     this._initSocket(prefix, socketPath);
-};
+}
 
 Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;

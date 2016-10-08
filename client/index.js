@@ -1,6 +1,5 @@
 'use strict';
 
-import Story from './story';
 import api from './api';
 import pify from 'pify';
 import loadScript from './load-script';
@@ -10,14 +9,15 @@ const transformName = currify((prefix, name) => {
     return `${prefix}/node_modules/${name}`;
 });
 
-const story = Story();
 const noArg = (fn) => () => fn(null);
 
 export default (el, options, callback = options) => {
-    if (typeof options === 'function');
+    if (typeof options === 'function')
         options = {};
     
     const prefix = options.prefix || '/deepword';
+    
+    /*eslint no-console: ["error", { allow: ["error"] }] */
     const log = (e) => console.error(e);
     
     const getElement = () => el;
@@ -54,6 +54,8 @@ function loadMonaco(prefix, fn) {
 }
 
 function init(el) {
+    const {monaco} = window;
+    
     return monaco.editor.create(el, {
         value: '',
         scrollBeyondLastLine: false,
@@ -64,8 +66,8 @@ function init(el) {
 
 function parseElement(el) {
     if (typeof el === 'string')
-        return document.querySelector(element);
-   
-   return el;
+        return document.querySelector(el);
+    
+    return el;
 }
 
