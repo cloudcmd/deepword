@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import builtins from 'rollup-plugin-node-builtins';
 import uglify from 'rollup-plugin-uglify';
+import filesize from 'rollup-plugin-filesize';
 
 const noop = () => {};
 const onlyIf = (a, plugin) => a ? plugin : noop;
@@ -15,21 +16,30 @@ export default {
     entry: 'client/index.js',
     moduleName: 'deepword',
     plugins: [
+        builtins(),
+        nodeResolve(),
         commonjs({
+            preferBuiltins: true,
             include: [
                 'common/**',
                 'node_modules/**',
-            ]
+            ],
+            namedExports: {
+                'restafary': [
+                    'read',
+                    'write',
+                    'patch'
+                ]
+            }
         }),
         onlyIf(isProd, babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true
         })),
-        nodeResolve(),
-        builtins(),
         postcss({
             extenstions: ['.css']
         }),
-        onlyIf(isProd, uglify())
+        onlyIf(isProd, uglify()),
+        onlyIf(isProd, filesize()),
     ]
 };

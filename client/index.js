@@ -2,8 +2,10 @@
 
 import api from './api';
 import pify from 'pify';
-import loadScript from './load-script';
 import currify from 'currify';
+import load from 'load.js';
+
+const loadParallel = pify(load.parallel);
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/node_modules/${name}`;
@@ -22,11 +24,9 @@ export default (el, options, callback = options) => {
     
     const getElement = () => el;
     const getPrefix = () => prefix;
-    const monacoLoader = pify(loadMonacoLoader);
     const monaco = pify(loadMonaco);
     
-    Promise.resolve(prefix)
-        .then(monacoLoader)
+    loadAll(prefix)
         .then(getPrefix)
         .then(monaco)
         .then(getElement)
@@ -37,9 +37,11 @@ export default (el, options, callback = options) => {
         .catch(log)
 }
 
-function loadMonacoLoader(prefix, fn) {
-    const name = 'monaco-editor/min/vs/loader.js';
-    loadScript(transformName(prefix, name), fn);
+function loadAll(prefix) {
+    return loadParallel([
+        `/socket.io/socket.io.js`,
+        transformName(prefix, 'monaco-editor/min/vs/loader.js')
+    ]);
 }
 
 function loadMonaco(prefix, fn) {

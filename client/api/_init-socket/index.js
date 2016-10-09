@@ -1,6 +1,5 @@
 'use strict';
 
-import io from 'socket.io-client/socket.io.js';
 import smalltalk from 'smalltalk/legacy';
 import onFile from './on-file';
 
@@ -12,6 +11,7 @@ const getHost = () => {
 };
 
 export default function _initSocket(prefix = '/deepword', socketPath = '') {
+    const {io} = window;
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
     const patch = (name, data) => {

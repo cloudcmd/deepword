@@ -1,10 +1,12 @@
 'use strict';
 
+import pify from 'pify';
+import {patch, write} from 'restafary/lib/client';
+import zipio from 'zipio';
+
 import currify from 'currify';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
-
-import {patch, write} from 'restafary/lib/client';
 
 export default currify(Deepword);
 
@@ -55,4 +57,8 @@ Deepword.prototype._writeHTTP = function(path, data) {
     const onSave = this._onSave.bind(this);
     write(path, data, onSave);
 };
+
+Deepword.prototype._zip = function(value, callback) {
+    return pify(zipio)(value);
+}
 
