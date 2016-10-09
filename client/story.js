@@ -1,6 +1,6 @@
 'use strict';
 
-import restafary from 'restafary/lib/client';
+import {read} from 'restafary/lib/client';
 
 export default function Story() {
     if (!(this instanceof Story))
@@ -22,7 +22,7 @@ Story.prototype.checkHash = function(name, callback) {
 Story.prototype.loadHash = function(name, callback) {
     const query       = '?hash';
     
-    restafary.read(name + query, callback);
+    read(name + query, callback);
     
     return this;
 };
