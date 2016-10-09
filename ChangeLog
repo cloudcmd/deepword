@@ -1,3 +1,10 @@
+2016.10.10, v0.6.3
+
+feature:
+- (client) add async load of socket.io
+- (index) add _patchHTTP, _writeHTTP
+
+
 2016.10.08, v0.6.2
 
 fix:
