@@ -4,6 +4,8 @@ import currify from 'currify';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 
+import {patch, write} from 'restafary/lib/client';
+
 export default currify(Deepword);
 
 function Deepword(options, eddy) {
@@ -42,5 +44,15 @@ Deepword.prototype.getCursor = function() {
         column,
         row: lineNumber
     }
-}
+};
+
+Deepword.prototype._patchHTTP = function(path, patch) {
+    const onSave = this._onSave.bind(this);
+    patch(path, patch, onSave);
+};
+
+Deepword.prototype._writeHTTP = function(path, data) {
+    const onSave = this._onSave.bind(this);
+    write(path, data, onSave);
+};
 
