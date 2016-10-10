@@ -8,6 +8,7 @@ const mollify = require('mollify');
 const restafary = require('restafary');
 const socketFile = require('socket-file');
 const express = require('express');
+const currify = require('currify');
 
 const storage = require('./storage');
 
@@ -20,6 +21,8 @@ const minifyFunc = mollify({
     dir : DIR_ROOT
 });
 
+const optionsFn = currify(configFn);
+
 module.exports = (options = {}) => {
     optionsStorage(options);
     
@@ -28,8 +31,7 @@ module.exports = (options = {}) => {
     router.route(options.prefix || '/deepword/*')
         .get(deepword(options))
         .get(joinFn)
-        .get(configFn)
-        .get(restafaryFn)
+        .get(optionsFn(options))
         .put(restafaryFn)
         .get(minifyFn)
         .get(staticFn);
@@ -51,10 +53,10 @@ module.exports.listen = (socket, options = {}) => {
 };
 
 function checkOption(isOption) {
-    if (isOption === 'function')
+    if (typeof isOption === 'function')
         return isOption();
     
-    if (isOption === 'undefined')
+    if (typeof isOption === 'undefined')
         return true;
     
     return isOption;
@@ -99,20 +101,19 @@ function joinFn(req, res, next) {
     joinFunc(req, res, next);
 }
 
-function configFn(options, req, res, next) {
-    const o = optionsStorage();
-    const isOnline    = checkOption(o.online);
-    const isDiff      = checkOption(o.diff);
-    const isZip       = checkOption(o.pack);
+function configFn(o, req, res, next) {
+    const online = checkOption(o.online);
+    const diff = checkOption(o.diff);
+    const zip = checkOption(o.zip);
     
-    if (req.url.indexOf('/config.json'))
+    if (req.url.indexOf('/options.json'))
         return next();
     
     res .type('json')
         .send({
-            diff: isDiff,
-            zip: isZip,
-            online: isOnline
+            diff,
+            zip,
+            online,
         });
 }
 
