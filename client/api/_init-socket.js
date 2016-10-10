@@ -2,7 +2,6 @@
 
 import smalltalk from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
-import onFile from './on-file';
 
 const getHost = () => {
     const l = location;
@@ -38,7 +37,12 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     
     const {_monaco, _eddy} = this;
     
-    socket.on('file', onFile(_monaco, _eddy));
+    socket.on('file', (filename, value) => {
+        this._filename = filename;
+        
+        this.setValue(value);
+        this.setModeForPath(filename);
+    });
     
     socket.on('err', (error) => {
         smalltalk.alert(this._TITLE, error);

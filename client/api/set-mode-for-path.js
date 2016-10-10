@@ -3,24 +3,27 @@
 import {extname} from 'path';
 
 import currify from 'currify';
-import modeForExt from '../../../common/mode-for-ext';
+import modeForExt from '../../common/mode-for-ext';
 
 const modeForPath = (name, langs) => {
     return modeForExt(extname(name), langs);
 };
 
-export default currify((monaco, eddy, name, data) => {
+export default function setModeForPath(name) {
+    const {_monaco, _eddy} = this;
+    
     const {languages} = monaco;
     const {createModel} = monaco.editor;
     
     const mode = modeForPath(name, languages.getLanguages());
     
-    const oldModel = eddy.getModel();
-    const model = createModel(data, mode);
+    const oldModel = _eddy.getModel();
+    const value = this.getValue();
+    const model = createModel(value, mode);
     
-    eddy.setModel(model);
-    eddy.focus();
+    _eddy.setModel(model);
+    _eddy.focus();
     
     oldModel.dispose();
-});
+};
 

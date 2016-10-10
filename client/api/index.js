@@ -12,6 +12,7 @@ import Emitify from 'emitify'
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';
+import setModeForPath from './set-mode-for-path';
 
 const loadJson = pify(json);
 
@@ -45,6 +46,7 @@ function Deepword(element, options, eddy) {
 Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;
 Deepword.prototype.showMessage = showMessage;
+Deepword.prototype.setModeForPath = setModeForPath;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
