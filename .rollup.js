@@ -7,6 +7,7 @@ import builtins from 'rollup-plugin-node-builtins';
 import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
 import json from 'rollup-plugin-json';
+import async from 'rollup-plugin-async';
 
 const noop = () => {};
 const onlyIf = (a, plugin) => a ? plugin : noop;
@@ -59,6 +60,7 @@ export default {
             ]
         }),
         json(),
+        async(),
         babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true,
