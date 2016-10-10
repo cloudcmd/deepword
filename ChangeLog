@@ -1,3 +1,20 @@
+2016.10.10, v0.6.4
+
+fix:
+- (server) prefix
+- (server) configFn
+
+feature:
+- (api) add setValueFirst
+- (api) set overflow:hidden to element: monaco bigger then element
+- (client) add Emitify
+- (html) add style
+- (package) add rollup-plugin-async
+- (client) add showMessage
+- (deepword) bundle socket.io-client
+- (bin) rm rendy
+
+
 2016.10.10, v0.6.3
 
 feature:
