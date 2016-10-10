@@ -3,9 +3,9 @@
 import api from './api';
 import pify from 'pify';
 import currify from 'currify';
-import load from 'load.js';
+import {parallel} from 'load.js';
 
-const loadParallel = pify(load.parallel);
+const loadParallel = pify(parallel);
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/node_modules/${name}`;
@@ -39,7 +39,6 @@ export default (el, options, callback = options) => {
 
 function loadAll(prefix) {
     return loadParallel([
-        `/socket.io/socket.io.js`,
         transformName(prefix, 'monaco-editor/min/vs/loader.js')
     ]);
 }

@@ -7,6 +7,9 @@ import zipio from 'zipio';
 import currify from 'currify';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
+import {json} from 'load.js';
+
+const loadJson = pify(json);
 
 export default currify(Deepword);
 
@@ -23,7 +26,8 @@ function Deepword(options, eddy) {
     
     const {prefix, socketPath} = options;
     
-    this._initSocket(prefix, socketPath);
+    this._prefix = prefix || '/deepword';
+    this._initSocket(this._prefix, socketPath);
 }
 
 Deepword.prototype.goToLine = goToLine;
@@ -60,5 +64,14 @@ Deepword.prototype._writeHTTP = function(path, data) {
 
 Deepword.prototype._zip = function(value, callback) {
     return pify(zipio)(value);
+}
+
+Deepword.prototype._loadOptions = async function() {
+    const {_prefix, _options} = this;
+    
+    this._options = _options || await loadJson(`${_prefix}/options.json`);
+    console.log(this._options);
+    
+    return _options;
 }
 

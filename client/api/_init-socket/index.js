@@ -1,6 +1,7 @@
 'use strict';
 
 import smalltalk from 'smalltalk/legacy';
+import {connect} from 'socket.io-client';
 import onFile from './on-file';
 
 const getHost = () => {
@@ -10,15 +11,14 @@ const getHost = () => {
     return href;
 };
 
-export default function _initSocket(prefix = '/deepword', socketPath = '') {
-    const {io} = window;
+export default async function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
     const patch = (name, data) => {
         socket.emit('patch', name, data);
     };
     
-    const socket = io.connect(href, {
+    const socket = connect(href, {
         'max reconnection attempts' : Math.pow(2, 32),
         'reconnection limit'        : FIVE_SECONDS,
         path                        : socketPath + '/socket.io'

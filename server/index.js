@@ -12,7 +12,7 @@ const currify = require('currify');
 
 const storage = require('./storage');
 
-const {Router} = express;
+const Router = express.Router;
 
 const rootStorage = storage();
 const optionsStorage = storage();
@@ -47,7 +47,6 @@ module.exports.listen = (socket, options = {}) => {
         options.root = '/';
     
     rootStorage(options.root);
-    optionsStorage(options);
     
     return socketFile(socket, options);
 };
@@ -91,11 +90,11 @@ function joinFn(req, res, next) {
         return next();
     
     const options = optionsStorage();
-    const isMin = checkOption(options.isMin);
+    const minify = checkOption(options.minify);
     
     const joinFunc = join({
-        dir     : DIR_ROOT,
-        minify  : isMin
+        minify,
+        dir: DIR_ROOT,
     });
     
     joinFunc(req, res, next);
@@ -138,9 +137,9 @@ function restafaryFn(req, res, next) {
 
 function minifyFn(req, res, next) {
     const options = optionsStorage();
-    const isMin = checkOption(options.isMin);
+    const minify = checkOption(options.minify);
     
-    if (!isMin)
+    if (!minify)
         return next();
     
     return minifyFunc(req, res, (req, res) => {
