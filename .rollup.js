@@ -8,6 +8,7 @@ import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
 import json from 'rollup-plugin-json';
 import async from 'rollup-plugin-async';
+import globals from 'rollup-plugin-node-globals';
 
 const noop = () => {};
 const onlyIf = (a, plugin) => a ? plugin : noop;
@@ -19,7 +20,6 @@ export default {
     entry: 'client/index.js',
     moduleName: 'deepword',
     plugins: [
-        builtins(),
         postcss({
             extenstions: ['.css'],
             plugins: [
@@ -59,6 +59,8 @@ export default {
                 'utf-8-validate'
             ]
         }),
+        builtins(),
+        globals(),
         json(),
         async(),
         babel({

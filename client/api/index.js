@@ -1,10 +1,13 @@
 'use strict';
 
+import {inherits} from 'util';
+
 import pify from 'pify';
 import {patch, write} from 'restafary/lib/client';
 import zipio from 'zipio';
 import {json} from 'load.js';
 import currify from 'currify';
+import Emitify from 'emitify'
 
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
@@ -14,9 +17,13 @@ const loadJson = pify(json);
 
 export default currify(Deepword);
 
+inherits(Deepword, Emitify);
+
 function Deepword(element, options, eddy) {
     if (!(this instanceof Deepword))
         return new Deepword(element, options, eddy);
+    
+    Emitify.call(this);
     
     const {monaco} = window;
     
