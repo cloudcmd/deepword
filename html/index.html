@@ -20,19 +20,18 @@
             font-weight     : 400;
         }
         
-        html, body, .container {
+        html, body, [data-name=container] {
             width: 100%;
             height: 100%;
         }
         
         body {
-            margin: 0;
-            overflow: hidden;
+            margin: 0
         }
     </style>
 </head>
 <body>
-    <div data-name="container" style="width:100%;height:100%"></div>
+    <div data-name="container"></div>
     <script src="/deepword/deepword.js"></script>
     <script>
         window.addEventListener('load', function load() {

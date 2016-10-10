@@ -31,6 +31,9 @@ function Deepword(element, options, eddy) {
     this._TITLE = 'Deepword';
     this._element = element;
     
+    /* monaco editor bigger then element */
+    this._element.style.overflow = 'hidden';
+    
     this._eddy = eddy;
     
     const {prefix, socketPath} = options;
