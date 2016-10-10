@@ -27,8 +27,9 @@ module.exports = (options = {}) => {
     optionsStorage(options);
     
     const router = Router();
+    const prefix = options.prefix || '/deepword';
     
-    router.route(options.prefix || '/deepword/*')
+    router.route(prefix + '/*')
         .get(deepword(options))
         .get(joinFn)
         .get(optionsFn(options))
