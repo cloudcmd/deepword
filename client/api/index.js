@@ -3,24 +3,26 @@
 import pify from 'pify';
 import {patch, write} from 'restafary/lib/client';
 import zipio from 'zipio';
-
+import {json} from 'load.js';
 import currify from 'currify';
+
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
-import {json} from 'load.js';
+import showMessage from './show-message';
 
 const loadJson = pify(json);
 
 export default currify(Deepword);
 
-function Deepword(options, eddy) {
+function Deepword(element, options, eddy) {
     if (!(this instanceof Deepword))
-        return new Deepword(options, eddy);
+        return new Deepword(element, options, eddy);
     
     const {monaco} = window;
     
     this._monaco = monaco;
     this._TITLE = 'Deepword';
+    this._element = element;
     
     this._eddy = eddy;
     
@@ -32,6 +34,7 @@ function Deepword(options, eddy) {
 
 Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;
+Deepword.prototype.showMessage = showMessage;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
@@ -70,7 +73,6 @@ Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;
     
     this._options = _options || await loadJson(`${_prefix}/options.json`);
-    console.log(this._options);
     
     return _options;
 }

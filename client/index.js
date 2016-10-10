@@ -25,6 +25,7 @@ export default (el, options, callback = options) => {
     const getElement = () => el;
     const getPrefix = () => prefix;
     const monaco = pify(loadMonaco);
+    const deepword = api(parseElement(el), options);
     
     loadAll(prefix)
         .then(getPrefix)
@@ -32,7 +33,7 @@ export default (el, options, callback = options) => {
         .then(getElement)
         .then(parseElement)
         .then(init)
-        .then(api(options))
+        .then(deepword)
         .then(callback)
         .catch(log)
 }

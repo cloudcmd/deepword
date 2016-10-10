@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import nano from 'cssnano';
 import builtins from 'rollup-plugin-node-builtins';
 import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
@@ -18,6 +19,12 @@ export default {
     moduleName: 'deepword',
     plugins: [
         builtins(),
+        postcss({
+            extenstions: ['.css'],
+            plugins: [
+                nano
+            ],
+        }),
         commonjs({
             include: [
                 'common/**',
@@ -56,9 +63,6 @@ export default {
             exclude: 'node_modules/**',
             runtimeHelpers: true,
             externalHelpers: true
-        }),
-        postcss({
-            extenstions: ['.css']
         }),
         onlyIf(isProd, uglify()),
         onlyIf(isProd, filesize()),
