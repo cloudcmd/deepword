@@ -52,6 +52,15 @@ Deepword.prototype.setValue = function(value) {
     return this;
 };
 
+Deepword.prototype.setValueFirst = function(name, value) {
+    this.setValue(value);
+    
+    this._filename = name;
+    this._value = value;
+    
+    return this;
+};
+
 Deepword.prototype.getValue = function(value) {
     return this._eddy.getValue(value);
 };
