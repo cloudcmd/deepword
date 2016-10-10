@@ -3,20 +3,19 @@
 'use strict';
 
 const fs = require('fs');
-const rendy = require('rendy');
 const args = process.argv.slice(2);
-const [arg] = args;
+const [name] = args;
     
-if (!arg)
+if (!name)
     usage();
-else if (/^(-v|--v)$/.test(arg))
+else if (/^(-v|--v)$/.test(name))
     version();
-else if (/^(-h|--help)$/.test(arg))
+else if (/^(-h|--help)$/.test(name))
     help();
 else
-    checkFile(arg, (error) => {
+    checkFile(name, (error) => {
         if (!error)
-            main(arg);
+            main(name);
         else
             console.error(error.message);
     });
@@ -53,7 +52,7 @@ function main(name) {
     app .use(express.static(DIR))
         .use(deepword({
             minify: false,
-            online: false
+            online: true//false
         }));
     
     server.listen(port, ip);
@@ -74,25 +73,17 @@ function main(name) {
 }
 
 function checkFile(name, callback) {
-    const ERROR_ENOENT = 'Error: no such file or directory: \'{{ name }}\'';
     const ERROR_ISDIR = 'Error: \'{{ name }}\' is directory';
     
     fs.stat(name, function(error, stat) {
         let msg;
         
         if (error && error.code === 'ENOENT')
-            msg = ERROR_ENOENT;
+            msg = Error(`no such file or directory: '${name}'`);
         else if (stat.isDirectory())
-            msg = ERROR_ISDIR;
-            
-        if (msg)
-            error = {
-                message: rendy(msg, {
-                    name: arg
-                })
-            };
+            msg = Error(`'${name}' is directory`);
         
-        callback(error);
+        callback(msg);
     });
 }
 
