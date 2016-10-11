@@ -72,12 +72,21 @@ Deepword.prototype.getValue = function(value) {
 };
 
 Deepword.prototype.getCursor = function() {
-    const {column, lineNumber } = this._monaco.getPosition();
+    const {column, lineNumber } = this._eddy.getPosition();
     
     return {
         column,
         row: lineNumber
     }
+};
+
+Deepword.prototype.setCursor = function(lineNumber, column) {
+    this._eddy.setPosition({
+        column,
+        lineNumber
+    });
+    
+    return this;
 };
 
 Deepword.prototype._patchHTTP = function(path, patch) {
