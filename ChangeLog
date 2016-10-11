@@ -1,3 +1,11 @@
+2016.10.11, v0.7.0
+
+feature:
+- (deepword) add ability to find monaco in outer node_modules
+- (package) monaco-editor v0.7.0
+- (client) add setModeForPath
+
+
 2016.10.10, v0.6.4
 
 fix:
