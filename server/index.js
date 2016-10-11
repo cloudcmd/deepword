@@ -11,6 +11,7 @@ const express = require('express');
 const currify = require('currify');
 
 const storage = require('./storage');
+const resolvePath = require('./resolve-path');
 
 const Router = express.Router;
 
@@ -34,6 +35,7 @@ module.exports = (options = {}) => {
         .get(joinFn)
         .get(optionsFn(options))
         .put(restafaryFn)
+        .get(monaco)
         .get(minifyFn)
         .get(staticFn);
     
@@ -134,6 +136,26 @@ function restafaryFn(req, res, next) {
     });
     
     restafaryFunc(req, res, next);
+}
+
+function monaco(req, res, next) {
+    if (req.url.indexOf('/monaco'))
+        return next();
+    
+    const sendFile = res.sendFile.bind(res);
+    
+    const replace = (path) => {
+        return req.url.replace('/monaco', path);
+    };
+    
+    const sendError = (error) => {
+        res.status(404).send(error);
+    };
+    
+    resolvePath('monaco-editor')
+        .then(replace)
+        .then(res.sendFile.bind(res))
+        .catch(sendError);
 }
 
 function minifyFn(req, res, next) {

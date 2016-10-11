@@ -2,8 +2,7 @@ node_modules
 npm-debug.log
 dist
 legacy
-
-!client/node_modules
+.nyc_output
 
 # vim
 *.swp.*

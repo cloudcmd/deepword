@@ -8,7 +8,7 @@ import {parallel} from 'load.js';
 const loadParallel = pify(parallel);
 
 const transformName = currify((prefix, name) => {
-    return `${prefix}/node_modules/${name}`;
+    return `${prefix}/monaco/${name}`;
 });
 
 const noArg = (fn) => () => fn(null);
@@ -40,13 +40,13 @@ export default (el, options, callback = options) => {
 
 function loadAll(prefix) {
     return loadParallel([
-        transformName(prefix, 'monaco-editor/min/vs/loader.js')
+        transformName(prefix, 'min/vs/loader.js')
     ]);
 }
 
 function loadMonaco(prefix, fn) {
     const {require} = window;
-    const vs = `${prefix}/node_modules/monaco-editor/min/vs`;
+    const vs = transformName(prefix, 'min/vs');
     
     require.config({
         paths: { vs }
