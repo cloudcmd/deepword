@@ -21,7 +21,7 @@ test('resolve-path: module installed in inner directory', (t) => {
         t.equal(name, expect, 'should return path in inner directory');
         t.end();
         unmock();
-    }).catch(console.log);
+    });
 });
 
 test('resolve-path: module installed in outer directory', (t) => {
@@ -30,7 +30,6 @@ test('resolve-path: module installed in outer directory', (t) => {
     
     mockFirstError();
     resolvePath('monaco').then((name) => {
-        console.log('->', name);
         t.equal(name, expect, 'should return path in outer directory');
         t.end();
         unmock();
