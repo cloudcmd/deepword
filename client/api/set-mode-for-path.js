@@ -2,7 +2,6 @@
 
 import {extname} from 'path';
 
-import currify from 'currify';
 import modeForExt from '../../common/mode-for-ext';
 
 const modeForPath = (name, langs) => {
@@ -12,8 +11,8 @@ const modeForPath = (name, langs) => {
 export default function setModeForPath(name) {
     const {_monaco, _eddy} = this;
     
-    const {languages} = monaco;
-    const {createModel} = monaco.editor;
+    const {languages} = _monaco;
+    const {createModel} = _monaco.editor;
     
     const mode = modeForPath(name, languages.getLanguages());
     
