@@ -3,7 +3,7 @@
 import {inherits} from 'util';
 
 import pify from 'pify';
-import {patch, write} from 'restafary/lib/client';
+import {write} from 'restafary/lib/client';
 import zipio from 'zipio';
 import {json} from 'load.js';
 import currify from 'currify';
@@ -86,7 +86,7 @@ Deepword.prototype._writeHTTP = function(path, data) {
     write(path, data, onSave);
 };
 
-Deepword.prototype._zip = function(value, callback) {
+Deepword.prototype._zip = function(value) {
     return pify(zipio)(value);
 }
 
