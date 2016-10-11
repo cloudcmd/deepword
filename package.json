@@ -26,7 +26,7 @@
     "watch:coverage": "redrun watcher:test -- \"redrun coverage\"",
     "watcher:test": "nodemon -e spec.js -w client -w server -w common -x ",
     "lint": "redrun -p lint:*",
-    "fix:lint": "redrun -p lint:* --fix",
+    "fix:lint": "redrun -p lint:* -- --fix",
     "lint:bin": "eslint --rule 'no-console:0' --config .server.eslintrc bin",
     "lint:client": "eslint --config .client.eslintrc client",
     "lint:server": "eslint --config .server.eslintrc server common",
