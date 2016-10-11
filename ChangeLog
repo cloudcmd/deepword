@@ -1,3 +1,15 @@
+2016.10.11, v0.7.1
+
+fix:
+- (set-mode-for-path) monaco -> _monaco
+- (package) :lint
+
+feature:
+- (client) automaticLayout -> window resize
+- (package) add promise-polyfill
+- (package) add build:server
+
+
 2016.10.11, v0.7.0
 
 feature:
