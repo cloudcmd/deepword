@@ -35,8 +35,6 @@ export default async function _initSocket(prefix = '', socketPath = '') {
         this._onSave(null, msg);
     });
     
-    const {_monaco, _eddy} = this;
-    
     socket.on('file', (filename, value) => {
         this._filename = filename;
         
