@@ -14,7 +14,6 @@ test('resolve-path: args', (t) => {
 
 test('resolve-path: module installed in inner directory', (t) => {
     const expect = path.resolve(__dirname, '..', 'node_modules/monaco');
-    const fn = () => resolvePath('monaco');
     
     mock();
     resolvePath('monaco').then((name) => {
@@ -26,7 +25,6 @@ test('resolve-path: module installed in inner directory', (t) => {
 
 test('resolve-path: module installed in outer directory', (t) => {
     const expect = path.resolve(__dirname, '../../', 'node_modules/monaco');
-    const fn = () => resolvePath('monaco');
     
     mockFirstError();
     resolvePath('monaco').then((name) => {
@@ -37,9 +35,6 @@ test('resolve-path: module installed in outer directory', (t) => {
 });
 
 test('resolve-path: module not installed', (t) => {
-    const expect = path.resolve(__dirname, '../../', 'node_modules/monaco');
-    const fn = () => resolvePath('monaco');
-    
     mock(Error());
     resolvePath('monaco').catch(() => {
         t.pass('should reject when module not found');
