@@ -73,8 +73,6 @@ function main(name) {
 }
 
 function checkFile(name, callback) {
-    const ERROR_ISDIR = 'Error: \'{{ name }}\' is directory';
-    
     fs.stat(name, function(error, stat) {
         let msg;
         
