@@ -154,7 +154,7 @@ function monaco(req, res, next) {
     
     resolvePath('monaco-editor')
         .then(replace)
-        .then(res.sendFile.bind(res))
+        .then(sendFile)
         .catch(sendError);
 }
 
