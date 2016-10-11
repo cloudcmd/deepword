@@ -19,7 +19,7 @@ export default function showMessage(text) {
     }, HIDE_TIME);
     
     return this;
-};
+}
 
 function createMsg() {
     const wrapper = document.createElement('div');
