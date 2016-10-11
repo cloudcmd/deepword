@@ -49,6 +49,7 @@
     "watch": "redrun -p watch:*",
     "watcher:js": "nodemon -w client -w server -w common -w .rollup.js -x",
     "legacy:index": "echo \"module.exports = require('./server');\" > legacy/index.js",
+    "legacy:client": "cp -r dist legacy/",
     "dir": "mkdirp dist"
   },
   "repository": {
@@ -80,7 +81,8 @@
     "smalltalk": "^2.1.3",
     "socket-file": "^1.3.0",
     "socket.io": "^1.4.3",
-    "pify": "^2.3.0"
+    "pify": "^2.3.0",
+    "promise-polyfill": "^6.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",

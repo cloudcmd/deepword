@@ -3,6 +3,7 @@
 const DIR_ROOT = __dirname + '/..';
 const path = require('path');
 
+const Promise = require('promise-polyfill');
 const join = require('join-io');
 const mollify = require('mollify');
 const restafary = require('restafary');
