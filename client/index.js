@@ -61,8 +61,8 @@ function init(el) {
     return monaco.editor.create(el, {
         value: '',
         scrollBeyondLastLine: false,
-        // when slow use editor.layout insted
-        automaticLayout: true
+        // when slow use editor.layout
+        // automaticLayout: true
     });
 }
 

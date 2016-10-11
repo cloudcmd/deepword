@@ -41,6 +41,10 @@ function Deepword(element, options, eddy) {
     
     this._prefix = prefix || '/deepword';
     this._initSocket(this._prefix, socketPath);
+    
+    window.addEventListener('resize', () => {
+        eddy.layout();
+    });
 }
 
 Deepword.prototype.goToLine = goToLine;
