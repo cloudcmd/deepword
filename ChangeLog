@@ -1,3 +1,9 @@
+2016.10.12, v0.8.1
+
+fix:
+- (set-mode-for-path) return this
+
+
 2016.10.12, v0.8.0
 
 fix:
