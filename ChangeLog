@@ -1,3 +1,18 @@
+2016.10.12, v0.9.0
+
+fix:
+- (_on-save) value -> _value
+
+feature:
+- (client) smalltalk.prompt -> prompt
+- (index) add fontSize, fontFamily
+- (server) rm minify, join
+- (client) add save
+- (index) rm resize event listener
+- (client) add _diff
+- (index) setCursor -> moveCursorTo
+
+
 2016.10.12, v0.8.1
 
 fix:
