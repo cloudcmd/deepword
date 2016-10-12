@@ -25,10 +25,10 @@ export default function _onSave(error, text) {
     } else {
         this.showMessage(text);
         
-        this._story.setData(_filename, value)
+        this._story.setData(_filename, _value)
              .setHash(_filename, this.sha());
         
-        this.emit('save', value.length);
+        this.emit('save', _value.length);
     }
 }
 
