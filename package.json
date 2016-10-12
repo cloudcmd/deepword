@@ -99,6 +99,7 @@
     "emitify": "^2.1.1",
     "eslint": "^3.6.1",
     "jonny": "^1.0.1",
+    "jssha": "^2.2.0",
     "load.js": "^1.1.4",
     "minifyify": "^7.3.3",
     "mkdirp": "^0.5.1",

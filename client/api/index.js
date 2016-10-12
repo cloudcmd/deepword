@@ -3,20 +3,27 @@
 import {inherits} from 'util';
 
 import pify from 'pify';
-import {write} from 'restafary/lib/client';
+import {patch, write, prefix} from 'restafary/lib/client';
 import zipio from 'zipio';
 import {json} from 'load.js';
 import currify from 'currify';
 import Emitify from 'emitify'
 import daffy from 'daffy';
+import jssha from 'jssha';
 
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';
 import setModeForPath from './set-mode-for-path';
+import save from './save';
+import _onSave from './_on-save';
+
 import story from './story';
 
 const loadJson = pify(json);
+const patch_ = pify(patch);
+const write_ = pify(write);
+const zipio_ = pify(zipio);
 
 export default currify(Deepword);
 
@@ -39,17 +46,26 @@ function Deepword(element, options, eddy) {
     
     this._eddy = eddy;
     
-    const {prefix, socketPath} = options;
+    const {maxSize, socketPath} = options;
+   
+    this._maxSize = maxSize || 512000; 
+    this._prefix = options.prefix || '/deepword';
     
-    this._prefix = prefix || '/deepword';
+    prefix(`${this._prefix}/api/v1/fs`);
+    
     this._initSocket(this._prefix, socketPath);
     this._story = story();
+    
+    this._write = this._writeHTTP;
+    this._patch = this._patchHTTP;
 }
 
 Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;
 Deepword.prototype.showMessage = showMessage;
 Deepword.prototype.setModeForPath = setModeForPath;
+Deepword.prototype.save = save;
+Deepword.prototype._onSave = _onSave;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
@@ -93,18 +109,18 @@ Deepword.prototype.focus = function() {
     return this;
 }
 
-Deepword.prototype._patchHTTP = function(path, patch) {
+Deepword.prototype._patchHTTP = function(path, value) {
     const onSave = this._onSave.bind(this);
-    patch(path, patch, onSave);
+    return patch_(path, value, onSave);
 };
 
 Deepword.prototype._writeHTTP = function(path, data) {
     const onSave = this._onSave.bind(this);
-    write(path, data, onSave);
+    return write_(path, data, onSave);
 };
 
 Deepword.prototype._zip = function(value) {
-    return pify(zipio)(value);
+    return zipio_(value);
 }
 
 Deepword.prototype._loadOptions = async function() {
@@ -129,10 +145,19 @@ Deepword.prototype.setOptions = function(options) {
     return this;
 }
 
+Deepword.prototype.sha = function() {
+    const value = this.getValue();
+    const sha = new jssha('SHA-1', 'TEXT');
+    
+    sha.update(value);
+    
+    return shaObj.getHash('HEX');
+};
+
 Deepword.prototype._diff = function(value) {
     this._value = this._story.getData(this._filename);
     return daffy.createPatch(this._value, value);
-}
+};
 
 Deepword.prototype._doDiff = async function(path) {
     const {_story} = this;

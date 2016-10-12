@@ -24,6 +24,7 @@ const minifyFunc = mollify({
 });
 
 const optionsFn = currify(configFn);
+const restafaryFn = currify(_restafaryFn);
 
 module.exports = (options = {}) => {
     optionsStorage(options);
@@ -35,10 +36,10 @@ module.exports = (options = {}) => {
         .get(deepword(options))
         .get(joinFn)
         .get(optionsFn(options))
-        .put(restafaryFn)
         .get(monaco)
         .get(minifyFn)
-        .get(staticFn);
+        .get(staticFn)
+        .put(restafaryFn(prefix));
     
     return router;
 };
@@ -120,19 +121,17 @@ function configFn(o, req, res, next) {
         });
 }
 
-function restafaryFn(req, res, next) {
-    const isRestafary = [
-        '/api/v1/fs',
-        '/restafary.js'
-    ].some((item) => {
-        return !req.url.indexOf(item);
-    });
+function _restafaryFn(prefix, req, res, next) {
+    const {url} = req;
+    const api = '/api/v1/fs';
     
-    if (!isRestafary)
+    if (url.indexOf(prefix + api))
         return next();
     
+    req.url = url.replace(prefix, '');
+    
     const restafaryFunc = restafary({
-        prefix: '/api/v1/fs',
+        prefix: api,
         root: rootStorage()
     });
     
