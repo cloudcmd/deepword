@@ -69,9 +69,7 @@
   "dependencies": {
     "ashify": "^1.0.1",
     "express": "^4.14.0",
-    "join-io": "^1.4.0",
     "load.js": "^1.1.4",
-    "mollify": "^1.0.4",
     "monaco-editor": "^0.7.0",
     "os-homedir": "^1.0.0",
     "patchfile": "^1.0.1",

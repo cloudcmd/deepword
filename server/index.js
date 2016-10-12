@@ -4,8 +4,6 @@ const DIR_ROOT = __dirname + '/..';
 const path = require('path');
 
 const Promise = require('promise-polyfill');
-const join = require('join-io');
-const mollify = require('mollify');
 const restafary = require('restafary');
 const socketFile = require('socket-file');
 const express = require('express');
@@ -19,10 +17,6 @@ const Router = express.Router;
 const rootStorage = storage();
 const optionsStorage = storage();
 
-const minifyFunc = mollify({
-    dir : DIR_ROOT
-});
-
 const optionsFn = currify(configFn);
 const restafaryFn = currify(_restafaryFn);
 
@@ -34,10 +28,8 @@ module.exports = (options = {}) => {
     
     router.route(prefix + '/*')
         .get(deepword(options))
-        .get(joinFn)
         .get(optionsFn(options))
         .get(monaco)
-        .get(minifyFn)
         .get(staticFn)
         .put(restafaryFn(prefix));
     
@@ -86,23 +78,6 @@ function serve(options, req, res, next) {
         req.url = '/dist' + req.url;
     
     next();
-}
-
-function joinFn(req, res, next) {
-    const url = req.url;
-    
-    if (url.indexOf('/join'))
-        return next();
-    
-    const options = optionsStorage();
-    const minify = checkOption(options.minify);
-    
-    const joinFunc = join({
-        minify,
-        dir: DIR_ROOT,
-    });
-    
-    joinFunc(req, res, next);
 }
 
 function configFn(o, req, res, next) {
@@ -156,18 +131,6 @@ function monaco(req, res, next) {
         .then(replace)
         .then(sendFile)
         .catch(sendError);
-}
-
-function minifyFn(req, res, next) {
-    const options = optionsStorage();
-    const minify = checkOption(options.minify);
-    
-    if (!minify)
-        return next();
-    
-    return minifyFunc(req, res, (req, res) => {
-        staticFn(req, res);
-    });
 }
 
 function staticFn(req, res) {

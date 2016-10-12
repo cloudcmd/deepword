@@ -51,8 +51,8 @@ function main(name) {
     
     app .use(express.static(DIR))
         .use(deepword({
-            minify: false,
-            online: false
+            diff: true,
+            zip: true
         }));
     
     server.listen(port, ip);
