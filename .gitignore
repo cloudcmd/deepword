@@ -2,6 +2,7 @@ node_modules
 npm-debug.log
 dist
 legacy
+server_
 .nyc_output
 
 # vim
