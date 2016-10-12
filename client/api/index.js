@@ -80,7 +80,7 @@ Deepword.prototype.getCursor = function() {
     }
 };
 
-Deepword.prototype.setCursor = function(lineNumber, column) {
+Deepword.prototype.moveCursorTo = function(lineNumber, column) {
     this._eddy.setPosition({
         column,
         lineNumber
