@@ -61,6 +61,8 @@ function init(el) {
     return monaco.editor.create(el, {
         value: '',
         scrollBeyondLastLine: false,
+        renderWhitespace: 'all',
+        renderControlCharacters: true
         // when slow use editor.layout
         // automaticLayout: true
     });

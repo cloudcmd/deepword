@@ -111,3 +111,16 @@ Deepword.prototype._loadOptions = async function() {
     return _options;
 }
 
+Deepword.prototype.setOption = function(name, value) {
+    const options = {};
+    options[name] = value;
+    
+    this._eddy.updateOptions(options);
+    
+    return this;
+}
+
+Deepword.prototype.setOptions = function(options) {
+    this._eddy.updateOptions(options);
+    return this;
+}
