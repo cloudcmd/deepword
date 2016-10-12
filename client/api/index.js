@@ -8,11 +8,13 @@ import zipio from 'zipio';
 import {json} from 'load.js';
 import currify from 'currify';
 import Emitify from 'emitify'
+import daffy from 'daffy';
 
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';
 import setModeForPath from './set-mode-for-path';
+import story from './story';
 
 const loadJson = pify(json);
 
@@ -41,6 +43,7 @@ function Deepword(element, options, eddy) {
     
     this._prefix = prefix || '/deepword';
     this._initSocket(this._prefix, socketPath);
+    this._story = story();
     
     window.addEventListener('resize', () => {
         eddy.layout();
@@ -89,6 +92,11 @@ Deepword.prototype.moveCursorTo = function(lineNumber, column) {
     return this;
 };
 
+Deepword.prototype.focus = function() {
+    this._eddy.focus();
+    return this;
+}
+
 Deepword.prototype._patchHTTP = function(path, patch) {
     const onSave = this._onSave.bind(this);
     patch(path, patch, onSave);
@@ -124,3 +132,23 @@ Deepword.prototype.setOptions = function(options) {
     this._eddy.updateOptions(options);
     return this;
 }
+
+Deepword.prototype._diff = function(value) {
+    this._value = this._story.getData(this._filename);
+    return daffy.createPatch(this._value, value);
+}
+
+Deepword.prototype._doDiff = async function(path) {
+    const {_story} = this;
+    const checkHash = pify(_story.checkHash);
+    const value = this.getValue();
+    const patch = this.diff(value);
+    const ifEqual = (equal) => {
+        return !equal ? '' : this.diff(value);
+    }
+    
+    return _story
+        .checkHash(path)
+        .then(ifEqual);
+}
+

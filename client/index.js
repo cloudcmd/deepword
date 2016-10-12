@@ -62,9 +62,9 @@ function init(el) {
         value: '',
         scrollBeyondLastLine: false,
         renderWhitespace: 'all',
-        renderControlCharacters: true
+        renderControlCharacters: true,
         // when slow use editor.layout
-        // automaticLayout: true
+        automaticLayout: true
     });
 }
 
