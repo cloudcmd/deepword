@@ -45,6 +45,10 @@ export default {
                 ],
                 'socket.io': [
                     'connect'
+                ],
+                'smalltalk/legacy': [
+                    'prompt',
+                    'confirm'
                 ]
             }
         }),

@@ -1,6 +1,6 @@
 'use strict';
 
-import smalltalk from 'smalltalk/legacy';
+import {prompt} from 'smalltalk/legacy';
 import '../../node_modules/smalltalk/dist/smalltalk.min.css';
 
 export default function goToLine() {
@@ -12,8 +12,7 @@ export default function goToLine() {
     const {_eddy, _TITLE} = this;
     const {lineNumber} = _eddy.getPosition();
         
-    smalltalk
-        .prompt(_TITLE, msg, lineNumber)
+    prompt(_TITLE, msg, lineNumber)
         .then((line) => {
             const lineNumber = Number(line);
             const column = 0;
