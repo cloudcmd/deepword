@@ -52,7 +52,7 @@ function main(name) {
     app .use(express.static(DIR))
         .use(deepword({
             minify: false,
-            online: true//false
+            online: false
         }));
     
     server.listen(port, ip);
@@ -73,7 +73,7 @@ function main(name) {
 }
 
 function checkFile(name, callback) {
-    fs.stat(name, function(error, stat) {
+    fs.stat(name, (error, stat) => {
         let msg;
         
         if (error && error.code === 'ENOENT')
