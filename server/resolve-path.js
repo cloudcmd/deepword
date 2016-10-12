@@ -12,7 +12,7 @@ module.exports = (name) => {
     const dir = `node_modules/${name}`;
     
     const inner = resolveModule(__dirname, '../', dir);
-    const outer = resolveModule(__dirname, '../../', dir);
+    const outer = resolveModule(__dirname, '../../', name);
     
     return Promise.resolve()
         .then(inner)

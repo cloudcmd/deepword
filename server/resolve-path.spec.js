@@ -24,7 +24,7 @@ test('resolve-path: module installed in inner directory', (t) => {
 });
 
 test('resolve-path: module installed in outer directory', (t) => {
-    const expect = path.resolve(__dirname, '../../', 'node_modules/monaco');
+    const expect = path.resolve(__dirname, '../../', 'monaco');
     
     mockFirstError();
     resolvePath('monaco').then((name) => {
