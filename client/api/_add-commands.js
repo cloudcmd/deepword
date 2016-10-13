@@ -12,11 +12,15 @@ export default function _addCommands() {
     const addAction = _eddy.addAction.bind(_eddy);
     const goToLine = this.goToLine.bind(this);
     const save = this.save.bind(this);
+    const minify = this.minify.bind(this);
+    const beautify = this.beautify.bind(this);
     
     const {
         Ctrl,
-        KEY_S,
+        KEY_B,
         KEY_G,
+        KEY_M,
+        KEY_S,
     } = KeyCode;
     
     const {
@@ -32,15 +36,17 @@ export default function _addCommands() {
         label: 'Save',
         keybindings: [CtrlCmd | KEY_S, WinCtrl | KEY_S],
         run: save
+    }, {
+        label: 'Minify',
+        keybindings: [CtrlCmd | KEY_M, WinCtrl | KEY_M],
+        run: minify
+    }, {
+        label: 'Beautify',
+        keybindings: [CtrlCmd | KEY_B, WinCtrl | KEY_B],
+        run: beautify
     }];
     
     actions
         .map(addId)
         .forEach(addAction);
-    
-    /*
-    .map(((action) => {
-        return action.id = action.label;
-    });
-    */
 }

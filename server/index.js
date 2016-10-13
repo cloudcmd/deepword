@@ -29,6 +29,7 @@ module.exports = (options = {}) => {
     router.route(prefix + '/*')
         .get(deepword(options))
         .get(optionsFn(options))
+        .get(restafaryFn(''))
         .get(monaco)
         .get(staticFn)
         .put(restafaryFn(prefix));
