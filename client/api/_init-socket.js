@@ -19,6 +19,15 @@ export default async function _initSocket(prefix = '', socketPath = '') {
         socket.emit('patch', name, data);
     };
     
+    /*
+        after amd loading of monaco
+        socket.io will load only as amd
+        and modules that wait global poluting
+        could not use it in usual way
+    */
+    if (!window.io)
+        window.io = connect;
+    
     const socket = connect(href, {
         'max reconnection attempts' : Math.pow(2, 32),
         'reconnection limit'        : FIVE_SECONDS,
