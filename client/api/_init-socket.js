@@ -12,7 +12,7 @@ const getHost = () => {
     return href;
 };
 
-export default async function _initSocket(prefix = '', socketPath = '') {
+export default function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
     const socketPatch = (name, data) => {
