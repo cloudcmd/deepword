@@ -6,6 +6,7 @@ const ifDiffDo = currify(_ifDiffDo);
 const ifGoodPatch = currify(_ifGoodPatch);
 const ifZipDo = currify(_ifZipDo);
 const ifNotPatchWrite = currify(_ifNotPatchWrite);
+const checkPatch = currify(_checkPatch);
 
 export default function() {
     const doDiff = this._doDiff.bind(this);
@@ -18,7 +19,8 @@ export default function() {
     const _write = this._write.bind(this);
     
     this._loadOptions()
-        .then(ifDiffDo(length))
+        .then(ifDiffDo(doDiff, length))
+        .then(checkPatch(length))
         .then(ifGoodPatch(_patch, _filename))
         .then(ifZipDo(_zip, value))
         .then(ifNotPatchWrite(_write, _filename));
@@ -75,7 +77,7 @@ function _ifNotPatchWrite(write, filename, {isPatch, zip, value}) {
     if (isPatch)
         return;
     
-    const uri = !zip ? filename : filename + query;
+    const uri = !zip ? filename : filename + '?unzip';
     
     return write(uri, value);
 }
