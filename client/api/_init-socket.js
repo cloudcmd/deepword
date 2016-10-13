@@ -3,6 +3,7 @@
 import {alert} from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
 import {patch} from 'restafary/lib/client';
+import {applyPatch} from 'daffy';
 
 const getHost = () => {
     const l = location;
@@ -38,6 +39,34 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     
     socket.on('message', (msg) => {
         this._onSave(null, msg);
+    });
+    
+    socket.on('patch', (name, patch, hash) => {
+        const {
+            _filename, _story,
+            getValue,
+            setValue,
+            getCursor,
+            sha
+        } = this;
+        
+        const wrongFile = name !== _filename;
+        const wrongHash = hash !== _story.getHash(name);
+        
+        if (wrongFile || wrongHash)
+            return;
+        
+        const value = getValue();
+        const value = applyPatch(getValue(), patch)
+        
+        setValue(value);
+        
+        _story
+            .setData(name, value)
+            .setHash(name, sha());
+        
+        const {row, columnt} = getCursor();
+        moveCursorTo(row, column);
     });
     
     socket.on('file', (filename, value) => {
