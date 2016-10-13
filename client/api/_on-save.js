@@ -18,7 +18,7 @@ export default function _onSave(error, text) {
             msg = 'Can\'t save.' + msg;
         
         confirm(this._TITLE, msg).then(() => {
-            write(_fileName, _value, onSave);
+            write(_filename, _value, onSave);
         }).catch(empty).then(() => {
             this.focus();
         });
