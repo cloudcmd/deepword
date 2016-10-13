@@ -5,7 +5,7 @@
 const fs = require('fs');
 const args = process.argv.slice(2);
 const [name] = args;
-    
+
 if (!name)
     usage();
 else if (/^(-v|--v)$/.test(name))
