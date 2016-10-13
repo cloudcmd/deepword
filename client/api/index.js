@@ -8,7 +8,7 @@ import zipio from 'zipio';
 import {json} from 'load.js';
 import currify from 'currify';
 import Emitify from 'emitify'
-import daffy from 'daffy';
+import {createPatch} from 'daffy';
 import jssha from 'jssha';
 
 import goToLine from './go-to-line';
@@ -160,7 +160,7 @@ Deepword.prototype.sha = function() {
 
 Deepword.prototype._diff = function(value) {
     this._value = this._story.getData(this._filename);
-    return daffy.createPatch(this._value, value);
+    return createPatch(this._value, value);
 };
 
 Deepword.prototype._doDiff = async function(path) {

@@ -50,6 +50,10 @@ export default {
                     'alert',
                     'prompt',
                     'confirm'
+                ],
+                'daffy': [
+                    'applyPatch',
+                    'createPatch'
                 ]
             }
         }),
