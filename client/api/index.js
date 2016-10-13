@@ -208,22 +208,27 @@ Deepword.prototype.beautify = function() {
 };
 
 Deepword.prototype.selectAll = function() {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log('selectAll: Not implemented');
 };
 
 Deepword.prototype.remove = function() {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log('remove: Not implemented');
 };
 
 Deepword.prototype.copyToClipboard = function() {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log('copyToClipboard: Not implemented');
 };
 
 Deepword.prototype.cutToClipboard = function() {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log('cutToClipboard: Not implemented');
 };
 
 Deepword.prototype.pastFromClipboard = function() {
+    /*eslint no-console: ["error", { allow: ["log"] }] */
     console.log('pastFromClipboard: Not implemented');
 };
 
