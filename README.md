@@ -50,7 +50,7 @@ For this purpuse API could be used.
 Middleware of `deepword`. Options could be omitted.
 
 ```js
-const deepword  = require('deepword');
+const deepword = require('deepword');
 const express = require('express');
 const app = express();
 
