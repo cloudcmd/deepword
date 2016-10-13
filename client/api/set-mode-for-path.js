@@ -23,8 +23,6 @@ export default function setModeForPath(name) {
     _eddy.setModel(model);
     _eddy.focus();
     
-    oldModel.dispose();
-    
     return this;
 }
 
