@@ -1,5 +1,6 @@
 'use strict';
 
+import io from 'socket.io-client';
 import api from './api';
 import pify from 'pify';
 import currify from 'currify';
@@ -18,6 +19,14 @@ export default (el, options, callback = options) => {
         options = {};
     
     const prefix = options.prefix || '/deepword';
+    /*
+        after amd loading of monaco
+        socket.io will load only as amd
+        and modules that wait global poluting
+        could not use it in usual way
+    */
+    if (!window.io)
+        window.io = io;
     
     /*eslint no-console: ["error", { allow: ["error"] }] */
     const log = (e) => console.error(e);
