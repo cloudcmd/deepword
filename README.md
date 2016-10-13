@@ -1,19 +1,6 @@
-Deepword [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL]
+Deepword [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
+
 =======
-[NPMIMGURL]:                https://img.shields.io/npm/v/deepword.svg?style=flat
-[BuildStatusIMGURL]:        https://img.shields.io/travis/cloudcmd/deepword/master.svg?style=flat
-[DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/cloudcmd/deepword.svg?style=flat
-[LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPM_INFO_IMG]:             https://nodei.co/npm/deepword.png?downloads=true&&stars&&downloadRank "npm install deepword"
-[NPMURL]:                   https://npmjs.org/package/deepword "npm"
-[DependencyStatusURL]:      https://gemnasium.com/cloudcmd/deepword "Dependency Status"
-[LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
-
-[beautifile]:               https://github.com/coderaiser/node-beautifile "Beautifile"
-[beautify.json]:            https://github.com/coderaiser/node-beautifile/tree/master/json/beautify.json "beautify.json"
-
-[edit.json]:            https://github.com/cloudcmd/deepword/tree/master/json/edit.json "edit.json"
-
 
 Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https://microsoft.github.io/monaco-editor/ "Monaco").
 
@@ -130,4 +117,21 @@ For more information you could always look into `html` and `bin` directory.
 ## License
 
 MIT
+
+[NPMIMGURL]:                https://img.shields.io/npm/v/deepword.svg?style=flat
+[DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/cloudcmd/deepword.svg?style=flat
+[LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[NPM_INFO_IMG]:             https://nodei.co/npm/deepword.png?downloads=true&&stars&&downloadRank "npm install deepword"
+[NPMURL]:                   https://npmjs.org/package/deepword "npm"
+[DependencyStatusURL]:      https://gemnasium.com/cloudcmd/deepword "Dependency Status"
+[LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
+
+[beautifile]:               https://github.com/coderaiser/node-beautifile "Beautifile"
+[beautify.json]:            https://github.com/coderaiser/node-beautifile/tree/master/json/beautify.json "beautify.json"
+
+[CoverageURL]:              https://coveralls.io/github/cloudcdmd/deepword?branch=master
+[CoverageIMGURL]:           https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github
+
+[BuildStatusIMGURL]:        https://img.shields.io/travis/cloudcmd/deepword/master.svg?style=flat
+[BuildStatusURL]:           https://travis-ci.org/cloudcmd/deepword  "Build Status"
 
