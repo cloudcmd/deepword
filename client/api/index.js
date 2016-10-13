@@ -176,14 +176,11 @@ Deepword.prototype._doDiff = async function(path) {
     const {_story} = this;
     const checkHash = pify(_story.checkHash);
     const value = this.getValue();
-    const patch = this.diff(value);
     const ifEqual = (equal) => {
         return !equal ? '' : this.diff(value);
     }
     
-    return _story
-        .checkHash(path)
-        .then(ifEqual);
+    return checkHash(path).then(ifEqual);
 }
 
 Deepword.prototype._readWithFlag = function(flag) {
@@ -227,6 +224,7 @@ Deepword.prototype.cutToClipboard = function() {
 };
 
 Deepword.prototype.pastFromClipboard = function() {
+    console.log('pastFromClipboard: Not implemented');
 };
 
 
