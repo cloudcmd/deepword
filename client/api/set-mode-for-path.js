@@ -16,7 +16,6 @@ export default function setModeForPath(name) {
     
     const mode = modeForPath(name, languages.getLanguages());
     
-    const oldModel = _eddy.getModel();
     const value = this.getValue();
     const model = createModel(value, mode);
     
