@@ -3,7 +3,6 @@
 const DIR_ROOT = __dirname + '/..';
 const path = require('path');
 
-const Promise = require('promise-polyfill');
 const restafary = require('restafary');
 const socketFile = require('socket-file');
 const express = require('express');
