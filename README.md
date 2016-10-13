@@ -112,6 +112,14 @@ deepword('[data-name="js-edit"]', (editor) => {
 ```
 For more information you could always look into `html` and `bin` directory.
 
+## Environments
+
+In old `node.js` environments that supports `es5` only, `deepword` could be used with:
+
+```js
+var deepword = require('deepword/legacy');
+```
+
 ## License
 
 MIT
