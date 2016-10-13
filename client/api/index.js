@@ -17,6 +17,7 @@ import showMessage from './show-message';
 import setModeForPath from './set-mode-for-path';
 import save from './save';
 import _onSave from './_on-save';
+import _addCommands from './_add-commands';
 
 import story from './story';
 
@@ -54,6 +55,7 @@ function Deepword(element, options, eddy) {
     prefix(`${this._prefix}/api/v1/fs`);
     
     this._initSocket(this._prefix, socketPath);
+    this._addCommands();
     this._story = story();
     
     this._write = this._writeHTTP;
@@ -66,6 +68,7 @@ Deepword.prototype.showMessage = showMessage;
 Deepword.prototype.setModeForPath = setModeForPath;
 Deepword.prototype.save = save;
 Deepword.prototype._onSave = _onSave;
+Deepword.prototype._addCommands = _addCommands;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
@@ -110,12 +113,12 @@ Deepword.prototype.focus = function() {
 }
 
 Deepword.prototype._patchHTTP = function(path, value) {
-    const {onSave} = this;
+    const onSave = this._onSave.bind(this);
     return patch_(path, value, onSave);
 };
 
 Deepword.prototype._writeHTTP = function(path, data) {
-    const {onSave} = this;
+    const onSave = this._onSave.bind(this);
     return write_(path, data, onSave);
 };
 
@@ -155,7 +158,7 @@ Deepword.prototype.sha = function() {
     
     sha.update(value);
     
-    return shaObj.getHash('HEX');
+    return sha.getHash('HEX');
 };
 
 Deepword.prototype._diff = function(value) {
