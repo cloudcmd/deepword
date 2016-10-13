@@ -37,6 +37,7 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     
     socket.on('file', (filename, value) => {
         this._filename = filename;
+        this._value = value;
         
         this.setValue(value);
         this.setModeForPath(filename);
