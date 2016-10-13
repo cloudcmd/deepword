@@ -135,7 +135,7 @@ MIT
 [beautifile]:               https://github.com/coderaiser/node-beautifile "Beautifile"
 [beautify.json]:            https://github.com/coderaiser/node-beautifile/tree/master/json/beautify.json "beautify.json"
 
-[CoverageURL]:              https://coveralls.io/github/cloudcdmd/deepword?branch=master
+[CoverageURL]:              https://coveralls.io/github/cloudcmd/deepword?branch=master
 [CoverageIMGURL]:           https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github
 
 [BuildStatusIMGURL]:        https://img.shields.io/travis/cloudcmd/deepword/master.svg?style=flat
