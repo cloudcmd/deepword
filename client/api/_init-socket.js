@@ -2,6 +2,7 @@
 
 import smalltalk from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
+import {patch} from 'restafary/lib/client';
 
 const getHost = () => {
     const l = location;
@@ -13,7 +14,7 @@ const getHost = () => {
 export default async function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
-    const patch = (name, data) => {
+    const socketPatch = (name, data) => {
         socket.emit('patch', name, data);
     };
     
@@ -28,6 +29,10 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     });
     
     socket.on('connect', () => {
+        this._patch = socketPatch;
+    });
+    
+    socket.on('disconnect', () => {
         this._patch = patch;
     });
     
