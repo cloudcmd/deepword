@@ -1,3 +1,32 @@
+2016.10.13, v1.0.0
+
+fix:
+- (save) checkPatch
+- (_on-save) _fileName -> _filename
+- (_init-socket)  moveCursorTo
+- (set-mode-for-path) rm dispose
+- (_init-socket) duplicate value
+- (_init-socket) socket-on-file: set _value
+
+feature:
+- (package) keywords
+- (img) make smaller
+- (img) add screenshot
+- (package) add report: coveralls
+- (travis) add
+- (client) add evaluate
+- (client) put socket.io to global scope
+- (client) add folding
+- (client) _addCommands: add minify, beautify
+- (index) add .deepword-msg: font-family
+- (_add-commands) add
+- (rollup) daffy: applyPatch, createPatch
+- (_init-socket) add on-patch
+- (client) disable contextmenu for middleware
+- (_init-socket) smalltalk.alert -> alert
+- (_init-socket) add disconnect
+
+
 2016.10.12, v0.9.0
 
 fix:
