@@ -42,6 +42,12 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     });
     
     socket.on('patch', (name, patch, hash) => {
+        const wrongFile = name !== _filename;
+        const wrongHash = hash !== _story.getHash(name);
+        
+        if (wrongFile || wrongHash)
+            return;
+        
         const {
             _filename, _story,
             getValue,
@@ -50,13 +56,6 @@ export default async function _initSocket(prefix = '', socketPath = '') {
             sha
         } = this;
         
-        const wrongFile = name !== _filename;
-        const wrongHash = hash !== _story.getHash(name);
-        
-        if (wrongFile || wrongHash)
-            return;
-        
-        const value = getValue();
         const value = applyPatch(getValue(), patch)
         
         setValue(value);
