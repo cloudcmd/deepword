@@ -110,12 +110,12 @@ Deepword.prototype.focus = function() {
 }
 
 Deepword.prototype._patchHTTP = function(path, value) {
-    const onSave = this._onSave.bind(this);
+    const {onSave} = this;
     return patch_(path, value, onSave);
 };
 
 Deepword.prototype._writeHTTP = function(path, data) {
-    const onSave = this._onSave.bind(this);
+    const {onSave} = this;
     return write_(path, data, onSave);
 };
 
