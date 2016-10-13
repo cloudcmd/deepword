@@ -59,7 +59,12 @@
   "keywords": [
     "editor",
     "express",
-    "middleware"
+    "middleware",
+    "monaco",
+    "patch",
+    "diff",
+    "ide",
+    "text"
   ],
   "author": "coderaiser",
   "license": "MIT",
