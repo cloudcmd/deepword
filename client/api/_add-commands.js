@@ -17,7 +17,6 @@ export default function _addCommands() {
     const beautify = this.beautify.bind(this);
     
     const {
-        Ctrl,
         KEY_B,
         KEY_E,
         KEY_G,

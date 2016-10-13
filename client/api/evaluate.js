@@ -22,5 +22,5 @@ export default function evaluate () {
     
     alert(this._TITLE, msg)
         .then(focus);
-};
+}
 

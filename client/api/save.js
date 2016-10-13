@@ -47,7 +47,7 @@ function _checkPatch(length, {diff, zip, patch}) {
     const isPatch = patch && isStr && isLessLength;
     
     return {zip, patch, isPatch};
-};
+}
 
 function _ifGoodPatch(patchFn, filename, {patch, zip, isPatch}) {
     if (!isPatch)
