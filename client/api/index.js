@@ -145,6 +145,10 @@ Deepword.prototype.setOptions = function(options) {
     return this;
 }
 
+Deepword.prototype.isChanged = function() {
+    return this._value !== this.getValue();
+}
+
 Deepword.prototype.sha = function() {
     const value = this.getValue();
     const sha = new jssha('SHA-1', 'TEXT');
