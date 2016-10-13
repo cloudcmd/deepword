@@ -53,6 +53,7 @@ export default async function _initSocket(prefix = '', socketPath = '') {
             getValue,
             setValue,
             getCursor,
+            moveCursorTo,
             sha
         } = this;
         
@@ -64,7 +65,7 @@ export default async function _initSocket(prefix = '', socketPath = '') {
             .setData(name, value)
             .setHash(name, sha());
         
-        const {row, columnt} = getCursor();
+        const {row, column} = getCursor();
         moveCursorTo(row, column);
     });
     
