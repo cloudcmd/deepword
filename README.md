@@ -50,16 +50,14 @@ For this purpuse API could be used.
 Middleware of `deepword`. Options could be omitted.
 
 ```js
-var deepword  = require('deepword'),
-    express = require('express'),
-    app     = express();
+const deepword  = require('deepword');
+const express = require('express');
+const app = express();
 
 app.use(deepword({
-    minify  : true,  /* default */
-    online  : true,  /* default */
-    diff    : true,  /* default */
-    zip     : true,  /* default */
-    authCheck: function(socket, success) { /* optional */
+    diff: true,  /* default */
+    zip : true,  /* default */
+    authCheck: (socket, success) => { /* optional */
     }
 }));
 
@@ -70,8 +68,8 @@ app.listen(31337);
 Could be used with [socket.io](http://socket.io "Socket.io") to handle editor events with.
 
 ```js
-var io      = require('socket.io'),
-    socket  = io.listen(server);
+const io = require('socket.io'),
+const socket = io.listen(server);
 
 deepword.listen(socket);
 ```
@@ -108,7 +106,7 @@ body {
 Minimal js:
 
 ```js
-deepword('[data-name="js-edit"]', function(editor) {
+deepword('[data-name="js-edit"]', (editor) => {
     editor.setValue('Hello deepword!');
 });
 ```
