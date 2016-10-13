@@ -63,6 +63,7 @@ function init(el) {
         scrollBeyondLastLine: false,
         renderWhitespace: 'all',
         renderControlCharacters: true,
+        contextmenu: false,
         // when slow use editor.layout
         automaticLayout: true
     });
