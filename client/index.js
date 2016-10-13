@@ -62,8 +62,8 @@ function init(el) {
         value: '',
         scrollBeyondLastLine: false,
         renderWhitespace: 'all',
-        renderControlCharacters: true,
         contextmenu: false,
+        folding: true,
         // when slow use editor.layout
         automaticLayout: true
     });
