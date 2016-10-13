@@ -1,6 +1,6 @@
 'use strict';
 
-import smalltalk from 'smalltalk/legacy';
+import {alert} from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
 import {patch} from 'restafary/lib/client';
 
@@ -49,7 +49,7 @@ export default async function _initSocket(prefix = '', socketPath = '') {
     });
     
     socket.on('err', (error) => {
-        smalltalk.alert(this._TITLE, error);
+        alert(this._TITLE, error);
     });
 }
 

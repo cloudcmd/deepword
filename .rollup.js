@@ -47,6 +47,7 @@ export default {
                     'connect'
                 ],
                 'smalltalk/legacy': [
+                    'alert',
                     'prompt',
                     'confirm'
                 ]
