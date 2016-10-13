@@ -19,6 +19,7 @@ import setModeForPath from './set-mode-for-path';
 import save from './save';
 import _onSave from './_on-save';
 import _addCommands from './_add-commands';
+import evaluate from './evaluate';
 
 import story from './story';
 
@@ -73,6 +74,7 @@ Deepword.prototype.setModeForPath = setModeForPath;
 Deepword.prototype.save = save;
 Deepword.prototype._onSave = _onSave;
 Deepword.prototype._addCommands = _addCommands;
+Deepword.prototype.evaluate = evaluate;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
@@ -207,4 +209,24 @@ Deepword.prototype.beautify = function() {
     this._readWithFlag('beautify');
     return this;
 };
+
+Deepword.prototype.selectAll = function() {
+    console.log('selectAll: Not implemented');
+};
+
+Deepword.prototype.remove = function() {
+    console.log('remove: Not implemented');
+};
+
+Deepword.prototype.copyToClipboard = function() {
+    console.log('copyToClipboard: Not implemented');
+};
+
+Deepword.prototype.cutToClipboard = function() {
+    console.log('cutToClipboard: Not implemented');
+};
+
+Deepword.prototype.pastFromClipboard = function() {
+};
+
 

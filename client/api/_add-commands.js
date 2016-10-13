@@ -10,6 +10,7 @@ export default function _addCommands() {
     const {KeyCode, KeyMod} = _monaco;
     
     const addAction = _eddy.addAction.bind(_eddy);
+    const evaluate = this.evaluate.bind(this);
     const goToLine = this.goToLine.bind(this);
     const save = this.save.bind(this);
     const minify = this.minify.bind(this);
@@ -18,6 +19,7 @@ export default function _addCommands() {
     const {
         Ctrl,
         KEY_B,
+        KEY_E,
         KEY_G,
         KEY_M,
         KEY_S,
@@ -29,6 +31,10 @@ export default function _addCommands() {
     } = KeyMod;
     
     const actions = [{
+        label: 'Evaluate',
+        keybindings: [CtrlCmd | KEY_E, WinCtrl | KEY_E],
+        run: evaluate
+    }, {
         label: 'Go To Line',
         keybindings: [CtrlCmd | KEY_G, WinCtrl | KEY_G],
         run: goToLine
