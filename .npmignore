@@ -2,6 +2,7 @@
 client
 common
 *.spec.js
+img
 
 # vim files
 *.swp.*
