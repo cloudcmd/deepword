@@ -20,6 +20,11 @@ import save from './save';
 import _onSave from './_on-save';
 import _addCommands from './_add-commands';
 import evaluate from './evaluate';
+import {
+    copyToClipboard,
+    cutToClipboard,
+    pastFromClipboard,
+} from './clipboard';
 
 import story from './story';
 
@@ -75,6 +80,10 @@ Deepword.prototype.save = save;
 Deepword.prototype._onSave = _onSave;
 Deepword.prototype._addCommands = _addCommands;
 Deepword.prototype.evaluate = evaluate;
+
+Deepword.prototype.copyToClipboard = copyToClipboard;
+Deepword.prototype.cutToClipboard = cutToClipboard;
+Deepword.prototype.pastFromClipboard = pastFromClipboard;
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
@@ -223,19 +232,11 @@ Deepword.prototype.remove = function() {
     console.log('remove: Not implemented');
 };
 
-Deepword.prototype.copyToClipboard = function() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('copyToClipboard: Not implemented');
+Deepword.prototype._getSelected = function() {
+    const {_eddy} = this;
+    const {model} = _eddy;
+    const selection = _eddy.getSelection();
+    
+    return _eddy.model.getValueInRange(selection);
 };
-
-Deepword.prototype.cutToClipboard = function() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('cutToClipboard: Not implemented');
-};
-
-Deepword.prototype.pastFromClipboard = function() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('pastFromClipboard: Not implemented');
-};
-
 
