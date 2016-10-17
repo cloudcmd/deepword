@@ -240,3 +240,11 @@ Deepword.prototype._getSelected = function() {
     return _eddy.model.getValueInRange(selection);
 };
 
+Deepword.prototype._showMessageOnce = function(msg) {
+    if (this._showedOnce)
+        return;
+    
+    this.showMessage(msg);
+    this._showedOnce = true;
+};
+
