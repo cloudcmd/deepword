@@ -208,8 +208,14 @@ Deepword.prototype.beautify = function() {
 };
 
 Deepword.prototype.selectAll = function() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('selectAll: Not implemented');
+    this._eddy.setSelection({
+        startLineNumber: 1,
+        startColumn: 1,
+        endLineNumber: Infinity,
+        endColumn: Infinity
+    });
+    
+    return this;
 };
 
 Deepword.prototype.remove = function() {
