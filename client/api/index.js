@@ -183,7 +183,8 @@ Deepword.prototype._diff = function(value) {
 
 Deepword.prototype._doDiff = async function(path) {
     const {_story} = this;
-    const checkHash = pify(_story.checkHash);
+    const checkHash = _story.checkHash.bind(_story);
+    const checkHash_ = pify(checkHash);
     const value = this.getValue();
     const ifEqual = (equal) => {
         return !equal ? '' : this.diff(value);
