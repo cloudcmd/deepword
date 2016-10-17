@@ -13,14 +13,14 @@ export default function() {
     const _patch = this._patch.bind(this);
     const value = this.getValue();
     const {length} = value;
-    const {_filename} = this;
+    const {_filename, _maxSize} = this;
     
     const _zip = this._zip.bind(this);
     const _write = this._write.bind(this);
     
     this._loadOptions()
-        .then(ifDiffDo(doDiff, value))
-        .then(checkPatch(length))
+        .then(ifDiffDo(doDiff, _filename))
+        .then(checkPatch(length, _maxSize))
         .then(ifGoodPatch(_patch, _filename))
         .then(ifZipDo(_zip, value))
         .then(ifNotPatchWrite(_write, _filename));
@@ -38,12 +38,12 @@ function _ifDiffDo(doDiff, value, {diff, zip}) {
         });
 }
 
-function _checkPatch(length, {diff, zip, patch}) {
+function _checkPatch(length, maxSize, {diff, zip, patch}) {
     if (!diff)
         return {zip};
     
     const patchLength = patch && patch.length || 0;
-    const isLessMaxLength = length < this._MAX_FILE_SIZE;
+    const isLessMaxLength = length < maxSize;
     const isLessLength = isLessMaxLength && patchLength < length;
     const isStr = typeof patch === 'string';
     const isPatch = patch && isStr && isLessLength;
@@ -55,9 +55,7 @@ function _ifGoodPatch(patchFn, filename, {patch, zip, isPatch}) {
     if (!isPatch)
         return {zip}
     
-    patchFn(filename, patch).then(() => {
-        return {isPatch};
-    });
+    patchFn(filename, patch).then(() => {isPatch});
 }
 
 function _ifZipDo(zipFn, value, {zip, isPatch}) {
@@ -69,7 +67,7 @@ function _ifZipDo(zipFn, value, {zip, isPatch}) {
     
     return zipFn(value)
         .then((value) => {
-            return {value}
+            return {zip, value}
         });
 }
 

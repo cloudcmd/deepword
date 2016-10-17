@@ -5,7 +5,7 @@ import {inherits} from 'util';
 import pify from 'pify';
 import {patch, read, write, prefix} from 'restafary/lib/client';
 import zipio from 'zipio';
-import {json} from 'load.js';
+import {json as loadJson} from 'load.js';
 import currify from 'currify';
 import Emitify from 'emitify'
 import {createPatch} from 'daffy';
@@ -28,7 +28,7 @@ import {
 
 import story from './story';
 
-const loadJson = pify(json);
+const loadJson_ = pify(loadJson);
 const patch_ = pify(patch);
 const read_ = pify(read);
 const write_ = pify(write);
@@ -59,7 +59,7 @@ function Deepword(element, options, eddy) {
     
     const {maxSize, socketPath} = options;
    
-    this._maxSize = maxSize || 512000; 
+    this._maxSize = maxSize || 512000;
     this._prefix = options.prefix || '/deepword';
     
     prefix(`${this._prefix}/api/v1/fs`);
@@ -144,9 +144,9 @@ Deepword.prototype._zip = function(value) {
 Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;
     
-    this._options = _options || await loadJson(`${_prefix}/options.json`);
+    this._options = _options || await loadJson_(`${_prefix}/options.json`);
     
-    return _options;
+    return Promise.resolve(this._options);
 }
 
 Deepword.prototype.setOption = function(name, value) {
@@ -190,7 +190,7 @@ Deepword.prototype._doDiff = async function(path) {
         return !equal ? '' : this.diff(value);
     }
     
-    return checkHash(path).then(ifEqual);
+    return checkHash_(path).then(ifEqual);
 }
 
 Deepword.prototype._readWithFlag = function(flag) {
