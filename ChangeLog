@@ -1,3 +1,12 @@
+2016.10.17, v1.1.0
+
+feature:
+- (client) _showMessageOnce
+- (client) copyToClipboard, cutToClipboard
+- (deepword) add selectAll
+- (add-commands) add id
+
+
 2016.10.13, v1.0.1
 
 feature:
