@@ -19,7 +19,7 @@ export default function() {
     const _write = this._write.bind(this);
     
     this._loadOptions()
-        .then(ifDiffDo(doDiff, length))
+        .then(ifDiffDo(doDiff, value))
         .then(checkPatch(length))
         .then(ifGoodPatch(_patch, _filename))
         .then(ifZipDo(_zip, value))
