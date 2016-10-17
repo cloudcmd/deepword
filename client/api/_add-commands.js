@@ -1,7 +1,7 @@
 'use strict';
 
 const addId = (a) => {
-    a.id = a.label;
+    a.id = `deepword.action.${a.id}`;
     return a;
 };
 
@@ -30,22 +30,27 @@ export default function _addCommands() {
     } = KeyMod;
     
     const actions = [{
+        id: 'evaluate',
         label: 'Evaluate',
         keybindings: [CtrlCmd | KEY_E, WinCtrl | KEY_E],
         run: evaluate
     }, {
+        id: 'goToLine',
         label: 'Go To Line',
         keybindings: [CtrlCmd | KEY_G, WinCtrl | KEY_G],
         run: goToLine
     }, {
+        id: 'save',
         label: 'Save',
         keybindings: [CtrlCmd | KEY_S, WinCtrl | KEY_S],
         run: save
     }, {
+        id: 'minify',
         label: 'Minify',
         keybindings: [CtrlCmd | KEY_M, WinCtrl | KEY_M],
         run: minify
     }, {
+        id: 'beautify',
         label: 'Beautify',
         keybindings: [CtrlCmd | KEY_B, WinCtrl | KEY_B],
         run: beautify
