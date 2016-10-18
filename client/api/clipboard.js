@@ -12,6 +12,6 @@ export function cutToClipboard() {
 }
 
 export function pastFromClipboard() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('pastFromClipboard: Not implemented');
+    this.showMessage('pastFromClipboard: Not implemented');
 }
+

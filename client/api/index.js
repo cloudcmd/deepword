@@ -218,10 +218,14 @@ Deepword.prototype.beautify = function() {
 };
 
 Deepword.prototype.selectAll = function() {
-    this._eddy.setSelection({
+    const {_eddy} = this;
+    const {model} = _eddy;
+    const getLinesCount = model.getLineCount.bind(model);
+    
+    _eddy.setSelection({
         startLineNumber: 1,
         startColumn: 1,
-        endLineNumber: Infinity,
+        endLineNumber: getLinesCount(),
         endColumn: Infinity
     });
     
@@ -229,8 +233,7 @@ Deepword.prototype.selectAll = function() {
 };
 
 Deepword.prototype.remove = function() {
-    /*eslint no-console: ["error", { allow: ["log"] }] */
-    console.log('remove: Not implemented');
+    this.showMessage('remove: Not implemented');
 };
 
 Deepword.prototype._getSelected = function() {
