@@ -187,7 +187,7 @@ Deepword.prototype._doDiff = async function(path) {
     const checkHash_ = pify(checkHash);
     const value = this.getValue();
     const ifEqual = (equal) => {
-        return !equal ? '' : this.diff(value);
+        return !equal ? '' : this._diff(value);
     }
     
     return checkHash_(path).then(ifEqual);
