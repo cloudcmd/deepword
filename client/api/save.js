@@ -55,7 +55,9 @@ function _ifGoodPatch(patchFn, filename, {patch, zip, isPatch}) {
     if (!isPatch)
         return {zip}
     
-    patchFn(filename, patch).then(() => {isPatch});
+    return patchFn(filename, patch).then(() => {
+        return {isPatch};
+    });
 }
 
 function _ifZipDo(zipFn, value, {zip, isPatch}) {
