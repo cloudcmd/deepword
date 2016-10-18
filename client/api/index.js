@@ -2,7 +2,8 @@
 
 import {inherits} from 'util';
 
-import pify from 'pify';
+import Promise from 'promise-polyfill';
+import promisify from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/lib/client';
 import zipio from 'zipio';
 import {json as loadJson} from 'load.js';
@@ -28,11 +29,11 @@ import {
 
 import story from './story';
 
-const loadJson_ = pify(loadJson);
-const patch_ = pify(patch);
-const read_ = pify(read);
-const write_ = pify(write);
-const zipio_ = pify(zipio);
+const loadJson_ = promisify(loadJson);
+const patch_ = promisify(patch);
+const read_ = promisify(read);
+const write_ = promisify(write);
+const zipio_ = promisify(zipio);
 
 const _alert = currify(alert);
 
@@ -183,8 +184,7 @@ Deepword.prototype._diff = function(value) {
 
 Deepword.prototype._doDiff = async function(path) {
     const {_story} = this;
-    const checkHash = _story.checkHash.bind(_story);
-    const checkHash_ = pify(checkHash);
+    const checkHash_ = promisify(_story.checkHash, _story);
     const value = this.getValue();
     const ifEqual = (equal) => {
         return !equal ? '' : this._diff(value);

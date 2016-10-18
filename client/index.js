@@ -1,11 +1,11 @@
 'use strict';
 
 import api from './api';
-import pify from 'pify';
+import promisify from 'es6-promisify';
 import currify from 'currify';
 import {parallel} from 'load.js';
 
-const loadParallel = pify(parallel);
+const loadParallel = promisify(parallel);
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/monaco/${name}`;
@@ -24,7 +24,7 @@ export default (el, options, callback = options) => {
     
     const getElement = () => el;
     const getPrefix = () => prefix;
-    const monaco = pify(loadMonaco);
+    const monaco = promisify(loadMonaco);
     const deepword = api(parseElement(el), options);
     
     loadAll(prefix)

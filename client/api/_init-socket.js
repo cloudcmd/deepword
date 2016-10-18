@@ -4,7 +4,7 @@ import {alert} from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
 import {applyPatch} from 'daffy';
 
-import pify from 'pify';
+import promisify from 'es6-promisify';
 
 const getHost = () => {
     const l = location;
@@ -16,7 +16,7 @@ const getHost = () => {
 export default function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
-    const socketPatch = pify((name, data, fn) => {
+    const socketPatch = promisify((name, data, fn) => {
         socket.emit('patch', name, data);
         fn();
     });
