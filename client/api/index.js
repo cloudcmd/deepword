@@ -178,7 +178,6 @@ Deepword.prototype.sha = function() {
 };
 
 Deepword.prototype._diff = function(value) {
-    this._value = this._story.getData(this._filename);
     return createPatch(this._value, value);
 };
 
