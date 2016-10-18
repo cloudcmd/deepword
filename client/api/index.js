@@ -190,7 +190,9 @@ Deepword.prototype._doDiff = async function(path) {
         return !equal ? '' : this._diff(value);
     }
     
-    return checkHash_(path).then(ifEqual);
+    return checkHash_(path)
+        .then(ifEqual)
+        .catch(ifEqual);
 }
 
 Deepword.prototype._readWithFlag = function(flag) {
