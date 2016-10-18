@@ -2,8 +2,9 @@
 
 import {alert} from 'smalltalk/legacy';
 import {connect} from 'socket.io-client';
-import {patch} from 'restafary/lib/client';
 import {applyPatch} from 'daffy';
+
+import pify from 'pify';
 
 const getHost = () => {
     const l = location;
@@ -15,9 +16,10 @@ const getHost = () => {
 export default function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
-    const socketPatch = (name, data) => {
+    const socketPatch = pify((name, data, fn) => {
         socket.emit('patch', name, data);
-    };
+        fn();
+    });
     
     /*
         after amd loading of monaco
@@ -43,7 +45,7 @@ export default function _initSocket(prefix = '', socketPath = '') {
     });
     
     socket.on('disconnect', () => {
-        this._patch = patch;
+        this._patch = this._patchHTTP;
     });
     
     socket.on('message', (msg) => {
