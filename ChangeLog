@@ -1,3 +1,12 @@
+2016.10.18, v1.1.4
+
+fix:
+- (index) _doDiff: checkHash catch
+
+feature:
+- (package) build: rollup -> browserify
+
+
 2016.10.18, v1.1.3
 
 feature:
