@@ -1,3 +1,9 @@
+2016.10.18, v1.1.5
+
+fix:
+- (package) currify: devDependencies -> dependencies
+
+
 2016.10.18, v1.1.4
 
 fix:
