@@ -1,3 +1,9 @@
+2016.10.18, v1.1.6
+
+fix:
+- (index) _diff: overwrite _value
+
+
 2016.10.18, v1.1.5
 
 fix:
