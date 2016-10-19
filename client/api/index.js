@@ -239,7 +239,6 @@ Deepword.prototype.remove = function() {
 
 Deepword.prototype._getSelected = function() {
     const {_eddy} = this;
-    const {model} = _eddy;
     const selection = _eddy.getSelection();
     
     return _eddy.model.getValueInRange(selection);
