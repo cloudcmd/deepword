@@ -6,8 +6,6 @@ const path = require('path');
 const Promise = require('promise-polyfill');
 const promisify = require('es6-promisify');
 
-const stat = promisify(fs.stat);
-
 module.exports = (name) => {
     check(name);
     
@@ -27,6 +25,8 @@ function check(name) {
 }
 
 function resolveModule(...dirs) {
+    /* stat: not global becouse of tests */
+    const stat = promisify(fs.stat);
     const dir = path.resolve(...dirs);
     const getDir = () => dir;
     
