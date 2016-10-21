@@ -21,7 +21,6 @@ export default {
     moduleName: 'deepword',
     plugins: [
         postcss({
-            extenstions: ['.css'],
             plugins: [
                 nano
             ],
@@ -30,7 +29,6 @@ export default {
             include: [
                 'common/**',
                 'node_modules/**',
-                'client/**',
             ],
             namedExports: {
                 restafary: [
@@ -60,13 +58,6 @@ export default {
         nodeResolve({
             preferBuiltins: true,
             browser: true,
-            /*
-             * ws garbage located in try-catch block
-             */
-            skip: [
-                'bufferutil',
-                'utf-8-validate'
-            ]
         }),
         builtins(),
         globals(),
