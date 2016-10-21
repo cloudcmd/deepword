@@ -112,7 +112,6 @@
     "nyc": "^8.3.1",
     "redrun": "^5.8.4",
     "rollup": "^0.36.1",
-    "rollup-plugin-async": "^1.1.0",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.4",
     "rollup-plugin-filesize": "^1.0.0",

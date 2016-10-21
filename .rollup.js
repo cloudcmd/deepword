@@ -7,7 +7,6 @@ import builtins from 'rollup-plugin-node-builtins';
 import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
 import json from 'rollup-plugin-json';
-import async from 'rollup-plugin-async';
 import globals from 'rollup-plugin-node-globals';
 
 const noop = () => {};
@@ -62,7 +61,6 @@ export default {
         builtins(),
         globals(),
         json(),
-        async(),
         babel({
             exclude: 'node_modules/**',
             runtimeHelpers: true,
@@ -72,3 +70,4 @@ export default {
         onlyIf(isProd, filesize()),
     ]
 };
+
