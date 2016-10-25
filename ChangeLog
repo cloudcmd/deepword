@@ -1,3 +1,9 @@
+2016.10.25, v1.2.1
+
+feature:
+- (client) loadAll: loadJS -> loadSocket, loadLoader
+
+
 2016.10.25, v1.2.0
 
 fix:
