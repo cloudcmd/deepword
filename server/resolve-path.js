@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const Promise = require('promise-polyfill');
+const Promise = require('es6-promise');
 const promisify = require('es6-promisify');
 
 module.exports = (name) => {

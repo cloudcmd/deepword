@@ -2,7 +2,7 @@
 
 import {inherits} from 'util';
 
-import Promise from 'promise-polyfill';
+import Promise from 'es6-promise';
 import promisify from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/lib/client';
 import zipio from 'zipio';
