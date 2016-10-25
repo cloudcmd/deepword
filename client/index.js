@@ -1,14 +1,14 @@
 'use strict';
 
 import api from './api';
-import Promise from 'es6-promise';
 import promisify from 'es6-promisify';
 import currify from 'currify';
-import {js} from 'load.js';
+import {js as loadJS} from 'load.js';
 import series from 'async/series';
 
-const loadJS = currify(js);
 const _series = promisify(series);
+const loadSocket = currify(_loadSocket);
+const loadLoader = currify(_loadLoader);
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/monaco/${name}`;
@@ -41,21 +41,21 @@ export default (el, options, callback = options) => {
         .catch(log)
 }
 
-function loadSocket(prefix) {
+function _loadSocket(prefix, fn) {
     if (window.io)
-        return Promise.resolve();
-        
-    return _loadJS(`${prefix}/dist/socket.io.js`);
+        return fn();
+     
+    return loadJS(`${prefix}/dist/socket.io.js`, fn);
 }
 
-function loadLoader(prefix) {
-    return _loadJS(transformName(prefix, 'min/vs/loader.js'))
+function _loadLoader(prefix, fn) {
+    loadJS(transformName(prefix, 'min/vs/loader.js'), fn)
 }
 
 function loadAll(prefix) {
     return _series([
-        loadJS(`${prefix}/dist/socket.io.js`),
-        loadJS(transformName(prefix, 'min/vs/loader.js'))
+        loadSocket(prefix),
+        loadLoader(prefix)
     ]);
 }
 
