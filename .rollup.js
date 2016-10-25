@@ -38,7 +38,8 @@ export default {
                 'load.js': [
                     'js',
                     'json',
-                    'parallel'
+                    'parallel',
+                    'series',
                 ],
                 'socket.io': [
                     'connect'

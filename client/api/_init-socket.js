@@ -1,7 +1,7 @@
 'use strict';
 
+/* global io*/
 import {alert} from 'smalltalk/legacy';
-import {connect} from 'socket.io-client';
 import {applyPatch} from 'daffy';
 
 import promisify from 'es6-promisify';
@@ -21,16 +21,7 @@ export default function _initSocket(prefix = '', socketPath = '') {
         fn();
     });
     
-    /*
-        after amd loading of monaco
-        socket.io will load only as amd
-        and modules that wait global poluting
-        could not use it in usual way
-    */
-    if (!window.io)
-        window.io = connect;
-    
-    const socket = connect(href, {
+    const socket = io.connect(href, {
         'max reconnection attempts' : Math.pow(2, 32),
         'reconnection limit'        : FIVE_SECONDS,
         path                        : socketPath + '/socket.io'

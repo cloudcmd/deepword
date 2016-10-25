@@ -34,8 +34,10 @@
     "6to5:lib": "BABEL_ENV=server babel server -d server_",
     "6to5:bin": "BABEL_ENV=server babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "build": "redrun dir build:server legacy:* build:client:shake:min",
+    "build": "redrun dir build:server legacy:* build:client:shake:min build:socket.io:min",
     "build:server": "redrun 6to5:*",
+    "build:socket.io": "rollup -u io -c .socket.io.rollup.js -m -f iife -o dist/socket.io.js",
+    "build:socket.io:min": "NODE_ENV=production redrun build:socket.io",
     "build:client:shake": "BABEL_ENV=rollup rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
     "build:client:shake:min": "NODE_ENV=production npm run build:client:shake",
     "build:client": "BABEL_ENV=browserify redrun compile:client",
@@ -44,6 +46,7 @@
     "compile:client:min": "browserify $npm_package_config_compile_client $npm_package_config_plugins",
     "watch:client": "BABEL_ENV=browserify watchify -v $npm_package_config_compile_client",
     "watch:client:shake": "npm run build:client:shake -- -w",
+    "watch:client:shake:min": "npm run build:client:shake:min -- -w",
     "watch:lint:bin": "redrun watcher:js -- \"redrun lint:bin\"",
     "watch:lint:client": "redrun watcher:js -- \"redrun lint:client\"",
     "watch:lint:server": "redrun watcher:js -- \"redrun lint:server\"",
@@ -89,6 +92,7 @@
     "socket.io": "^1.4.3"
   },
   "devDependencies": {
+    "async": "^2.1.2",
     "babel-cli": "^6.16.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
