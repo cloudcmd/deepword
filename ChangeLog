@@ -1,3 +1,15 @@
+2016.10.25, v1.2.0
+
+fix:
+- (resolve-path) resolveModule: make stat local
+
+feature:
+- (deepword) make minified bundle with socket.io
+- (package) build: build:client:min -> build:client:shake:min
+- (package) promise-polyfill -> es6-promise
+- (rollup) rm async
+
+
 2016.10.18, v1.1.6
 
 fix:
