@@ -1,3 +1,12 @@
+2016.11.23, v1.2.2
+
+feature:
+- (package) currify v2.0.0
+- (package) rm rollupify
+- (package) nyc v9.0.1
+- (travis) node_js: add 7
+
+
 2016.10.25, v1.2.1
 
 feature:
