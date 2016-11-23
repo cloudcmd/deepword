@@ -7,10 +7,10 @@ import promisify from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/lib/client';
 import zipio from 'zipio';
 import {json as loadJson} from 'load.js';
-import currify from 'currify';
 import Emitify from 'emitify'
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
+import currify from 'currify/legacy';
 import {alert} from 'smalltalk/legacy';
 
 import goToLine from './go-to-line';

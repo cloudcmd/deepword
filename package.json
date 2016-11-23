@@ -77,7 +77,7 @@
   "homepage": "https://github.com/cloudcmd/deepword",
   "dependencies": {
     "ashify": "^1.0.1",
-    "currify": "^1.0.0",
+    "currify": "^2.0.0",
     "es6-promise": "^4.0.5",
     "es6-promisify": "^5.0.0",
     "express": "^4.14.0",

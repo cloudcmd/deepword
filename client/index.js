@@ -2,7 +2,7 @@
 
 import api from './api';
 import promisify from 'es6-promisify';
-import currify from 'currify';
+import currify from 'currify/legacy';
 import {js as loadJS} from 'load.js';
 import series from 'async/series';
 

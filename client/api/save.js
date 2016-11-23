@@ -1,6 +1,6 @@
 'use strict';
 
-import currify from 'currify';
+import currify from 'currify/legacy';
 
 const ifDiffDo = currify(_ifDiffDo);
 const ifGoodPatch = currify(_ifGoodPatch);
