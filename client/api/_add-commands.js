@@ -60,3 +60,4 @@ export default function _addCommands() {
         .map(addId)
         .forEach(addAction);
 }
+
