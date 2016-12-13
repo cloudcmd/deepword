@@ -30,10 +30,11 @@ export default {
                 'node_modules/**',
             ],
             namedExports: {
-                restafary: [
+                'node_modules/restafary/lib/client.js': [
                     'read',
                     'write',
-                    'patch'
+                    'patch',
+                    'prefix',
                 ],
                 'load.js': [
                     'js',
