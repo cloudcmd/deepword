@@ -1,3 +1,12 @@
+2016.12.15, v1.2.3
+
+feature:
+- (package) smalltalk: dependencies -> devDependencies: improve install speed
+- (package) rollup v0.37.0
+- (package) babel-preset-es2015-rollup v3.0.0
+- (package) nyc v10.0.0
+
+
 2016.11.23, v1.2.2
 
 feature:
