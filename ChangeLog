@@ -1,3 +1,10 @@
+2016.12.27, v1.2.4
+
+feature:
+- (evaluate) add getMsg
+- (package) rollup-plugin-commonjs v6.0.0
+
+
 2016.12.15, v1.2.3
 
 feature:
