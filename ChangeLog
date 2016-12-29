@@ -1,3 +1,9 @@
+2016.12.29, v1.3.0
+
+feature:
+- (deepword) add isKey, enableKey, disableKey
+
+
 2016.12.27, v1.2.4
 
 feature:
