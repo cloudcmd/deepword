@@ -69,6 +69,8 @@ function Deepword(element, options, eddy) {
     this._addCommands();
     this._story = story();
     
+    this._isKey = true;
+    
     this._write = this._writeHTTP;
     this._patch = this._patchHTTP;
 }
@@ -85,6 +87,20 @@ Deepword.prototype.evaluate = evaluate;
 Deepword.prototype.copyToClipboard = copyToClipboard;
 Deepword.prototype.cutToClipboard = cutToClipboard;
 Deepword.prototype.pastFromClipboard = pastFromClipboard;
+
+Deepword.prototype.isKey = function() {
+    return this._isKey;
+};
+
+Deepword.prototype.enableKey = function() {
+    this._isKey = true;
+    return this;
+};
+
+Deepword.prototype.disableKey = function() {
+    this._isKey = false;
+    return this;
+};
 
 Deepword.prototype.setValue = function(value) {
     this._eddy.setValue(value);
