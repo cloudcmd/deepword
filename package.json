@@ -114,7 +114,7 @@
     "nodemon": "^1.10.2",
     "nyc": "^10.0.0",
     "redrun": "^5.8.4",
-    "rollup": "^0.37.0",
+    "rollup": "^0.40.2",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^6.0.0",
     "rollup-plugin-filesize": "^1.0.0",
