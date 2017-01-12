@@ -1,3 +1,15 @@
+2017.01.12, v1.3.1
+
+fix:
+- (init-socket) patch: do no emit credentials
+- (package) build: sourcemaps: from root -> from prefix
+
+feature:
+- (package) rollup-watch v3.2.2
+- (package) rollup-plugin-commonjs v7.0.0
+- (package) rollup v0.40.2
+
+
 2016.12.29, v1.3.0
 
 feature:
