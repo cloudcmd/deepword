@@ -34,7 +34,7 @@
     "6to5:lib": "BABEL_ENV=server babel server -d server_",
     "6to5:bin": "BABEL_ENV=server babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "build": "redrun dir build:server legacy:* build:client:shake:min build:socket.io:min",
+    "build": "redrun dir build:server legacy:* build:client:min build:socket.io:min",
     "build:server": "redrun 6to5:*",
     "build:socket.io": "rollup -u io -c .socket.io.rollup.js -m -f iife -o dist/socket.io.js",
     "build:socket.io:min": "NODE_ENV=production redrun build:socket.io",
