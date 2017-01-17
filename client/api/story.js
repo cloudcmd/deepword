@@ -1,6 +1,6 @@
 'use strict';
 
-import {read} from 'restafary/lib/client';
+import {read} from 'restafary/client/restafary';
 
 export default function Story() {
     if (!(this instanceof Story))
