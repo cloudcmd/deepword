@@ -99,7 +99,7 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-es2017": "^6.16.0",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
+    "browserify": "^14.0.0",
     "browserify-css": "^0.10.0",
     "coveralls": "^2.11.14",
     "cssnano": "^3.7.7",
