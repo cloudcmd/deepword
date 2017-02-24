@@ -125,7 +125,7 @@
     "rollup-plugin-postcss": "^0.2.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^3.2.2",
-    "smalltalk": "^2.1.4",
+    "smalltalk": "^2.2.0",
     "tape": "^4.6.2",
     "try-catch": "^1.0.0",
     "watchify": "^3.7.0",
