@@ -121,7 +121,7 @@
     "rollup-plugin-json": "^2.0.2",
     "rollup-plugin-node-builtins": "^2.0.0",
     "rollup-plugin-node-globals": "^1.0.9",
-    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.2.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^3.2.2",
