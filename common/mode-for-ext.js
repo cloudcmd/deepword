@@ -4,7 +4,6 @@ const byExtension = (ext) => ({extensions}) => {
     return ~extensions.indexOf(ext);
 };
 
-//export default (ext, langs) => {
 module.exports = (ext, langs) => {
     check(ext, langs);
     
