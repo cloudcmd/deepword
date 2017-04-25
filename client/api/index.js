@@ -16,6 +16,7 @@ import {alert} from 'smalltalk/legacy';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';
+import setMode from './set-mode';
 import setModeForPath from './set-mode-for-path';
 import save from './save';
 import _onSave from './_on-save';
@@ -78,6 +79,7 @@ function Deepword(element, options, eddy) {
 Deepword.prototype.goToLine = goToLine;
 Deepword.prototype._initSocket = _initSocket;
 Deepword.prototype.showMessage = showMessage;
+Deepword.prototype.setMode = setMode;
 Deepword.prototype.setModeForPath = setModeForPath;
 Deepword.prototype.save = save;
 Deepword.prototype._onSave = _onSave;

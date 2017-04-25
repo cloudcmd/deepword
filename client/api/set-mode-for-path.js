@@ -9,18 +9,13 @@ const modeForPath = (name, langs) => {
 };
 
 export default function setModeForPath(name) {
-    const {_monaco, _eddy} = this;
+    const {_monaco} = this;
     
     const {languages} = _monaco;
-    const {createModel} = _monaco.editor;
     
     const mode = modeForPath(name, languages.getLanguages());
     
-    const value = this.getValue();
-    const model = createModel(value, mode);
-    
-    _eddy.setModel(model);
-    _eddy.focus();
+    this.setMode(mode);
     
     return this;
 }
