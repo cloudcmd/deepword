@@ -7,7 +7,7 @@ import promisify from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/client/restafary';
 import zipio from 'zipio';
 import {json as loadJson} from 'load.js';
-import Emitify from 'emitify'
+import Emitify from 'emitify/legacy'
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify/legacy';
