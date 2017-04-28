@@ -104,7 +104,7 @@
     "coveralls": "^2.11.14",
     "cssnano": "^3.7.7",
     "daffy": "^1.0.3",
-    "emitify": "^3.0.1",
+    "emitify": "^3.0.2",
     "eslint": "^3.6.1",
     "jonny": "^1.0.1",
     "jssha": "^2.2.0",
