@@ -1,7 +1,7 @@
 'use strict';
 
 import {prompt} from 'smalltalk/legacy';
-import 'smalltalk/dist/smalltalk.min.css';
+import '../../node_modules/smalltalk/dist/smalltalk.min.css';
 
 export default function goToLine() {
     const empty = (e) => {
