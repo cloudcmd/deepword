@@ -172,12 +172,18 @@ Deepword.prototype.setOption = function(name, value) {
     const options = {};
     options[name] = value;
     
-    this._eddy.updateOptions(options);
+    this.setOptions(options);
     
     return this;
 }
 
 Deepword.prototype.setOptions = function(options) {
+    if (options.keyMap) {
+        const {keyMap} = options;
+        this.showMessage(`Key map overriding not supported: ${keyMap}`);
+        return this;
+    }
+    
     this._eddy.updateOptions(options);
     return this;
 }
