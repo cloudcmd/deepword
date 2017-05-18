@@ -170,20 +170,24 @@ Deepword.prototype._loadOptions = async function() {
 
 Deepword.prototype.setOption = function(name, value) {
     const options = {};
+    
     options[name] = value;
     
-    this.setOptions(options);
-    
-    return this;
-}
-
-Deepword.prototype.setOptions = function(options) {
     if (options.keyMap && options.keyMap.vim) {
         this.showMessage('Vim mode not supported');
         return this;
     }
     
     this._eddy.updateOptions(options);
+    
+    return this;
+}
+
+Deepword.prototype.setOptions = function(options) {
+    Object.keys(options).forEach((name) => {
+        this.setOption(name, options[name]);
+    });
+    
     return this;
 }
 
