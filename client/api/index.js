@@ -178,9 +178,8 @@ Deepword.prototype.setOption = function(name, value) {
 }
 
 Deepword.prototype.setOptions = function(options) {
-    if (options.keyMap) {
-        const {keyMap} = options;
-        this.showMessage(`Key map overriding not supported: ${keyMap}`);
+    if (options.keyMap && options.keyMap.vim) {
+        this.showMessage('Vim mode not supported');
         return this;
     }
     
