@@ -173,7 +173,7 @@ Deepword.prototype.setOption = function(name, value) {
     
     options[name] = value;
     
-    if (options.keyMap && options.keyMap.vim) {
+    if (name === 'keyMap' && value === 'vim') {
         this.showMessage('Vim mode not supported');
         return this;
     }
