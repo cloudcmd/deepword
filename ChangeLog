@@ -1,3 +1,11 @@
+2017.05.22, v1.4.12
+
+feature:
+- (package) storage -> fullstore
+- (package) rollup-plugin-postcss v0.5.0
+- (package) rollup-plugin-uglify v2.0.1
+
+
 2017.05.18, v1.4.11
 
 fix:
