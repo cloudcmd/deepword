@@ -7,8 +7,8 @@ const restafary = require('restafary/legacy');
 const socketFile = require('socket-file');
 const express = require('express');
 const currify = require('currify/legacy');
+const storage = require('fullstore/legacy');
 
-const storage = require('./storage');
 const resolvePath = require('./resolve-path');
 
 const Router = express.Router;

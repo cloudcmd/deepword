@@ -81,6 +81,7 @@
     "es6-promise": "^4.0.5",
     "es6-promisify": "^5.0.0",
     "express": "^4.14.0",
+    "fullstore": "^1.0.0",
     "load.js": "^1.1.4",
     "monaco-editor": "^0.8.0",
     "os-homedir": "^1.0.0",
