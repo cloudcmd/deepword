@@ -9,9 +9,9 @@ export default function Story() {
 
 Story.prototype.checkHash = function(name, callback) {
     this.loadHash(name, (error, loadHash) => {
-        const nameHash    = name + '-hash';
-        const storeHash   = localStorage.getItem(nameHash);
-        const equal       = loadHash === storeHash;
+        const nameHash = name + '-hash';
+        const storeHash = localStorage.getItem(nameHash);
+        const equal = loadHash === storeHash;
         
         callback(error, equal);
     });
@@ -20,7 +20,7 @@ Story.prototype.checkHash = function(name, callback) {
 };
 
 Story.prototype.loadHash = function(name, callback) {
-    const query       = '?hash';
+    const query = '?hash';
     
     read(name + query, callback);
     
@@ -28,7 +28,7 @@ Story.prototype.loadHash = function(name, callback) {
 };
 
 Story.prototype.setData = function(name, data) {
-    const nameData    = name + '-data';
+    const nameData = name + '-data';
     
     localStorage.setItem(nameData, data);
     
@@ -36,7 +36,7 @@ Story.prototype.setData = function(name, data) {
 };
 
 Story.prototype.setHash = function(name, hash) {
-    const nameHash    = name + '-hash';
+    const nameHash = name + '-hash';
     
     localStorage.setItem(nameHash, hash);
     
