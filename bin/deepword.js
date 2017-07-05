@@ -15,9 +15,9 @@ else if (/^(-h|--help)$/.test(name))
 else
     checkFile(name, (error) => {
         if (!error)
-            main(name);
-        else
-            console.error(error.message);
+            return main(name);
+        
+        console.error(error.message);
     });
 
 function getPath(name) {
