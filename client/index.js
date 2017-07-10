@@ -74,6 +74,9 @@ function init(el) {
     const {monaco} = window;
     
     return monaco.editor.create(el, {
+        minimap: {
+            enabled: false,
+        },
         value: '',
         scrollBeyondLastLine: false,
         renderWhitespace: 'all',
