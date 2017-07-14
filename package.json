@@ -10,8 +10,7 @@
     }
   },
   "bin": {
-    "deepword": "bin/deepword.js",
-    "deepword_": "legacy/bin/deepword.js"
+    "deepword": "bin/deepword.js"
   },
   "browserify": {
     "transform": [
@@ -31,11 +30,8 @@
     "lint:bin": "eslint --rule 'no-console:0' --config .server.eslintrc bin",
     "lint:client": "eslint --config .client.eslintrc client",
     "lint:server": "eslint --config .server.eslintrc server common",
-    "6to5:lib": "BABEL_ENV=server babel server -d server_",
-    "6to5:bin": "BABEL_ENV=server babel bin -d legacy/bin",
     "wisdom": "npm run build",
-    "build": "redrun dir build:server legacy:* build:client:min build:socket.io:min",
-    "build:server": "redrun 6to5:*",
+    "build": "redrun dir build:client:min build:socket.io:min",
     "build:socket.io": "rollup -u io -c .socket.io.rollup.js -m -f iife -o dist/socket.io.js",
     "build:socket.io:min": "NODE_ENV=production redrun build:socket.io",
     "build:client:shake": "BABEL_ENV=rollup rollup -u deepword -c .rollup.js -m -f umd -o dist/deepword.js",
@@ -52,7 +48,6 @@
     "watch:lint:server": "redrun watcher:js -- \"redrun lint:server\"",
     "watch": "redrun -p watch:*",
     "watcher:js": "nodemon -w client -w server -w common -w .rollup.js -x",
-    "legacy:index": "echo \"module.exports = require('../server_');\" > legacy/index.js",
     "dir": "mkdirp dist"
   },
   "repository": {
@@ -93,7 +88,6 @@
   },
   "devDependencies": {
     "async": "^2.1.2",
-    "babel-cli": "^6.16.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.16.0",
