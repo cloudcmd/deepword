@@ -1,3 +1,12 @@
+2017.07.14, v2.0.0
+
+feature:
+- (package) rollup v0.45.2
+- (package) socket.io v2.0.3
+- (package) restafary v3.0.0
+- (deepword) drop support of node version < 4
+
+
 2017.07.14, v1.4.15
 
 fix:
