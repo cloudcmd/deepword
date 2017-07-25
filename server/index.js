@@ -19,7 +19,8 @@ const optionsStorage = storage();
 const optionsFn = currify(configFn);
 const restafaryFn = currify(_restafaryFn);
 
-module.exports = (options = {}) => {
+module.exports = (options) => {
+    options = options || {};
     optionsStorage(options);
     
     const router = Router();
@@ -36,7 +37,9 @@ module.exports = (options = {}) => {
     return router;
 };
 
-module.exports.listen = (socket, options = {}) => {
+module.exports.listen = (socket, options) => {
+    options = options || {};
+    
     if (!options.prefix)
         options.prefix = '/deepword';
     
@@ -97,7 +100,7 @@ function configFn(o, req, res, next) {
 }
 
 function _restafaryFn(prefix, req, res, next) {
-    const {url} = req;
+    const url = req.url;
     const api = '/api/v1/fs';
     
     if (url.indexOf(prefix + api))

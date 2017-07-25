@@ -27,9 +27,9 @@
     "watcher:test": "nodemon -e spec.js -w client -w server -w common -x ",
     "lint": "redrun -p lint:*",
     "fix:lint": "redrun -p lint:* -- --fix",
-    "lint:bin": "eslint --rule 'no-console:0' --config .server.eslintrc bin",
-    "lint:client": "eslint --config .client.eslintrc client",
-    "lint:server": "eslint --config .server.eslintrc server common",
+    "lint:bin": "eslint --rule 'no-console:0' --config .eslintrc.server bin",
+    "lint:client": "eslint --config .eslintrc.client client",
+    "lint:server": "eslint --config .eslintrc.server server common --ignore-pattern *.spec.js",
     "wisdom": "npm run build",
     "build": "redrun dir build:client:min build:socket.io:min",
     "build:socket.io": "rollup -u io -c .socket.io.rollup.js -m -f iife -o dist/socket.io.js",
@@ -126,6 +126,7 @@
     "tape": "^4.6.2",
     "try-catch": "^1.0.0",
     "watchify": "^3.7.0",
-    "zipio": "^1.0.2"
+    "zipio": "^1.0.2",
+    "eslint-plugin-node": "^5.1.1"
   }
 }

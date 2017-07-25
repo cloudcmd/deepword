@@ -3,6 +3,7 @@ client
 common
 *.spec.js
 img
+yarn-error.log
 
 # vim files
 *.swp.*

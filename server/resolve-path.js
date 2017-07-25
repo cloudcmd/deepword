@@ -24,10 +24,11 @@ function check(name) {
         throw Error('name should be string!');
 }
 
-function resolveModule(...dirs) {
+function resolveModule() {
+    const dirs = arguments;
     /* stat: not global becouse of tests */
     const stat = promisify(fs.stat);
-    const dir = path.resolve(...dirs);
+    const dir = path.resolve.apply(null, dirs);
     const getDir = () => dir;
     
     return () => stat(dir).then(getDir);
