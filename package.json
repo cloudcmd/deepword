@@ -101,6 +101,7 @@
     "daffy": "^1.0.3",
     "emitify": "^3.0.2",
     "eslint": "^4.0.0",
+    "eslint-plugin-node": "^5.1.1",
     "jonny": "^1.0.1",
     "jssha": "^2.2.0",
     "load.js": "^1.1.4",
@@ -109,7 +110,7 @@
     "nodemon": "^1.10.2",
     "nyc": "^11.0.2",
     "redrun": "^5.8.4",
-    "rollup": "^0.49.2",
+    "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-filesize": "^1.0.0",
@@ -126,7 +127,6 @@
     "tape": "^4.6.2",
     "try-catch": "^1.0.0",
     "watchify": "^3.7.0",
-    "zipio": "^1.0.2",
-    "eslint-plugin-node": "^5.1.1"
+    "zipio": "^1.0.2"
   }
 }
