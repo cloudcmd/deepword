@@ -19,6 +19,8 @@ const optionsStorage = storage();
 const optionsFn = currify(configFn);
 const restafaryFn = currify(_restafaryFn);
 
+const isDev = process.env.NODE_ENV === 'development';
+
 module.exports = (options) => {
     options = options || {};
     optionsStorage(options);
@@ -75,10 +77,13 @@ function serve(options, req, res, next) {
     
     req.url = req.url.replace(prefix, '');
     
-    const regExp = /^\/deepword\.(js(\.map)?|css)$/;
+    const regExp = /^\/deepword\.js(\.map)?$/;
     
     if (regExp.test(req.url))
         req.url = '/dist' + req.url;
+    
+    if (isDev)
+        req.url = req.url.replace(/^\/dist\//, '/dist-dev/');
     
     next();
 }

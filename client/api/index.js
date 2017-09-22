@@ -4,7 +4,7 @@ import {inherits} from 'util';
 
 import Promise from 'es6-promise';
 import promisify from 'es6-promisify';
-import {patch, read, write, prefix} from 'restafary/client/restafary';
+import {patch, read, write, prefix} from 'restafary/dist/restafary';
 import zipio from 'zipio';
 import {json as loadJson} from 'load.js';
 import Emitify from 'emitify/legacy'

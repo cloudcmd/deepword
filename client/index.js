@@ -1,10 +1,10 @@
 'use strict';
 
-import api from './api';
-import promisify from 'es6-promisify';
-import currify from 'currify/legacy';
-import {js as loadJS} from 'load.js';
-import series from 'async/series';
+const {default: api} = require('./api');
+const promisify = require('es6-promisify');
+const currify = require('currify/legacy');
+const {js: loadJS} = require('load.js');
+const series = require('async/series');
 
 const _series = promisify(series);
 const loadSocket = currify(_loadSocket);
@@ -16,7 +16,7 @@ const transformName = currify((prefix, name) => {
 
 const noArg = (fn) => () => fn(null);
 
-export default (el, options, callback = options) => {
+module.exports = (el, options, callback = options) => {
     if (typeof options === 'function')
         options = {};
     
