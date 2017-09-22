@@ -123,7 +123,7 @@
     "rollup-watch": "^4.0.0",
     "sinon": "^3.0.0",
     "sinon-called-with-diff": "^1.0.0",
-    "smalltalk": "2.4.1",
+    "smalltalk": "2.4.2",
     "tape": "^4.6.2",
     "try-catch": "^1.0.0",
     "watchify": "^3.7.0",
