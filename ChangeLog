@@ -1,3 +1,13 @@
+2017.09.22, v2.0.4
+
+feature:
+- (deepword) rollup -> webpack
+- (package) smalltalk v2.4.2
+- (package) rollup v0.50.0
+- (package) rollup v0.49.2
+- (package) browserify-css v0.12.0
+
+
 2017.08.18, v2.0.3
 
 feature:
