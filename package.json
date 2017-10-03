@@ -83,7 +83,7 @@
     "browserify": "^14.0.0",
     "browserify-css": "^0.12.0",
     "clean-css-loader": "^0.1.3",
-    "coveralls": "^2.11.14",
+    "coveralls": "^3.0.0",
     "css-loader": "^0.28.7",
     "cssnano": "^3.7.7",
     "daffy": "^1.0.3",
