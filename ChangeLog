@@ -1,3 +1,16 @@
+2017.10.05, v2.0.5
+
+fix:
+- feature(deepword) serve options -> deepword prefix
+
+feature:
+- (deepword) serve options -> deepword prefix
+- (package) style-loader v0.19.0
+- (package) url-loader v0.6.2
+- (package) sinon v4.0.0
+- (package) coveralls v3.0.0
+
+
 2017.09.22, v2.0.4
 
 feature:
