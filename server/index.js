@@ -16,6 +16,7 @@ const Router = express.Router;
 const rootStorage = storage();
 const optionsStorage = storage();
 
+const deepword = currify(_deepword);
 const optionsFn = currify(configFn);
 const restafaryFn = currify(_restafaryFn);
 
@@ -25,11 +26,11 @@ module.exports = (options) => {
     options = options || {};
     optionsStorage(options);
     
-    const router = Router();
     const prefix = options.prefix || '/deepword';
+    const router = Router();
     
     router.route(prefix + '/*')
-        .get(deepword(options))
+        .get(deepword(prefix))
         .get(optionsFn(options))
         .get(restafaryFn(''))
         .get(monaco)
@@ -63,17 +64,8 @@ function checkOption(isOption) {
     return isOption;
 }
 
-function deepword(options) {
-    return serve.bind(null, options);
-}
-
-function serve(options, req, res, next) {
-    const o = options || {};
-    const prefix = o.prefix || '/deepword';
+function _deepword(prefix, req, res, next) {
     const url = req.url
-    
-    if (url.indexOf(prefix))
-        return next();
     
     req.url = req.url.replace(prefix, '');
     
