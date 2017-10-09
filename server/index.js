@@ -67,7 +67,7 @@ function checkOption(isOption) {
 function _deepword(prefix, req, res, next) {
     const url = req.url
     
-    req.url = req.url.replace(prefix, '');
+    req.url = url.replace(prefix, '');
     
     const regExp = /^\/deepword\.js(\.map)?$/;
     
