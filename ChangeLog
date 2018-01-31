@@ -1,3 +1,11 @@
+2018.01.31, v2.0.9
+
+feature:
+- (package) babel-core v6.26.0
+- (package) es6-promisify v6.0.0
+- (package) style-loader v0.20.1
+
+
 2017.10.19, v2.0.8
 
 feature:
