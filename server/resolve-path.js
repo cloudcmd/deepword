@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const Promise = require('es6-promise');
-const promisify = require('es6-promisify');
+const promisify = require('es6-promisify').promisify;
 
 module.exports = (name) => {
     check(name);

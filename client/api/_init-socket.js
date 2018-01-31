@@ -4,7 +4,7 @@
 import {alert} from 'smalltalk/legacy';
 import {applyPatch} from 'daffy';
 
-import promisify from 'es6-promisify';
+import {promisify} from 'es6-promisify';
 
 const getHost = () => {
     const l = location;

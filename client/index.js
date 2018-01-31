@@ -1,7 +1,7 @@
 'use strict';
 
 const {default: api} = require('./api');
-const promisify = require('es6-promisify');
+const {promisify} = require('es6-promisify');
 const currify = require('currify/legacy');
 const {js: loadJS} = require('load.js');
 const series = require('async/series');
