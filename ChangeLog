@@ -1,3 +1,10 @@
+2018.02.09, v2.0.10
+
+feature:
+- (package) try-catch v2.0.0
+- (package) eslint-plugin-node v6.0.0
+
+
 2018.01.31, v2.0.9
 
 feature:
