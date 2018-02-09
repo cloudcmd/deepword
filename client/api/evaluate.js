@@ -3,11 +3,13 @@
 import {alert} from 'smalltalk/legacy';
 import tryCatch from 'try-catch';
 
-const getMsg = (isJS, value) => {
+const getErrorMsg = (isJS, value) => {
     if (!isJS)
         return 'Evaluation supported for JavaScript only';
     
-    return tryCatch(Function(value));
+    const [error] = tryCatch(Function(value));
+    
+    return error;
 }
 
 export default function evaluate () {
@@ -16,7 +18,7 @@ export default function evaluate () {
     const getValue = this.getValue.bind(this);
     const focus = this.focus.bind(this);
     
-    const msg = getMsg(isJS, getValue());
+    const msg = getErrorMsg(isJS, getValue());
     
     if (!msg)
         return;
