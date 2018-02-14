@@ -99,7 +99,7 @@
     "redrun": "^5.8.4",
     "rimraf": "^2.6.2",
     "sinon": "^4.0.0",
-    "sinon-called-with-diff": "^1.0.0",
+    "sinon-called-with-diff": "^2.0.0",
     "smalltalk": "2.5.1",
     "style-loader": "^0.20.1",
     "tape": "^4.6.2",
