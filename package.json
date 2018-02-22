@@ -89,7 +89,6 @@
     "eslint": "^4.0.0",
     "eslint-plugin-node": "^6.0.0",
     "file-loader": "^1.1.6",
-    "jonny": "^1.0.1",
     "jssha": "^2.2.0",
     "load.js": "^1.1.4",
     "minifyify": "^7.3.3",
