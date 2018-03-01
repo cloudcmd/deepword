@@ -1,3 +1,13 @@
+2018.03.01, v2.0.11
+
+fix:
+- (save) show save dialog after save
+
+feature:
+- (package) webpack v4.0.1
+- (package) sinon-called-with-diff v2.0.0
+
+
 2018.02.09, v2.0.10
 
 feature:
