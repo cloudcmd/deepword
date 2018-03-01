@@ -26,8 +26,9 @@
     "cp:socket.io:dist-dev": "cp node_modules/socket.io-client/dist/socket.io.js dist-dev/socket.io.js",
     "cp:socket.io.map:dist": "cp node_modules/socket.io-client/dist/socket.io.js.map dist/socket.io.js.map",
     "cp:socket.io.map:dist-dev": "cp node_modules/socket.io-client/dist/socket.io.js.map dist-dev/socket.io.js.map",
-    "build:client": "webpack --progress",
-    "build:client:dev": "NODE_ENV=development npm run build:client",
+    "build-progress": "webpack --progress",
+    "build:client": "npm run build-progress -- --mode production",
+    "build:client:dev": "NODE_ENV=development npm run build-progress -- --mode development",
     "watch:client": "nodemon -w client -x \"npm run build:client\"",
     "watch:client:dev": "NODE_ENV=development npm run watch:client",
     "watch:lint:bin": "redrun watcher:js -- \"redrun lint:bin\"",
@@ -75,6 +76,7 @@
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
+    "async": "^2.6.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-regenerator": "^6.26.0",
@@ -105,7 +107,8 @@
     "try-catch": "^2.0.0",
     "url-loader": "^0.6.2",
     "watchify": "^3.7.0",
-    "webpack": "^3.6.0",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
     "zipio": "^1.0.2"
   }
 }
