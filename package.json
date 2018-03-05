@@ -105,7 +105,7 @@
     "style-loader": "^0.20.1",
     "tape": "^4.6.2",
     "try-catch": "^2.0.0",
-    "url-loader": "^0.6.2",
+    "url-loader": "^1.0.1",
     "watchify": "^3.7.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.9",
