@@ -28,6 +28,14 @@ const rules = clean([
     },
 ]);
 
+const plugins = [
+    // Ignore require() calls in vs/language/typescript/lib/typescriptServices.js
+    new webpack.IgnorePlugin(
+        /^((fs)|(path)|(os)|(crypto)|(source-map-support))$/,
+        /vs\/language\/typescript\/lib/
+    )
+]
+
 module.exports = {
     devtool,
     entry: {
@@ -44,6 +52,7 @@ module.exports = {
     module: {
         rules,
     },
+    plugins,
 };
 
 function devtoolModuleFilenameTemplate(info) {

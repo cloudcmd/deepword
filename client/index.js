@@ -4,10 +4,11 @@ const {default: api} = require('./api');
 const {promisify} = require('es6-promisify');
 const currify = require('currify/legacy');
 const {js: loadJS} = require('load.js');
-const series = require('async/series');
+const monaco = require('monaco-editor');
+//import * as monaco from 'monaco-editor';
+console.log(monaco);
 
-const _series = promisify(series);
-const loadSocket = currify(_loadSocket);
+const loadSocket = promisify(_loadSocket);
 const loadLoader = currify(_loadLoader);
 
 const transformName = currify((prefix, name) => {
@@ -27,12 +28,10 @@ module.exports = (el, options, callback = options) => {
     
     const getElement = () => el;
     const getPrefix = () => prefix;
-    const monaco = promisify(loadMonaco);
     const deepword = api(parseElement(el), options);
     
-    loadAll(prefix)
+    loadSocket(prefix)
         .then(getPrefix)
-        .then(monaco)
         .then(getElement)
         .then(parseElement)
         .then(init)
@@ -52,26 +51,24 @@ function _loadLoader(prefix, fn) {
     loadJS(transformName(prefix, 'min/vs/loader.js'), fn)
 }
 
-function loadAll(prefix) {
-    return _series([
-        loadSocket(prefix),
-        loadLoader(prefix)
-    ]);
-}
-
-function loadMonaco(prefix, fn) {
-    const {require} = window;
-    const vs = transformName(prefix, 'min/vs');
-    
-    require.config({
-        paths: { vs }
-    });
-    
-    require(['vs/editor/editor.main'], noArg(fn));
-}
-
 function init(el) {
-    const {monaco} = window;
+    window.MonacoEnvironment = {
+        getWorkerUrl: (moduleId, label) => {
+            if (label === 'json') {
+                return './json.worker.bundle.js';
+            }
+            if (label === 'css') {
+                return './css.worker.bundle.js';
+            }
+            if (label === 'html') {
+                return './html.worker.bundle.js';
+            }
+            if (label === 'typescript' || label === 'javascript') {
+                return './ts.worker.bundle.js';
+            }
+            return './editor.worker.bundle.js';
+        }
+    }
     
     return monaco.editor.create(el, {
         minimap: {
