@@ -1,3 +1,9 @@
+2018.03.21, v2.0.13
+
+fix:
+- (package) rm unused os-homedir
+
+
 2018.03.15, v2.0.12
 
 feature:
