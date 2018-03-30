@@ -56,8 +56,6 @@ const app = express();
 app.use(deepword({
     diff: true,  /* default */
     zip : true,  /* default */
-    authCheck: (socket, success) => { /* optional */
-    }
 }));
 
 app.listen(31337);
@@ -70,7 +68,11 @@ Could be used with [socket.io](http://socket.io "Socket.io") to handle editor ev
 const io = require('socket.io'),
 const socket = io.listen(server);
 
-deepword.listen(socket);
+deepword.listen(socket, {
+    auth: (accept, reject) => (username, password) => { /* optional */
+        accept();
+    }
+});
 ```
 
 ### Client
