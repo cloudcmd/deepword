@@ -1,3 +1,10 @@
+2018.03.30, v3.0.0
+
+feature:
+- (deepword) socket-file v2.0.0: authCheck -> auth
+- (package) monaco-editor v0.11.1
+
+
 2018.03.21, v2.0.13
 
 fix:
