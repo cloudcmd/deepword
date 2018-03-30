@@ -210,7 +210,7 @@ Deepword.prototype._diff = function(value) {
 
 Deepword.prototype._doDiff = async function(path) {
     const {_story} = this;
-    const checkHash_ = promisify(_story.checkHash, _story);
+    const checkHash_ = promisify(_story.checkHash.bind(_story));
     const value = this.getValue();
     const ifEqual = (equal) => {
         return !equal ? '' : this._diff(value);

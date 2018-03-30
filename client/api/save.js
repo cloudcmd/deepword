@@ -18,8 +18,6 @@ export default function() {
     const _zip = this._zip.bind(this);
     const _write = this._write.bind(this);
     
-    this._value = value;
-    
     this._loadOptions()
         .then(ifDiffDo(doDiff, _filename))
         .then(checkPatch(length, _maxSize))
