@@ -5,6 +5,7 @@ const {promisify} = require('es6-promisify');
 const currify = require('currify/legacy');
 const {js: loadJS} = require('load.js');
 const series = require('async/series');
+const monaco = require('monaco-editor');
 
 const _series = promisify(series);
 const loadSocket = currify(_loadSocket);
@@ -27,12 +28,10 @@ module.exports = (el, options, callback = options) => {
     
     const getElement = () => el;
     const getPrefix = () => prefix;
-    const monaco = promisify(loadMonaco);
     const deepword = api(parseElement(el), options);
     
     loadAll(prefix)
         .then(getPrefix)
-        .then(monaco)
         .then(getElement)
         .then(parseElement)
         .then(init)
@@ -59,20 +58,7 @@ function loadAll(prefix) {
     ]);
 }
 
-function loadMonaco(prefix, fn) {
-    const {require} = window;
-    const vs = transformName(prefix, 'min/vs');
-    
-    require.config({
-        paths: { vs }
-    });
-    
-    require(['vs/editor/editor.main'], noArg(fn));
-}
-
 function init(el) {
-    const {monaco} = window;
-    
     return monaco.editor.create(el, {
         minimap: {
             enabled: false,

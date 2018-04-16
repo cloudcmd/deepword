@@ -13,6 +13,7 @@ const distDev = path.resolve(__dirname, 'dist-dev');
 const devtool = isDev ? 'eval' : 'source-map';
 const notEmpty = (a) => a;
 const clean = (array) => array.filter(notEmpty);
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const rules = clean([
     !isDev && {
@@ -44,6 +45,9 @@ module.exports = {
     module: {
         rules,
     },
+    plugins: [
+        new MonacoWebpackPlugin()
+    ],
 };
 
 function devtoolModuleFilenameTemplate(info) {
