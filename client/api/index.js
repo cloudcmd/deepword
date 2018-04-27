@@ -11,7 +11,7 @@ import Emitify from 'emitify/legacy'
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify/legacy';
-import {alert} from 'smalltalk/legacy';
+import {alert} from 'smalltalk';
 
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';

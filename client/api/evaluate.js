@@ -1,6 +1,6 @@
 'use strict';
 
-import {alert} from 'smalltalk/legacy';
+import {alert} from 'smalltalk';
 import tryCatch from 'try-catch';
 
 const getErrorMsg = (isJS, value) => {

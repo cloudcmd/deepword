@@ -1,6 +1,6 @@
 'use strict';
 
-import {confirm} from 'smalltalk/legacy';
+import {confirm} from 'smalltalk';
 import {write} from 'restafary/legacy/client';
 
 const empty = () => {};
