@@ -98,7 +98,7 @@
     "nyc": "^11.0.2",
     "redrun": "^6.0.0",
     "rimraf": "^2.6.2",
-    "sinon": "^4.0.0",
+    "sinon": "^5.0.1",
     "sinon-called-with-diff": "^2.0.0",
     "smalltalk": "^3.0.0",
     "style-loader": "^0.21.0",
