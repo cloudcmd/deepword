@@ -1,3 +1,12 @@
+2018.05.14, v3.0.4
+
+feature:
+- (package) monaco-editor v0.13.0
+- (package) clean-css-loader v1.0.1
+- (travis) add node v10
+- (package) sinon v5.0.1
+
+
 2018.04.27, v3.0.3
 
 feature:
