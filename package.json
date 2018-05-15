@@ -75,6 +75,7 @@
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
+    "@cloudcmd/clipboard": "^1.0.0",
     "async": "^2.6.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
