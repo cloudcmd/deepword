@@ -107,7 +107,7 @@
     "url-loader": "^1.0.1",
     "watchify": "^3.7.0",
     "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9",
+    "webpack-cli": "^3.0.1",
     "zipio": "^1.0.2"
   }
 }
