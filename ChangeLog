@@ -1,3 +1,13 @@
+2018.06.09, v3.0.5
+
+feature:
+- (webpack) add externals: optional exclude of es6-promise
+- (package) es6-promise: dependencies -> devDependencies
+- (package) babel-core: dependencies -> devDependencies
+- (package) nyc v12.0.2
+- (package) webpack-cli v3.0.1
+
+
 2018.05.14, v3.0.4
 
 feature:
