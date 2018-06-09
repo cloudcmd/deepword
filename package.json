@@ -61,7 +61,6 @@
   "dependencies": {
     "ashify": "^1.0.1",
     "currify": "^2.0.0",
-    "es6-promise": "^4.0.5",
     "es6-promisify": "^6.0.0",
     "express": "^4.14.0",
     "fullstore": "^1.0.0",
@@ -87,6 +86,7 @@
     "cssnano": "^3.7.7",
     "daffy": "^1.0.3",
     "emitify": "^3.0.2",
+    "es6-promise": "^4.0.5",
     "eslint": "^4.0.0",
     "eslint-plugin-node": "^6.0.0",
     "file-loader": "^1.1.6",
