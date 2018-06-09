@@ -60,7 +60,6 @@
   "homepage": "https://github.com/cloudcmd/deepword",
   "dependencies": {
     "ashify": "^1.0.1",
-    "babel-core": "^6.26.0",
     "currify": "^2.0.0",
     "es6-promise": "^4.0.5",
     "es6-promisify": "^6.0.0",
@@ -76,6 +75,7 @@
   },
   "devDependencies": {
     "async": "^2.6.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-regenerator": "^6.26.0",
