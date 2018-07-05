@@ -83,7 +83,7 @@
     "clean-css-loader": "^1.0.1",
     "coveralls": "^3.0.0",
     "css-loader": "^0.28.7",
-    "cssnano": "^3.7.7",
+    "cssnano": "^4.0.0",
     "daffy": "^1.0.3",
     "emitify": "^3.0.2",
     "es6-promise": "^4.0.5",
