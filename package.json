@@ -82,7 +82,7 @@
     "babel-preset-env": "^1.6.0",
     "clean-css-loader": "^1.0.1",
     "coveralls": "^3.0.0",
-    "css-loader": "^0.28.7",
+    "css-loader": "^1.0.0",
     "cssnano": "^4.0.0",
     "daffy": "^1.0.3",
     "emitify": "^3.0.2",
