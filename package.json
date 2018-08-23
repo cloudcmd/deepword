@@ -89,7 +89,7 @@
     "es6-promise": "^4.0.5",
     "eslint": "^5.0.0",
     "eslint-plugin-node": "^7.0.1",
-    "file-loader": "^1.1.6",
+    "file-loader": "^2.0.0",
     "jssha": "^2.2.0",
     "load.js": "^1.1.4",
     "minifyify": "^7.3.3",
