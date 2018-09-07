@@ -1,3 +1,16 @@
+2018.09.08, v3.0.9
+
+fix:
+- (save) changes not reflected on saved file in editor (#1)
+
+feature:
+- (package) babel v7.0.0
+- (package) style-loader v0.23.0
+- (package) babel-loader v8.0.2
+- (package) nyc v13.0.1
+- (package) file-loader v2.0.0
+
+
 2018.08.13, v3.0.8
 
 feature:
