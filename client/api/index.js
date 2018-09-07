@@ -119,8 +119,8 @@ Deepword.prototype.setValueFirst = function(name, value) {
     return this;
 };
 
-Deepword.prototype.getValue = function(value) {
-    return this._eddy.getValue(value);
+Deepword.prototype.getValue = function() {
+    return this._eddy.getValue();
 };
 
 Deepword.prototype.getCursor = function() {
