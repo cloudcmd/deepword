@@ -1,12 +1,14 @@
 'use strict';
 
 import currify from 'currify/legacy';
+import wraptile from 'wraptile/legacy';
 
 const ifDiffDo = currify(_ifDiffDo);
 const ifGoodPatch = currify(_ifGoodPatch);
 const ifZipDo = currify(_ifZipDo);
 const ifNotPatchWrite = currify(_ifNotPatchWrite);
 const checkPatch = currify(_checkPatch);
+const setValue = wraptile(_setValue);
 
 export default function() {
     const doDiff = this._doDiff.bind(this);
@@ -17,13 +19,15 @@ export default function() {
     
     const _zip = this._zip.bind(this);
     const _write = this._write.bind(this);
+    const _setValue = setValue(this);
     
     this._loadOptions()
         .then(ifDiffDo(doDiff, _filename))
         .then(checkPatch(length, _maxSize))
         .then(ifGoodPatch(_patch, _filename))
         .then(ifZipDo(_zip, value))
-        .then(ifNotPatchWrite(_write, _filename));
+        .then(ifNotPatchWrite(_write, _filename))
+        .then(_setValue);
     
     return this;
 }
@@ -80,5 +84,9 @@ function _ifNotPatchWrite(write, filename, {isPatch, zip, value}) {
     const uri = !zip ? filename : filename + '?unzip';
     
     return write(uri, value);
+}
+
+function _setValue(ctx) {
+    ctx._value = ctx.getValue();
 }
 
