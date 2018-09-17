@@ -1,3 +1,9 @@
+2018.09.17, v3.0.11
+
+fix:
+- (package) rm additional load.js
+
+
 2018.09.08, v3.0.10
 
 fix:
