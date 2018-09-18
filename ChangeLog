@@ -1,3 +1,10 @@
+2018.09.18, v3.0.12
+
+feature:
+- (package) smalltalk v3.2.0
+- (package) load.js v2.0.0
+
+
 2018.09.17, v3.0.11
 
 fix:
