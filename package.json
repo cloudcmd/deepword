@@ -88,7 +88,7 @@
     "fast-async": "^6.3.7",
     "file-loader": "^2.0.0",
     "jssha": "^2.2.0",
-    "load.js": "^1.1.4",
+    "load.js": "^2.0.0",
     "minifyify": "^7.3.3",
     "mkdirp": "^0.5.1",
     "nodemon": "^1.10.2",
