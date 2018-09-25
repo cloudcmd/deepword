@@ -31,9 +31,7 @@ import {
 import story from './story';
 
 const loadJson_ = promisify(loadJson);
-const patch_ = promisify(patch);
 const read_ = promisify(read);
-const write_ = promisify(write);
 const zipio_ = promisify(zipio);
 
 const _alert = currify(alert);
@@ -148,12 +146,12 @@ Deepword.prototype.focus = function() {
 
 Deepword.prototype._patchHTTP = function(path, value) {
     const onSave = this._onSave.bind(this);
-    return patch_(path, value, onSave);
+    patch(path, value, onSave);
 };
 
 Deepword.prototype._writeHTTP = function(path, data) {
     const onSave = this._onSave.bind(this);
-    return write_(path, data, onSave);
+    write(path, data, onSave);
 };
 
 Deepword.prototype._zip = function(value) {

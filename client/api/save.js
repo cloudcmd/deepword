@@ -19,7 +19,6 @@ export default function() {
     
     const _zip = this._zip.bind(this);
     const _write = this._write.bind(this);
-    const _setValue = setValue(this);
     
     this._loadOptions()
         .then(ifDiffDo(doDiff, _filename))
@@ -27,7 +26,7 @@ export default function() {
         .then(ifGoodPatch(_patch, _filename))
         .then(ifZipDo(_zip, value))
         .then(ifNotPatchWrite(_write, _filename))
-        .then(_setValue);
+        .then(setValue(this))
     
     return this;
 }
