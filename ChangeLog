@@ -1,3 +1,9 @@
+2018.09.25, v3.0.13
+
+fix:
+- (save) does not update inner content after save
+
+
 2018.09.18, v3.0.12
 
 feature:
