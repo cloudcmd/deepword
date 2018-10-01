@@ -21,7 +21,7 @@
     "lint:client": "eslint --config .eslintrc.client client",
     "lint:server": "eslint --config .eslintrc.server server common --ignore-pattern *.spec.js",
     "wisdom": "npm run build",
-    "build": "redrun clean mkdir build:client:* cp:*",
+    "build": "redrun clean mkdir build:client* cp:*",
     "cp:socket.io:dist": "cp node_modules/socket.io-client/dist/socket.io.js dist/socket.io.js",
     "cp:socket.io:dist-dev": "cp node_modules/socket.io-client/dist/socket.io.js dist-dev/socket.io.js",
     "cp:socket.io.map:dist": "cp node_modules/socket.io-client/dist/socket.io.js.map dist/socket.io.js.map",
