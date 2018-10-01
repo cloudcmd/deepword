@@ -40,6 +40,16 @@ Usage: `deepword [filename]`
 
 For more details see [Ace keyboard shortcuts](https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts "Ace keyboard shortcuts").
 
+## Options
+
+You can override [monaco editor options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html) in `~/.deepword.json`.
+
+### Theme
+
+To override `theme` use `theme` options in `~/.deepword.json`. Themes can be:
+- `vs`
+- `vs-dark`
+
 ## API
 Deepword could be used as middleware for [express](http://expressjs.com "Express").
 For this purpuse API could be used.
