@@ -2,7 +2,6 @@
 
 import {inherits} from 'util';
 
-const Promise = window.Promise || require('es6-promise');
 import {promisify} from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/legacy/client';
 import zipio from 'zipio';

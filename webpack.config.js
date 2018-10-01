@@ -41,26 +41,10 @@ module.exports = {
         libraryTarget: 'var',
         devtoolModuleFilenameTemplate,
     },
-    externals: [
-        externals
-    ],
     module: {
         rules,
     },
 };
-function externals(context, request, fn) {
-    if (!isDev)
-        return fn();
-    
-    const list = [
-        'es6-promise',
-    ];
-    
-    if (list.includes(request))
-        return fn(null, request);
-    
-    fn();
-}
 
 function devtoolModuleFilenameTemplate(info) {
     const resource = info.absoluteResourcePath.replace(__dirname + path.sep, '');
