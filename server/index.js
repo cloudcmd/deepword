@@ -119,13 +119,10 @@ function monaco(req, res, next) {
     
     const sendFile = res.sendFile.bind(res);
     
-    const replace = (path) => {
-        return req.url.replace('/monaco', path);
-    };
-    
-    const sendError = (error) => {
-        res.status(404).send(error);
-    };
+    const replace = (path) => req.url.replace('/monaco', path);
+    const sendError = (error) => res
+        .status(404)
+        .send(error);
     
     resolvePath('monaco-editor')
         .then(replace)
