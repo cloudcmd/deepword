@@ -77,7 +77,7 @@ const init = currify(async (prefix, el) => {
     const {monaco} = window;
     
     const {
-        theme = 'vs',
+        theme,
         ...options
     } = await load(`${prefix}/edit.json`);
     
