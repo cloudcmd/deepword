@@ -3,7 +3,10 @@
 const {default: api} = require('./api');
 const {promisify} = require('es6-promisify');
 const currify = require('currify/legacy');
-const {js: loadJS} = require('load.js');
+const _load = require('load.js');
+const load = promisify(_load);
+
+const {js: loadJS} = _load;
 const series = require('async/series');
 
 const _series = promisify(series);
@@ -35,7 +38,7 @@ module.exports = (el, options, callback = options) => {
         .then(monaco)
         .then(getElement)
         .then(parseElement)
-        .then(init)
+        .then(init(prefix))
         .then(deepword)
         .then(callback)
         .catch(log)
@@ -70,10 +73,15 @@ function loadMonaco(prefix, fn) {
     require(['vs/editor/editor.main'], noArg(fn));
 }
 
-function init(el) {
+const init = currify(async (prefix, el) => {
     const {monaco} = window;
     
-    return monaco.editor.create(el, {
+    const {
+        theme = 'vs',
+        ...options
+    } = await load(`${prefix}/edit.json`);
+    
+    const editor = monaco.editor.create(el, {
         minimap: {
             enabled: false,
         },
@@ -83,9 +91,14 @@ function init(el) {
         contextmenu: false,
         folding: true,
         // when slow use editor.layout
-        automaticLayout: true
+        automaticLayout: true,
+        theme,
     });
-}
+    
+    editor.updateOptions(options);
+    
+    return editor;
+});
 
 function parseElement(el) {
     if (typeof el === 'string')

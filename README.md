@@ -8,6 +8,7 @@ Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https
 ## Features
 - Syntax highlighting based on extension of file for over 30 languages.
 - Built-in [beautifier][beautifile] (with options in [json/beautify.json][beautify.json], could be overriden by `~/.beautify.json`)
+- Configurable options ([json/edit.json][edit.json] could be overriden by `~/.deepword.json`) according to [monaco editor options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html)
 
 ## Install
 

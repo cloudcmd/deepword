@@ -10,6 +10,7 @@ const currify = require('currify');
 const storage = require('fullstore');
 
 const resolvePath = require('./resolve-path');
+const editFn = require('./edit');
 
 const Router = express.Router;
 
@@ -34,6 +35,7 @@ module.exports = (options) => {
         .get(optionsFn(options))
         .get(restafaryFn(''))
         .get(monaco)
+        .get(editFn)
         .get(staticFn)
         .put(restafaryFn(prefix));
     

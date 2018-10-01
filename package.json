@@ -21,14 +21,16 @@
     "lint:client": "eslint --config .eslintrc.client client",
     "lint:server": "eslint --config .eslintrc.server server common --ignore-pattern *.spec.js",
     "wisdom": "npm run build",
-    "build": "redrun clean mkdir build:* cp:*",
+    "build": "redrun clean mkdir build:client:* cp:*",
     "cp:socket.io:dist": "cp node_modules/socket.io-client/dist/socket.io.js dist/socket.io.js",
     "cp:socket.io:dist-dev": "cp node_modules/socket.io-client/dist/socket.io.js dist-dev/socket.io.js",
     "cp:socket.io.map:dist": "cp node_modules/socket.io-client/dist/socket.io.js.map dist/socket.io.js.map",
     "cp:socket.io.map:dist-dev": "cp node_modules/socket.io-client/dist/socket.io.js.map dist-dev/socket.io.js.map",
     "build-progress": "webpack --progress",
     "build:client": "npm run build-progress -- --mode production",
+    "build:start": "redrun build:client start",
     "build:client:dev": "NODE_ENV=development npm run build-progress -- --mode development",
+    "build:start:dev": "redrun build:client:dev start:dev",
     "watch:client": "nodemon -w client -x \"npm run build:client\"",
     "watch:client:dev": "NODE_ENV=development npm run watch:client",
     "watch:lint:bin": "redrun watcher:js -- \"redrun lint:bin\"",
@@ -108,6 +110,6 @@
     "zipio": "^1.0.2"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8.3.0"
   }
 }
