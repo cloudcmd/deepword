@@ -1,3 +1,15 @@
+2018.10.17, v4.1.4
+
+fix:
+- (deepword) patch
+- (_on-save) _value -> getValue
+
+feature:
+- (package) socket-file v3.0.1
+- (package) rm unused patchfile
+- (package) rm async
+
+
 2018.10.16, v4.1.3
 
 feature:
