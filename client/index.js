@@ -7,11 +7,9 @@ const _load = require('load.js');
 const load = promisify(_load);
 
 const {js: loadJS} = _load;
-const series = require('async/series');
 
-const _series = promisify(series);
-const loadSocket = currify(_loadSocket);
-const loadLoader = currify(_loadLoader);
+const loadSocket = promisify(_loadSocket);
+const loadLoader = promisify(_loadLoader);
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/monaco/${name}`;
@@ -55,11 +53,9 @@ function _loadLoader(prefix, fn) {
     loadJS(transformName(prefix, 'min/vs/loader.js'), fn)
 }
 
-function loadAll(prefix) {
-    return _series([
-        loadSocket(prefix),
-        loadLoader(prefix)
-    ]);
+async function loadAll(prefix) {
+    await loadSocket(prefix),
+    await loadLoader(prefix)
 }
 
 function loadMonaco(prefix, fn) {
