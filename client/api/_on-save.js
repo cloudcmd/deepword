@@ -9,7 +9,8 @@ export default function _onSave(error, text) {
     let msg = 'Try again?';
     
     const onSave = this._onSave.bind(this);
-    const {_value, _filename} = this;
+    const {_filename} = this;
+    const _value = this.getValue();
     
     if (error) {
         if (error.message)
