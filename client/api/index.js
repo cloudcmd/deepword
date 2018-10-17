@@ -202,18 +202,19 @@ Deepword.prototype.sha = function() {
 };
 
 Deepword.prototype._diff = function(value) {
-    return createPatch(this._value, value);
+    return createPatch(value, this.getValue());
 };
 
 Deepword.prototype._doDiff = async function(path) {
-    const {_story} = this;
-    const checkHash_ = promisify(_story.checkHash.bind(_story));
-    const value = this.getValue();
+    const {
+        _value,
+        _story,
+    } = this;
     const ifEqual = (equal) => {
-        return !equal ? '' : this._diff(value);
+        return !equal ? '' : this._diff(_value);
     }
     
-    return checkHash_(path)
+    return _story.checkHash(path)
         .then(ifEqual)
         .catch(ifEqual);
 }
