@@ -4,7 +4,6 @@ import {inherits} from 'util';
 
 import {promisify} from 'es6-promisify';
 import {patch, read, write, prefix} from 'restafary/legacy/client';
-import zipio from 'zipio';
 import {json as loadJson} from 'load.js';
 import Emitify from 'emitify/legacy'
 import {createPatch} from 'daffy';
@@ -31,7 +30,6 @@ import story from './story';
 
 const loadJson_ = promisify(loadJson);
 const read_ = promisify(read);
-const zipio_ = promisify(zipio);
 
 const _alert = currify(alert);
 
@@ -152,10 +150,6 @@ Deepword.prototype._writeHTTP = function(path, data) {
     const onSave = this._onSave.bind(this);
     write(path, data, onSave);
 };
-
-Deepword.prototype._zip = function(value) {
-    return zipio_(value);
-}
 
 Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;

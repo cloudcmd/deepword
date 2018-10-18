@@ -1,10 +1,12 @@
 'use strict';
 
 const wraptile = require('wraptile/legacy');
+const {promisify} = require('es6-promisify');
+const zipio = promisify(require('zipio'));
 
 const setValue = wraptile(_setValue);
 
-export default function() {
+module.exports = function() {
     save.call(this)
         .then(setValue(this));
     
@@ -29,7 +31,7 @@ async function save() {
     if (!zip)
         return this._write(_filename, value);
     
-    const zipedValue = await this._zip(value);
+    const zipedValue = await zipio(value);
     return this._write(`${_filename}?unzip`, zipedValue);
 }
 
