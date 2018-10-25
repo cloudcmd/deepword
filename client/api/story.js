@@ -9,7 +9,7 @@ export default function Story() {
         return new Story();
 }
 
-Story.prototype.checkHash = async function(name, callback) {
+Story.prototype.checkHash = async function(name) {
     const loadHash = await this.loadHash(name);
     const nameHash = name + '-hash';
     const storeHash = localStorage.getItem(nameHash);

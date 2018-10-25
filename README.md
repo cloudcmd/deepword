@@ -80,7 +80,8 @@ const io = require('socket.io'),
 const socket = io.listen(server);
 
 deepword.listen(socket, {
-    auth: (accept, reject) => (username, password) => { /* optional */
+    prefixSocket: '/deepword', // optional
+    auth: (accept, reject) => (username, password) => { // optional
         accept();
     }
 });

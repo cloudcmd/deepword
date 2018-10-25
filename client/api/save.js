@@ -26,7 +26,7 @@ async function save() {
         
         if (isPatch)
             return this._patch(_filename, patch);
-     }
+    }
     
     if (!zip)
         return this._write(_filename, value);

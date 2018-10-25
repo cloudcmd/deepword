@@ -45,15 +45,19 @@ module.exports = (options) => {
 module.exports.listen = (socket, options) => {
     options = options || {};
     
-    if (!options.prefix)
-        options.prefix = '/deepword';
+    const {
+        root = '/',
+        auth,
+        prefixSocket = '/deepword',
+    } = options;
     
-    if (!options.root)
-        options.root = '/';
+    rootStorage(root);
     
-    rootStorage(options.root);
-    
-    return socketFile(socket, options);
+    return socketFile(socket, {
+        root,
+        auth,
+        prefix: prefixSocket,
+    });
 };
 
 function checkOption(isOption) {

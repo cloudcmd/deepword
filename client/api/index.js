@@ -58,10 +58,11 @@ function Deepword(element, options, eddy) {
    
     this._maxSize = maxSize || 512000;
     this._prefix = options.prefix || '/deepword';
+    const prefixSocket = options.prefixSocket || '/deepword';
     
     prefix(`${this._prefix}/api/v1/fs`);
     
-    this._initSocket(this._prefix, socketPath);
+    this._initSocket(prefixSocket, socketPath);
     this._addCommands();
     this._story = story();
     
