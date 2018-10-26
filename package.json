@@ -63,7 +63,6 @@
   "dependencies": {
     "ashify": "^1.0.1",
     "currify": "^3.0.0",
-    "es6-promisify": "^6.0.0",
     "express": "^4.14.0",
     "fullstore": "^1.0.0",
     "monaco-editor": "^0.14.2",
@@ -83,6 +82,7 @@
     "daffy": "^1.0.3",
     "emitify": "^3.0.2",
     "es6-promise": "^4.0.5",
+    "es6-promisify": "^6.0.1",
     "eslint": "^5.0.0",
     "eslint-plugin-node": "^7.0.1",
     "fast-async": "^6.3.7",

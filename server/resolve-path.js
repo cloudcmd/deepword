@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const promisify = require('es6-promisify').promisify;
+const {promisify} = require('util');
 
 module.exports = (name) => {
     check(name);
