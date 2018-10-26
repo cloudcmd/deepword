@@ -1,3 +1,12 @@
+2018.10.26, v5.0.1
+
+fix:
+- docs(ChangeLog) rm 
+
+feature:
+- (package) es6-promisify: dependencies -> devDependencies
+
+
 2018.10.25, v5.0.0
 
 feature:
