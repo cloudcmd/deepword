@@ -84,7 +84,7 @@
     "es6-promise": "^4.0.5",
     "es6-promisify": "^6.0.1",
     "eslint": "^5.0.0",
-    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-node": "^8.0.0",
     "fast-async": "^6.3.7",
     "file-loader": "^2.0.0",
     "jssha": "^2.2.0",
