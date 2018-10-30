@@ -5,14 +5,12 @@ const path = require('path');
 
 const restafary = require('restafary');
 const socketFile = require('socket-file');
-const express = require('express');
+const {Router} = require('express');
 const currify = require('currify');
 const storage = require('fullstore');
 
 const resolvePath = require('./resolve-path');
 const editFn = require('./edit');
-
-const Router = express.Router;
 
 const rootStorage = storage();
 const optionsStorage = storage();
@@ -71,7 +69,7 @@ function checkOption(isOption) {
 }
 
 function _deepword(prefix, req, res, next) {
-    const url = req.url
+    const {url} = req;
     
     req.url = url.replace(prefix, '');
     
