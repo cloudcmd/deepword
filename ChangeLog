@@ -1,3 +1,10 @@
+2018.11.09, v5.1.0
+
+feature:
+- (package) sinon-called-with-diff v3.0.0
+- (deepword) add dropbox support
+
+
 2018.10.30, v5.0.2
 
 feature:
