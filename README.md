@@ -65,8 +65,10 @@ const express = require('express');
 const app = express();
 
 app.use(deepword({
-    diff: true,  /* default */
-    zip : true,  /* default */
+    diff: true,             // default
+    zip : true,             // default
+    dropbox: false          // optional
+    dropboxToken: 'token',  // optional
 }));
 
 app.listen(31337);

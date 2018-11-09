@@ -4,6 +4,7 @@ const DIR_ROOT = __dirname + '/..';
 const path = require('path');
 
 const restafary = require('restafary');
+const restbox = require('restbox');
 const socketFile = require('socket-file');
 const {Router} = require('express');
 const currify = require('currify');
@@ -17,9 +18,14 @@ const optionsStorage = storage();
 
 const deepword = currify(_deepword);
 const optionsFn = currify(configFn);
-const restafaryFn = currify(_restafaryFn);
+const restboxFn = currify(_restboxFn);
 
 const isDev = process.env.NODE_ENV === 'development';
+
+const cut = currify((prefix, req, res, next) => {
+    req.url = req.url.replace(prefix, '');
+    next();
+});
 
 module.exports = (options) => {
     options = options || {};
@@ -28,14 +34,22 @@ module.exports = (options) => {
     const prefix = options.prefix || '/deepword';
     const router = Router();
     
+    const {
+        dropbox,
+        dropboxToken,
+    } = options;
+    
     router.route(prefix + '/*')
+        .all(cut(prefix))
         .get(deepword(prefix))
         .get(optionsFn(options))
-        .get(restafaryFn(''))
         .get(monaco)
         .get(editFn)
+        .get(restboxFn({prefix, dropbox, dropboxToken}))
+        .get(restafaryFn)
         .get(staticFn)
-        .put(restafaryFn(prefix));
+        .put(restboxFn({prefix, dropbox, dropboxToken}))
+        .put(restafaryFn);
     
     return router;
 };
@@ -100,14 +114,36 @@ function configFn(o, req, res, next) {
         });
 }
 
-function _restafaryFn(prefix, req, res, next) {
-    const url = req.url;
-    const api = '/api/v1/fs';
-    
-    if (url.indexOf(prefix + api))
+function _restboxFn({dropbox, dropboxToken}, req, res, next) {
+    if (!dropbox)
         return next();
     
-    req.url = url.replace(prefix, '');
+    const {url} = req;
+    const api = '/api/v1';
+    const indexOf = url.indexOf.bind(url);
+    const not = (fn) => (a) => !fn(a);
+    const is = [
+        `/api/v1`,
+    ].some(not(indexOf));
+    
+    if (!is)
+        return next();
+    
+    const middle = restbox({
+        prefix: api,
+        token: dropboxToken,
+        root: rootStorage()
+    });
+    
+    middle(req, res, next);
+}
+
+function restafaryFn(req, res, next) {
+    const {url} = req;
+    const api = '/api/v1/fs';
+    
+    if (url.indexOf(api))
+        return next();
     
     const restafaryFunc = restafary({
         prefix: api,
