@@ -1,3 +1,12 @@
+2018.11.14, v5.1.1
+
+fix:
+- (server) deepword: rm replace
+
+feature:
+- (package) monaco-editor v0.15.2
+
+
 2018.11.09, v5.1.0
 
 feature:
