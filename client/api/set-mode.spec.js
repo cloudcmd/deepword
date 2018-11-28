@@ -1,8 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const diff = require('sinon-called-with-diff');
-const sinon = diff(require('sinon'));
+const stub = require('@cloudcmd/stub');
 
 const setMode = require('./set-mode');
 
@@ -63,14 +62,14 @@ test('client: setMode: focus', (t) => {
 });
 
 function getContext() {
-    const focus = sinon.stub();
-    const setModel = sinon.stub();
+    const focus = stub();
+    const setModel = stub();
     const _eddy = {
         setModel,
         focus,
     };
     
-    const createModel = sinon.stub();
+    const createModel = stub();
     
     const editor = {
         createModel
@@ -79,7 +78,7 @@ function getContext() {
         editor,
     };
     
-    const getValue = sinon.stub();
+    const getValue = stub();
     
     return {
         _monaco,
