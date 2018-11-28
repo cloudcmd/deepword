@@ -83,7 +83,6 @@ function checkOption(isOption) {
 }
 
 function _deepword(prefix, req, res, next) {
-    const {url} = req;
     const regExp = /^\/deepword\.js(\.map)?$/;
     
     if (regExp.test(req.url))
