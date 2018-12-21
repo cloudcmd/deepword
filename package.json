@@ -88,7 +88,7 @@
     "eslint": "^5.0.0",
     "eslint-plugin-node": "^8.0.0",
     "fast-async": "^6.3.7",
-    "file-loader": "^2.0.0",
+    "file-loader": "^3.0.1",
     "jssha": "^2.2.0",
     "load.js": "^2.0.0",
     "minifyify": "^7.3.3",
