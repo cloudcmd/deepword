@@ -99,7 +99,7 @@
     "rimraf": "^2.6.2",
     "smalltalk": "^3.2.0",
     "style-loader": "^0.23.0",
-    "tape": "^4.6.2",
+    "supertape": "^1.2.1",
     "try-catch": "^2.0.0",
     "url-loader": "^1.0.1",
     "watchify": "^3.7.0",

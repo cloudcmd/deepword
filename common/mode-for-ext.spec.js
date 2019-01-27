@@ -1,7 +1,7 @@
 'use strict';
 
 const modeForExt = require('./mode-for-ext');
-const test = require('tape');
+const test = require('supertape');
 
 test('mode-for-ext: args: ext', (t) => {
     t.throws(modeForExt, /ext should be string!/, 'should throw when ext not string ');

@@ -1,0 +1,7 @@
+{
+    "match": {
+        "client/index.js": {
+            "remove-console": false
+        }
+    }
+}
