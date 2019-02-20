@@ -28,10 +28,10 @@ module.exports = {
     "build-progress": () => 'webpack --progress',
     "build:client": () => series(['build-progress'], '--mode production'),
     "build:start": () => series(['build:client', 'start']),
-    "build:client:dev": () => 'NODE_ENV=development npm run build-progress -- --mode development',
+    "build:client:dev": () => `NODE_ENV=development ${run('build-progress')}- --mode development`,
     "build:start:dev": () => series(['build:client:dev', 'start:dev']),
-    "watch:client": () => 'nodemon -w client -x "npm run build:client"',
-    "watch:client:dev": () => 'NODE_ENV=development npm run watch:client',
+    "watch:client": () => `nodemon -w client -x "${run('build:client')}"`,
+    "watch:client:dev": () => `NODE_ENV=development "${run('watch:client')}"`,
     "mkdir": () => 'mkdirp dist dist-dev',
     "clean": () => 'rimraf dist dist-dev'
 };
