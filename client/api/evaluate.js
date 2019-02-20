@@ -1,5 +1,3 @@
-'use strict';
-
 import {alert} from 'smalltalk';
 import tryCatch from 'try-catch';
 

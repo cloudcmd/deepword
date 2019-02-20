@@ -1,5 +1,3 @@
-'use strict';
-
 const addId = (a) => {
     a.id = `deepword.action.${a.id}`;
     return a;

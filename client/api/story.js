@@ -1,5 +1,3 @@
-'use strict';
-
 const {promisify} = require('es6-promisify');
 
 import {read} from 'restafary/legacy/client';

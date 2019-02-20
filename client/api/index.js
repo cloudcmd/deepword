@@ -1,5 +1,3 @@
-'use strict';
-
 import {inherits} from 'util';
 
 import {promisify} from 'es6-promisify';
@@ -55,7 +53,7 @@ function Deepword(element, options, eddy) {
     this._eddy = eddy;
     
     const {maxSize, socketPath} = options;
-   
+    
     this._maxSize = maxSize || 512000;
     this._prefix = options.prefix || '/deepword';
     const prefixSocket = options.prefixSocket || '/deepword';

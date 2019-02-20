@@ -1,5 +1,3 @@
-'use strict';
-
 export function copyToClipboard() {
     document.execComand('copy');
     return this;

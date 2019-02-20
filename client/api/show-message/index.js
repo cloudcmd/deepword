@@ -1,5 +1,3 @@
-'use strict';
-
 import './show-message.css';
 
 export default function showMessage(text) {

@@ -1,5 +1,3 @@
-'use strict';
-
 /* global io*/
 import {alert} from 'smalltalk';
 import {applyPatch} from 'daffy';

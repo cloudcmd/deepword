@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const args = process.argv.slice(2);
-const name = args[0];
+const [name] = args;
 
 if (!name)
     usage();
@@ -40,7 +40,7 @@ function main(name) {
     const app = express();
     const server = http.createServer(app);
     
-    const env = process.env;
+    const {env} = process;
     
     const port =    env.PORT            ||  /* c9           */
                     env.app_port        ||  /* nodester     */
@@ -99,7 +99,7 @@ function usage() {
 
 function help() {
     const bin = require('../json/bin');
-        
+    
     usage();
     console.log('Options:');
     

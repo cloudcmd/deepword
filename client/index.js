@@ -45,7 +45,7 @@ module.exports = (el, options, callback = options) => {
 function _loadSocket(prefix, fn) {
     if (window.io)
         return fn();
-     
+    
     return loadJS(`${prefix}/dist/socket.io.js`, fn);
 }
 

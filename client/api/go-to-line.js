@@ -1,5 +1,3 @@
-'use strict';
-
 import {prompt} from 'smalltalk';
 
 export default function goToLine() {
@@ -10,7 +8,7 @@ export default function goToLine() {
     const msg = 'Enter line number:';
     const {_eddy, _TITLE} = this;
     const {lineNumber} = _eddy.getPosition();
-        
+    
     prompt(_TITLE, msg, lineNumber)
         .then((line) => {
             const lineNumber = Number(line);

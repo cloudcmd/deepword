@@ -1,5 +1,3 @@
-'use strict';
-
 import {confirm} from 'smalltalk';
 import {write} from 'restafary/legacy/client';
 

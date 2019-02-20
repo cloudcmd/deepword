@@ -3,7 +3,7 @@
 const currify = require('currify/legacy');
 
 const byExtension = currify((ext, options) => {
-    const extensions = options.extensions;
+    const {extensions} = options;
     return ~extensions.indexOf(ext);
 });
 
