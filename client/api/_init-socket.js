@@ -24,7 +24,7 @@ export default function _initSocket(prefix = '', socketPath = '') {
     });
     
     const socket = io.connect(href, {
-        'max reconnection attempts' : Math.pow(2, 32),
+        'max reconnection attempts' : 2 ** 32,
         'reconnection limit'        : FIVE_SECONDS,
         path                        : socketPath + '/socket.io'
     });

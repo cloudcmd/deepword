@@ -23,8 +23,8 @@ function check(name) {
         throw Error('name should be string!');
 }
 
-function resolveModule() {
-    const dirs = arguments;
+function resolveModule(...args) {
+    const dirs = args;
     /* stat: not global becouse of tests */
     const stat = promisify(fs.stat);
     const dir = path.resolve.apply(null, dirs);
