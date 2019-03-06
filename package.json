@@ -60,7 +60,7 @@
     "currify": "^3.0.0",
     "express": "^4.14.0",
     "fullstore": "^1.0.0",
-    "monaco-editor": "^0.15.6",
+    "monaco-editor": "^0.16.0",
     "readjson": "^1.1.0",
     "restafary": "^5.0.8",
     "restbox": "^1.0.2",
