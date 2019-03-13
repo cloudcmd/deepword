@@ -52,7 +52,10 @@ function Deepword(element, options, eddy) {
     
     this._eddy = eddy;
     
-    const {maxSize, socketPath} = options;
+    const {
+        maxSize,
+        socketPath
+    } = options;
     
     this._maxSize = maxSize || 512000;
     this._prefix = options.prefix || '/deepword';
@@ -118,7 +121,10 @@ Deepword.prototype.getValue = function() {
 };
 
 Deepword.prototype.getCursor = function() {
-    const {column, lineNumber } = this._eddy.getPosition();
+    const {
+        column,
+        lineNumber 
+    } = this._eddy.getPosition();
     
     return {
         column,

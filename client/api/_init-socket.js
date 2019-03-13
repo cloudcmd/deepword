@@ -53,7 +53,8 @@ export default function _initSocket(prefix = '', socketPath = '') {
             return;
         
         const {
-            _filename, _story,
+            _filename,
+            _story,
             getValue,
             setValue,
             getCursor,

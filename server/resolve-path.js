@@ -28,7 +28,7 @@ function resolveModule(...dirs) {
     const stat = promisify(fs.stat);
     const dir = path.resolve.apply(null, dirs);
     const getDir = () => dir;
-
+    
     return () => stat(dir).then(getDir);
 }
 
