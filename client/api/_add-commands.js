@@ -11,16 +11,12 @@ export default function _addCommands() {
     const evaluate = this.evaluate.bind(this);
     const goToLine = this.goToLine.bind(this);
     const save = this.save.bind(this);
-    const minify = this.minify.bind(this);
-    const beautify = this.beautify.bind(this);
     
     const run = (fn) => () => this.isKey() && fn();
     
     const {
-        KEY_B,
         KEY_E,
         KEY_G,
-        KEY_M,
         KEY_S,
     } = KeyCode;
     
@@ -44,16 +40,6 @@ export default function _addCommands() {
         label: 'Save',
         keybindings: [CtrlCmd | KEY_S, WinCtrl | KEY_S],
         run: run(save)
-    }, {
-        id: 'minify',
-        label: 'Minify',
-        keybindings: [CtrlCmd | KEY_M, WinCtrl | KEY_M],
-        run: run(minify)
-    }, {
-        id: 'beautify',
-        label: 'Beautify',
-        keybindings: [CtrlCmd | KEY_B, WinCtrl | KEY_B],
-        run: run(beautify)
     }];
     
     actions

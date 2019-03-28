@@ -1,13 +1,12 @@
 import {inherits} from 'util';
 
 import {promisify} from 'es6-promisify';
-import {patch, read, write, prefix} from 'restafary/legacy/client';
+import {patch, write, prefix} from 'restafary/legacy/client';
 import {json as loadJson} from 'load.js';
 import Emitify from 'emitify/legacy'
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify/legacy';
-import {alert} from 'smalltalk';
 
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
@@ -27,9 +26,6 @@ import {
 import story from './story';
 
 const loadJson_ = promisify(loadJson);
-const read_ = promisify(read);
-
-const _alert = currify(alert);
 
 export default currify(Deepword);
 
@@ -217,30 +213,6 @@ Deepword.prototype._doDiff = async function(path) {
         .then(ifEqual)
         .catch(ifEqual);
 }
-
-Deepword.prototype._readWithFlag = function(flag) {
-    const {_filename, _TITLE} = this;
-    
-    const filename = _filename + '?' + flag;
-    const setValue = (value) => {
-        this.setValue(value)
-            .moveCursorTo(0, 0);
-    };
-    
-    return read_(filename)
-        .then(setValue)
-        .catch(_alert(_TITLE));
-};
-
-Deepword.prototype.minify = function() {
-    this._readWithFlag('minify');
-    return this;
-};
-
-Deepword.prototype.beautify = function() {
-    this._readWithFlag('beautify');
-    return this;
-};
 
 Deepword.prototype.selectAll = function() {
     const {_eddy} = this;

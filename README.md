@@ -7,7 +7,6 @@ Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https
 
 ## Features
 - Syntax highlighting based on extension of file for over 30 languages.
-- Built-in [beautifier][beautifile] (with options in [json/beautify.json][beautify.json], could be overriden by `~/.beautify.json`)
 - Configurable options ([edit.json](json/edit.json) could be overriden by `~/.deepword.json`) according to [monaco editor options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html)
 
 ## Install
@@ -34,8 +33,6 @@ Usage: `deepword [filename]`
 | `Ctrl + f`            | find
 | `Ctrl + h`            | replace
 | `Ctrl + g`            | go to line
-| `Ctrl + b`            | beautify js, css or html
-| `Ctrl + m`            | minify js, css or html
 | `Ctrl + e`            | evaluate (JavaScript only supported)
 
 For more details see [Ace keyboard shortcuts](https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts "Ace keyboard shortcuts").
@@ -143,9 +140,6 @@ MIT
 [NPMURL]:                   https://npmjs.org/package/deepword "npm"
 [DependencyStatusURL]:      https://david-dm.org/cloudcmd/deepword "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
-
-[beautifile]:               https://github.com/coderaiser/node-beautifile "Beautifile"
-[beautify.json]:            https://github.com/coderaiser/node-beautifile/tree/master/json/beautify.json "beautify.json"
 
 [CoverageURL]:              https://coveralls.io/github/cloudcmd/deepword?branch=master
 [CoverageIMGURL]:           https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github
