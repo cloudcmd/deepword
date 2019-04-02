@@ -39,8 +39,8 @@ module.exports = (el, options, callback = options) => {
         .then(init(prefix))
         .then(deepword)
         .then(callback)
-        .catch(log)
-}
+        .catch(log);
+};
 
 function _loadSocket(prefix, fn) {
     if (window.io)
@@ -50,12 +50,12 @@ function _loadSocket(prefix, fn) {
 }
 
 function _loadLoader(prefix, fn) {
-    loadJS(transformName(prefix, 'min/vs/loader.js'), fn)
+    loadJS(transformName(prefix, 'min/vs/loader.js'), fn);
 }
 
 async function loadAll(prefix) {
     await loadSocket(prefix),
-    await loadLoader(prefix)
+    await loadLoader(prefix);
 }
 
 function loadMonaco(prefix, fn) {
@@ -63,7 +63,7 @@ function loadMonaco(prefix, fn) {
     const vs = transformName(prefix, 'min/vs');
     
     require.config({
-        paths: { vs }
+        paths: { vs },
     });
     
     require(['vs/editor/editor.main'], noArg(fn));

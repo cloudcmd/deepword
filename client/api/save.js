@@ -11,14 +11,14 @@ module.exports = function() {
         .then(setValue(this));
     
     return this;
-}
+};
 
 async function save() {
     const value = this.getValue();
     const {length} = value;
     const {_filename, _maxSize} = this;
     
-    const {diff, zip} = await this._loadOptions()
+    const {diff, zip} = await this._loadOptions();
     
     if (diff) {
         const patch = await this._doDiff(_filename);

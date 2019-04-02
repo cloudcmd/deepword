@@ -25,6 +25,6 @@ function createMsg() {
     
     wrapper.innerHTML = html;
     
-    return  wrapper.firstChild;
+    return wrapper.firstChild;
 }
 

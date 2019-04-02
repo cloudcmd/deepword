@@ -22,24 +22,24 @@ export default function _addCommands() {
     
     const {
         CtrlCmd,
-        WinCtrl
+        WinCtrl,
     } = KeyMod;
     
     const actions = [{
         id: 'evaluate',
         label: 'Evaluate',
         keybindings: [CtrlCmd | KEY_E, WinCtrl | KEY_E],
-        run: run(evaluate)
+        run: run(evaluate),
     }, {
         id: 'goToLine',
         label: 'Go To Line',
         keybindings: [CtrlCmd | KEY_G, WinCtrl | KEY_G],
-        run: goToLine
+        run: goToLine,
     }, {
         id: 'save',
         label: 'Save',
         keybindings: [CtrlCmd | KEY_S, WinCtrl | KEY_S],
-        run: run(save)
+        run: run(save),
     }];
     
     actions

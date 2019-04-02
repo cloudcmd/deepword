@@ -16,7 +16,7 @@ test('client: setMode: getValue', (t) => {
     const ctx = getContext();
     
     const {getValue} = ctx;
-    setMode.call(ctx)
+    setMode.call(ctx);
     
     t.ok(getValue.calledWith(), 'should call getValue');
     t.end();
@@ -31,7 +31,7 @@ test('client: setMode: createModel', (t) => {
     const {createModel} = ctx._monaco.editor;
     const mode = 'javascript';
     
-    setMode.call(ctx, mode)
+    setMode.call(ctx, mode);
     
     t.ok(createModel.calledWith(value, mode), 'should call createModel');
     t.end();
@@ -45,7 +45,7 @@ test('client: setMode: setModel', (t) => {
     
     const {setModel} = ctx._eddy;
     
-    setMode.call(ctx)
+    setMode.call(ctx);
     
     t.ok(setModel.calledWith(model), 'should call setModel');
     t.end();
@@ -55,7 +55,7 @@ test('client: setMode: focus', (t) => {
     const ctx = getContext();
     const {focus} = ctx._eddy;
     
-    setMode.call(ctx)
+    setMode.call(ctx);
     
     t.ok(focus.calledWith(), 'should call focus');
     t.end();
@@ -72,7 +72,7 @@ function getContext() {
     const createModel = stub();
     
     const editor = {
-        createModel
+        createModel,
     };
     const _monaco = {
         editor,

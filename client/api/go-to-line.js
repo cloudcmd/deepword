@@ -19,7 +19,7 @@ export default function goToLine() {
             
             _eddy.setPosition({
                 lineNumber,
-                column
+                column,
             }, reveal, revealVerticalInCenter);
         })
         .catch(empty)

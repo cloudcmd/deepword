@@ -8,7 +8,7 @@ const getErrorMsg = (isJS, value) => {
     const [error] = tryCatch(Function(value));
     
     return error;
-}
+};
 
 export default function evaluate () {
     const isJS = /\.js$/.test(this._filename);

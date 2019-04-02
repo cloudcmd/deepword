@@ -15,5 +15,5 @@ module.exports = function setMode(mode) {
     _eddy.focus();
     
     return this;
-}
+};
 

@@ -3,7 +3,7 @@ import {inherits} from 'util';
 import {promisify} from 'es6-promisify';
 import {patch, write, prefix} from 'restafary/legacy/client';
 import {json as loadJson} from 'load.js';
-import Emitify from 'emitify/legacy'
+import Emitify from 'emitify/legacy';
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify/legacy';
@@ -50,7 +50,7 @@ function Deepword(element, options, eddy) {
     
     const {
         maxSize,
-        socketPath
+        socketPath,
     } = options;
     
     this._maxSize = maxSize || 512000;
@@ -119,19 +119,19 @@ Deepword.prototype.getValue = function() {
 Deepword.prototype.getCursor = function() {
     const {
         column,
-        lineNumber 
+        lineNumber,
     } = this._eddy.getPosition();
     
     return {
         column,
-        row: lineNumber
-    }
+        row: lineNumber,
+    };
 };
 
 Deepword.prototype.moveCursorTo = function(lineNumber, column) {
     this._eddy.setPosition({
         column,
-        lineNumber
+        lineNumber,
     });
     
     return this;
@@ -140,7 +140,7 @@ Deepword.prototype.moveCursorTo = function(lineNumber, column) {
 Deepword.prototype.focus = function() {
     this._eddy.focus();
     return this;
-}
+};
 
 Deepword.prototype._patchHTTP = function(path, value) {
     const onSave = this._onSave.bind(this);
@@ -158,7 +158,7 @@ Deepword.prototype._loadOptions = async function() {
     this._options = _options || await loadJson_(`${_prefix}/options.json`);
     
     return Promise.resolve(this._options);
-}
+};
 
 Deepword.prototype.setOption = function(name, value) {
     const options = {};
@@ -173,7 +173,7 @@ Deepword.prototype.setOption = function(name, value) {
     this._eddy.updateOptions(options);
     
     return this;
-}
+};
 
 Deepword.prototype.setOptions = function(options) {
     Object.keys(options).forEach((name) => {
@@ -181,11 +181,11 @@ Deepword.prototype.setOptions = function(options) {
     });
     
     return this;
-}
+};
 
 Deepword.prototype.isChanged = function() {
     return this._value !== this.getValue();
-}
+};
 
 Deepword.prototype.sha = function() {
     const value = this.getValue();
@@ -207,12 +207,12 @@ Deepword.prototype._doDiff = async function(path) {
     } = this;
     const ifEqual = (equal) => {
         return !equal ? '' : this._diff(_value);
-    }
+    };
     
     return _story.checkHash(path)
         .then(ifEqual)
         .catch(ifEqual);
-}
+};
 
 Deepword.prototype.selectAll = function() {
     const {_eddy} = this;
@@ -223,7 +223,7 @@ Deepword.prototype.selectAll = function() {
         startLineNumber: 1,
         startColumn: 1,
         endLineNumber: getLinesCount(),
-        endColumn: Infinity
+        endColumn: Infinity,
     });
     
     return this;
