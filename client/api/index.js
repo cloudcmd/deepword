@@ -8,6 +8,7 @@ import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify/legacy';
 
+import {enableVim, disableVim} from './vim';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';
@@ -165,14 +166,20 @@ Deepword.prototype.setOption = function(name, value) {
     
     options[name] = value;
     
-    if (name === 'keyMap' && value === 'vim') {
-        this.showMessage('Vim mode not supported');
-        return this;
+    if (name === 'keyMap') {
+        this.setKeyMap(value);
     }
     
     this._eddy.updateOptions(options);
     
     return this;
+};
+
+Deepword.prototype.setKeyMap = function(name) {
+    if (name === 'vim')
+        return enableVim(this._eddy, this._element);
+    
+    disableVim();
 };
 
 Deepword.prototype.setOptions = function(options) {

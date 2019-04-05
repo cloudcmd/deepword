@@ -26,6 +26,8 @@ module.exports = (el, options, callback = options) => {
     /*eslint no-console: ["error", { allow: ["error"] }] */
     const log = (e) => console.error(e);
     
+    createStatus(el);
+    
     const getElement = () => el;
     const getPrefix = () => prefix;
     const monaco = promisify(loadMonaco);
@@ -41,6 +43,13 @@ module.exports = (el, options, callback = options) => {
         .then(callback)
         .catch(log);
 };
+
+function createStatus(parent) {
+    const el = document.createElement('div');
+    el.id = 'deepword-vim';
+    
+    parent.appendChild(el);
+}
 
 function _loadSocket(prefix, fn) {
     if (window.io)
