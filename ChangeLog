@@ -1,3 +1,12 @@
+2019.05.06, v6.1.1
+
+feature:
+- (package) monaco-editor v0.17.0
+- (package) eslint-plugin-node v9.0.1
+- (package) clean-css-loader v2.0.0
+- (package) nyc v14.0.0
+
+
 2019.04.05, v6.1.0
 
 feature:
