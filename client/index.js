@@ -21,6 +21,9 @@ module.exports = (el, options, callback = options) => {
     if (typeof options === 'function')
         options = {};
     
+    if (typeof el === 'string')
+        el = document.querySelector(el);
+    
     const prefix = options.prefix || '/deepword';
     
     /*eslint no-console: ["error", { allow: ["error"] }] */
