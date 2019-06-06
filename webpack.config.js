@@ -24,7 +24,12 @@ const rules = clean([
         loader: 'style-loader!css-loader!clean-css-loader'
     }, {
         test: /\.(png)$/,
-        loader: 'url-loader?limit=50000',
+        use: {
+            loader: 'url-loader',
+            options: {
+                limit=50000
+            }
+        }
     },
 ]);
 
