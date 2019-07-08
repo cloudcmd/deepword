@@ -24,7 +24,9 @@ module.exports = (el, options, callback = options) => {
     if (typeof el === 'string')
         el = document.querySelector(el);
     
-    const prefix = options.prefix || '/deepword';
+    const {
+        prefix = '/deepword',
+    } = options;
     
     /*eslint no-console: ["error", { allow: ["error"] }] */
     const log = (e) => console.error(e);
@@ -66,7 +68,7 @@ function _loadLoader(prefix, fn) {
 }
 
 async function loadAll(prefix) {
-    await loadSocket(prefix),
+    await loadSocket(prefix);
     await loadLoader(prefix);
 }
 

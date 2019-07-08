@@ -42,17 +42,17 @@ function main(name) {
     
     const {env} = process;
     
-    const port =    env.PORT            ||  /* c9           */
-                    env.app_port        ||  /* nodester     */
-                    env.VCAP_APP_PORT   ||  /* cloudfoundry */
+    const port = env.PORT || /* c9           */
+                    env.app_port || /* nodester     */
+                    env.VCAP_APP_PORT || /* cloudfoundry */
                     1337;
-    const ip =  env.IP                  ||  /* c9           */
+    const ip = env.IP || /* c9           */
                 '0.0.0.0';
     
     app .use(express.static(DIR))
         .use(deepword({
             diff: true,
-            zip: true
+            zip: true,
         }));
     
     server.listen(port, ip);
@@ -103,7 +103,7 @@ function help() {
     usage();
     console.log('Options:');
     
-    Object.keys(bin).forEach((name) => {
+    for (const name of Object.keys(bin)) {
         console.log(`  ${name} ${bin[name]}`);
-    });
+    }
 }

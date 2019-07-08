@@ -15,7 +15,7 @@ module.exports = (name) => {
     
     return Promise.resolve()
         .then(inner)
-        .catch(outer)
+        .catch(outer);
 };
 
 function check(name) {

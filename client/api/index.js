@@ -52,11 +52,11 @@ function Deepword(element, options, eddy) {
     const {
         maxSize,
         socketPath,
+        prefixSocket = '/deepword',
     } = options;
     
     this._maxSize = maxSize || 512000;
     this._prefix = options.prefix || '/deepword';
-    const prefixSocket = options.prefixSocket || '/deepword';
     
     prefix(`${this._prefix}/api/v1/fs`);
     
@@ -183,9 +183,9 @@ Deepword.prototype.setKeyMap = function(name) {
 };
 
 Deepword.prototype.setOptions = function(options) {
-    Object.keys(options).forEach((name) => {
+    for (const name of Object.keys(options)) {
         this.setOption(name, options[name]);
-    });
+    }
     
     return this;
 };

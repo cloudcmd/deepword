@@ -31,10 +31,9 @@ module.exports = (options) => {
     options = options || {};
     optionsStorage(options);
     
-    const prefix = options.prefix || '/deepword';
     const router = Router();
-    
     const {
+        prefix = '/deepword',
         dropbox,
         dropboxToken,
     } = options;
@@ -128,7 +127,7 @@ function _restboxFn({dropbox, dropboxToken}, req, res, next) {
     const middle = restbox({
         prefix: api,
         token: dropboxToken,
-        root: rootStorage()
+        root: rootStorage(),
     });
     
     middle(req, res, next);
@@ -143,7 +142,7 @@ function restafaryFn(req, res, next) {
     
     const restafaryFunc = restafary({
         prefix: api,
-        root: rootStorage()
+        root: rootStorage(),
     });
     
     restafaryFunc(req, res, next);

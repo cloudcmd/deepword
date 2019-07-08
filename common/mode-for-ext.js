@@ -11,18 +11,18 @@ module.exports = (ext, langs) => {
     check(ext, langs);
     
     const empty = {
-        id: ''
-    }
+        id: '',
+    };
     
     const mode = langs
         .filter(byExtension(ext))
         .pop();
     
-    return (mode || empty).id
+    return (mode || empty).id;
 };
 
 function check(ext, langs) {
-    if (typeof ext!== 'string')
+    if (typeof ext !== 'string')
         throw Error('ext should be string!');
     
     if (!Array.isArray(langs))
