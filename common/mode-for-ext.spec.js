@@ -15,11 +15,10 @@ test('mode-for-ext: args: langs', (t) => {
     t.end();
 });
 
-
 test('mode-for-ext: found', (t) => {
     const langs = [{
         id: 'javascript',
-        extensions: ['.js']
+        extensions: ['.js'],
     }];
     
     t.equal(modeForExt('.js', langs), 'javascript', 'should return name of a language');
@@ -30,7 +29,7 @@ test('mode-for-ext: found', (t) => {
 test('mode-for-ext: not found', (t) => {
     const langs = [{
         id: 'c',
-        extensions: ['.cpp']
+        extensions: ['.cpp'],
     }];
     
     t.equal(modeForExt('.js', langs), '', 'should return empty string');

@@ -53,13 +53,13 @@ function mockFirstError() {
             onceError = true;
             fn(Error('some error'));
         }
-    }
+    };
 }
 
 function mock(...args) {
     fs.stat = (name, fn) => {
         fn(...args);
-    }
+    };
 }
 
 function unmock() {

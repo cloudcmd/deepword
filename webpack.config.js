@@ -1,8 +1,6 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
-const {optimize} = webpack;
 const dir = './client';
 
 const {env} = process;
@@ -21,15 +19,15 @@ const rules = clean([
         loader: 'babel-loader',
     }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!clean-css-loader'
+        loader: 'style-loader!css-loader!clean-css-loader',
     }, {
         test: /\.(png)$/,
         use: {
             loader: 'url-loader',
             options: {
-                limit: 50000
-            }
-        }
+                limit: 50000,
+            },
+        },
     },
 ]);
 
