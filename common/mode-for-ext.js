@@ -1,6 +1,6 @@
 'use strict';
 
-const currify = require('currify/legacy');
+const currify = require('currify');
 
 const byExtension = currify((ext, options) => {
     const {extensions} = options;

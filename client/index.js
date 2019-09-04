@@ -2,7 +2,7 @@
 
 const {default: api} = require('./api');
 const {promisify} = require('es6-promisify');
-const currify = require('currify/legacy');
+const currify = require('currify');
 const _load = require('load.js');
 const load = promisify(_load);
 
