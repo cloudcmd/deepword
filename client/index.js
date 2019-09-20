@@ -3,13 +3,7 @@
 const {default: api} = require('./api');
 const {promisify} = require('es6-promisify');
 const currify = require('currify');
-const _load = require('load.js');
-const load = promisify(_load);
-
-const {js: loadJS} = _load;
-
-const loadSocket = promisify(_loadSocket);
-const loadLoader = promisify(_loadLoader);
+const load = require('load.js');
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/monaco/${name}`;
@@ -56,15 +50,15 @@ function createStatus(parent) {
     parent.appendChild(el);
 }
 
-function _loadSocket(prefix, fn) {
+async function loadSocket(prefix) {
     if (window.io)
-        return fn();
+        return;
     
-    return loadJS(`${prefix}/dist/socket.io.js`, fn);
+    await load.js(`${prefix}/dist/socket.io.js`);
 }
 
-function _loadLoader(prefix, fn) {
-    loadJS(transformName(prefix, 'min/vs/loader.js'), fn);
+async function loadLoader(prefix) {
+    await load(transformName(prefix, 'min/vs/loader.js'));
 }
 
 async function loadAll(prefix) {

@@ -80,7 +80,7 @@
     "eslint-plugin-putout": "^2.0.0",
     "fast-async": "^6.3.7",
     "jssha": "^2.2.0",
-    "load.js": "^2.0.0",
+    "load.js": "^3.0.2",
     "madrun": "^3.0.1",
     "mkdirp": "^0.5.1",
     "monaco-vim": "^0.1.1",

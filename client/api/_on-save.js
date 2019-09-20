@@ -1,5 +1,5 @@
 import {confirm} from 'smalltalk';
-import {write} from 'restafary/legacy/client';
+import {write} from 'restafary/client';
 
 const empty = () => {};
 

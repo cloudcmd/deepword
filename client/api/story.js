@@ -1,6 +1,6 @@
 const {promisify} = require('es6-promisify');
 
-import {read} from 'restafary/legacy/client';
+import {read} from 'restafary/client';
 
 export default function Story() {
     if (!(this instanceof Story))

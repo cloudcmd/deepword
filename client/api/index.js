@@ -1,12 +1,11 @@
 import {inherits} from 'util';
 
-import {promisify} from 'es6-promisify';
-import {patch, write, prefix} from 'restafary/legacy/client';
-import {json as loadJson} from 'load.js';
-import Emitify from 'emitify/legacy';
+import {patch, write, prefix} from 'restafary/client';
+import * as load from 'load.js';
+import Emitify from 'emitify';
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
-import currify from 'currify/legacy';
+import currify from 'currify';
 
 import {enableVim, disableVim} from './vim';
 import goToLine from './go-to-line';
@@ -25,8 +24,6 @@ import {
 } from './clipboard';
 
 import story from './story';
-
-const loadJson_ = promisify(loadJson);
 
 export default currify(Deepword);
 
@@ -156,7 +153,7 @@ Deepword.prototype._writeHTTP = function(path, data) {
 Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;
     
-    this._options = _options || await loadJson_(`${_prefix}/options.json`);
+    this._options = _options || await load.json(`${_prefix}/options.json`);
     
     return Promise.resolve(this._options);
 };
