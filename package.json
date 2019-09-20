@@ -52,7 +52,7 @@
   },
   "homepage": "https://github.com/cloudcmd/deepword",
   "dependencies": {
-    "currify": "^3.0.0",
+    "currify": "^4.0.0",
     "express": "^4.14.0",
     "fullstore": "^2.0.2",
     "monaco-editor": "^0.18.0",
