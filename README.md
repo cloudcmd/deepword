@@ -62,6 +62,7 @@ const express = require('express');
 const app = express();
 
 app.use(deepword({
+    root: '/',              // default
     diff: true,             // default
     zip : true,             // default
     dropbox: false,         // optional
