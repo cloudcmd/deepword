@@ -99,7 +99,7 @@
     "zipio": "^1.0.2"
   },
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=10.0.0"
   },
   "publishConfig": {
     "access": "public"
