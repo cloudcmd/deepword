@@ -155,7 +155,8 @@ Deepword.prototype._loadOptions = async function() {
     
     this._options = _options || await load.json(`${_prefix}/options.json`);
     
-    return Promise.resolve(this._options);
+    //return Promise.resolve(this._options);
+    return this._options;
 };
 
 Deepword.prototype.setOption = function(name, value) {

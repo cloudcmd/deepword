@@ -1,21 +1,20 @@
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
+const {stat} = require('fs').promises;
 
-const {promisify} = require('util');
+const tryToCatch = require('try-to-catch');
 
-module.exports = (name) => {
+module.exports = async (name) => {
     check(name);
     
     const dir = `node_modules/${name}`;
+    const [e, inner] = await tryToCatch(resolveModule, __dirname, '../', dir);
     
-    const inner = resolveModule(__dirname, '../', dir);
-    const outer = resolveModule(__dirname, '../../', name);
+    if (!e)
+        return inner;
     
-    return Promise.resolve()
-        .then(inner)
-        .catch(outer);
+    return await resolveModule(__dirname, '../../', name);
 };
 
 function check(name) {
@@ -23,12 +22,11 @@ function check(name) {
         throw Error('name should be string!');
 }
 
-function resolveModule(...dirs) {
-    /* stat: not global becouse of tests */
-    const stat = promisify(fs.stat);
-    const dir = path.resolve.apply(null, dirs);
-    const getDir = () => dir;
+async function resolveModule(...dirs) {
+    const dir = path.resolve(...dirs);
     
-    return () => stat(dir).then(getDir);
+    await stat(dir);
+    
+    return dir;
 }
 
