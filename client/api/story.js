@@ -39,14 +39,14 @@ Story.prototype.setHash = function(name, hash) {
     return this;
 };
 
-Story.prototype.getData = function(name) {
+Story.prototype.getData = (name) => {
     const nameData = name + '-data';
     const data = localStorage.getItem(nameData);
     
     return data || '';
 };
 
-Story.prototype.getHash = function(name) {
+Story.prototype.getHash = (name) => {
     const item = name + '-hash';
     const data = localStorage.getItem(item);
     
