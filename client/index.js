@@ -71,7 +71,7 @@ function loadMonaco(prefix, fn) {
     const vs = transformName(prefix, 'min/vs');
     
     require.config({
-        paths: { vs },
+        paths: {vs},
     });
     
     require(['vs/editor/editor.main'], noArg(fn));

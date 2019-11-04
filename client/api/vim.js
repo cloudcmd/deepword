@@ -1,4 +1,4 @@
-import { initVimMode } from 'monaco-vim';
+import {initVimMode} from 'monaco-vim';
 
 let vimMode;
 
