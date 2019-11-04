@@ -81,7 +81,7 @@
     "fast-async": "^6.3.7",
     "jssha": "^2.2.0",
     "load.js": "^3.0.2",
-    "madrun": "^3.0.1",
+    "madrun": "^4.1.4",
     "mkdirp": "^0.5.1",
     "mock-require": "^3.0.3",
     "monaco-vim": "^0.1.4",
