@@ -87,7 +87,7 @@
     "monaco-vim": "^0.1.4",
     "nodemon": "^1.10.2",
     "nyc": "^14.0.0",
-    "putout": "^6.0.0",
+    "putout": "^7.0.2",
     "rimraf": "^3.0.0",
     "smalltalk": "^4.0.2",
     "style-loader": "^1.0.0",
