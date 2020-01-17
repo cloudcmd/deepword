@@ -54,7 +54,7 @@
   "dependencies": {
     "currify": "^4.0.0",
     "express": "^4.14.0",
-    "monaco-editor": "^0.18.0",
+    "monaco-editor": "^0.19.3",
     "readjson": "^1.1.0",
     "restafary": "^8.2.0",
     "restbox": "^2.0.0",
