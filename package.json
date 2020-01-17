@@ -72,7 +72,7 @@
     "css-loader": "^3.0.0",
     "cssnano": "^4.0.0",
     "daffy": "^1.0.3",
-    "emitify": "^3.0.2",
+    "emitify": "^4.0.1",
     "es6-promise": "^4.0.5",
     "es6-promisify": "^6.0.1",
     "eslint": "^6.0.1",
