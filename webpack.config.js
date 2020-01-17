@@ -28,6 +28,9 @@ const rules = clean([
                 limit: 50000,
             },
         },
+    }, {
+        test: /\.ttf$/,
+        use: ['file-loader'],
     },
 ]);
 
