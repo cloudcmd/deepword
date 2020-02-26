@@ -60,7 +60,7 @@
     "restbox": "^2.0.0",
     "socket-file": "^3.0.1",
     "socket.io": "^2.0.3",
-    "try-to-catch": "^2.0.0"
+    "try-to-catch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
