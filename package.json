@@ -58,7 +58,7 @@
     "readjson": "^1.1.0",
     "restafary": "^8.2.0",
     "restbox": "^2.0.0",
-    "socket-file": "^3.0.1",
+    "socket-file": "^4.0.0",
     "socket.io": "^2.0.3",
     "try-to-catch": "^3.0.0"
   },
