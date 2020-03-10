@@ -1,22 +1,23 @@
 'use strict';
 
 const readjson = require('readjson');
+const tryToCatch = require('try-to-catch');
 
 const Edit = require('../json/edit.json');
 const HOME = require('os').homedir();
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     if (req.url !== '/edit.json')
         return next();
     
-    readEdit((error, data) => {
-        if (error)
-            return res.status(404)
-                .send(error.message);
-        
-        res .type('json')
-            .send(data);
-    });
+    const [error, data] = await tryToCatch(readEdit);
+    
+    if (error)
+        return res.status(404)
+            .send(error.message);
+    
+    res .type('json')
+        .send(data);
 };
 
 function replace(from, to) {
@@ -32,19 +33,18 @@ function copy(from) {
     };
 }
 
-function readEdit(callback) {
+async function readEdit() {
     const homePath = HOME + '/.deepword.json';
+    const data = copy(Edit);
     
-    readjson(homePath, (error, edit) => {
-        const data = copy(Edit);
-        
-        if (!error)
-            return callback(null, replace(edit, data));
-        
-        if (error.code !== 'ENOENT')
-            return callback(Error(`edward --config ${homePath}: ${error.message}`));
-        
-        callback(null, data);
-    });
+    const [error, edit] = await tryToCatch(readjson, homePath);
+    
+    if (!error)
+        return replace(edit, data);
+    
+    if (error.code !== 'ENOENT')
+        throw Error(`edward --config ${homePath}: ${error.message}`);
+    
+    return data;
 }
 
