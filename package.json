@@ -79,7 +79,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-putout": "^3.0.0",
     "fast-async": "^6.3.7",
-    "file-loader": "^5.0.2",
+    "file-loader": "^6.0.0",
     "jssha": "^2.2.0",
     "load.js": "^3.0.2",
     "madrun": "^5.0.0",
