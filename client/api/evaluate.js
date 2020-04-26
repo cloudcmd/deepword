@@ -10,7 +10,7 @@ const getErrorMsg = (isJS, value) => {
     return error;
 };
 
-export default function evaluate () {
+export default function evaluate() {
     const isJS = /\.js$/.test(this._filename);
     
     const getValue = this.getValue.bind(this);
