@@ -4,7 +4,7 @@ const currify = require('currify');
 
 const byExtension = currify((ext, options) => {
     const {extensions} = options;
-    return ~extensions.indexOf(ext);
+    return extensions.includes(ext);
 });
 
 module.exports = (ext, langs) => {
