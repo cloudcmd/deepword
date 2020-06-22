@@ -33,6 +33,6 @@ async function readEdit() {
     if (error.code !== 'ENOENT')
         throw Error(`edward --config ${homePath}: ${error.message}`);
     
-    return data;
+    return Edit;
 }
 
