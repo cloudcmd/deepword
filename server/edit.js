@@ -31,7 +31,7 @@ async function readEdit() {
         };
     
     if (error.code !== 'ENOENT')
-        throw Error(`edward --config ${homePath}: ${error.message}`);
+        throw Error(`deepword --config ${homePath}: ${error.message}`);
     
     return Edit;
 }
