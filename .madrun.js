@@ -10,7 +10,7 @@ module.exports = {
     'report': () => 'nyc report --reporter=text-lcov | coveralls',
     'watcher:test': () => 'nodemon -e spec.js -w client -w server -w common -x ',
     'fix:lint': () => run('lint', '--fix'),
-    'lint': () => 'putout bin client server common .madrun.js webpack.config.js',
+    'lint': () => 'putout bin client server common .madrun.js webpack.config.js --cache',
     'wisdom': () => run('build'),
     'build': () => run(['clean', 'mkdir', 'build:client*', 'cp:*']),
     'cp:socket.io:dist': () => 'cp node_modules/socket.io-client/dist/socket.io.js dist/socket.io.js',

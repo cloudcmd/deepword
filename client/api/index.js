@@ -52,7 +52,7 @@ function Deepword(element, options, eddy) {
         prefixSocket = '/deepword',
     } = options;
     
-    this._maxSize = maxSize || 512000;
+    this._maxSize = maxSize || 512_000;
     this._prefix = options.prefix || '/deepword';
     
     prefix(`${this._prefix}/api/v1/fs`);

@@ -12,26 +12,25 @@ const devtool = isDev ? 'eval' : 'source-map';
 const notEmpty = (a) => a;
 const clean = (array) => array.filter(notEmpty);
 
-const rules = clean([
-    !isDev && {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-    }, {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!clean-css-loader',
-    }, {
-        test: /\.(png)$/,
-        use: {
-            loader: 'url-loader',
-            options: {
-                limit: 50000,
-            },
+const rules = clean([{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+}, {
+    test: /\.css$/,
+    loader: 'style-loader!css-loader!clean-css-loader',
+}, {
+    test: /\.(png)$/,
+    use: {
+        loader: 'url-loader',
+        options: {
+            limit: 50_000,
         },
-    }, {
-        test: /\.ttf$/,
-        use: ['file-loader'],
     },
+}, {
+    test: /\.ttf$/,
+    use: ['file-loader'],
+},
 ]);
 
 module.exports = {
