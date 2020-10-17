@@ -10,15 +10,13 @@ const dist = path.resolve(__dirname, 'dist');
 const distDev = path.resolve(__dirname, 'dist-dev');
 const devtool = isDev ? 'eval' : 'source-map';
 const notEmpty = (a) => a;
-const clean = (array) => array.filter(notEmpty);
 
-const rules = clean([{
+const rules = [{
     test: /\.js$/,
     exclude: /node_modules/,
     loader: 'babel-loader',
 }, {
     test: /\.css$/,
-    //loader: 'style-loader!css-loader!clean-css-loader',
     use: [
         'style-loader',
         'css-loader',
@@ -35,8 +33,7 @@ const rules = clean([{
 }, {
     test: /\.ttf$/,
     use: ['file-loader'],
-},
-]);
+}];
 
 module.exports = {
     devtool,
