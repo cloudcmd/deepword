@@ -97,7 +97,7 @@
     "try-catch": "^3.0.0",
     "url-loader": "^4.0.0",
     "watchify": "^3.7.0",
-    "webpack": "^4.0.1",
+    "webpack": "^5.2.0",
     "webpack-cli": "^3.0.1",
     "zipio": "^1.0.2"
   },
