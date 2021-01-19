@@ -102,7 +102,7 @@
     "zipio": "^1.0.2"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
