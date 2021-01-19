@@ -1,6 +1,6 @@
 {
   "name": "deepword",
-  "version": "7.0.15",
+  "version": "8.0.0",
   "description": "Web editor based on Monaco",
   "main": "server/index.js",
   "bin": {
