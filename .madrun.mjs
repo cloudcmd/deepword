@@ -1,8 +1,6 @@
-'use strict';
+import {run} from 'madrun';
 
-const {run} = require('madrun');
-
-module.exports = {
+export default {
     'start': () => 'bin/deepword.js package.json',
     'start:dev': () => 'NODE_ENV=development npm start',
     'test': () => 'tape \'{client,common,server}/**/*.spec.js\'',
@@ -10,7 +8,9 @@ module.exports = {
     'report': () => 'nyc report --reporter=text-lcov | coveralls',
     'watcher:test': () => 'nodemon -e spec.js -w client -w server -w common -x ',
     'fix:lint': () => run('lint', '--fix'),
-    'lint': () => 'putout bin client server common .madrun.js webpack.config.js',
+    'lint': () => 'putout .',
+    'fresh:lint': () => run('lint', '--fresh'),
+    'lint:fresh': () => run('lint', '--fresh'),
     'wisdom': () => run('build'),
     'build': () => run(['clean', 'mkdir', 'build:client*', 'cp:*']),
     'cp:socket.io:dist': () => 'cp node_modules/socket.io-client/dist/socket.io.js dist/socket.io.js',
@@ -20,10 +20,10 @@ module.exports = {
     'build-progress': () => 'webpack --progress',
     'build:client': () => run('build-progress', '--mode production'),
     'build:start': () => run(['build:client', 'start']),
-    'build:client:dev': () => `NODE_ENV=development ${run('build-progress')} --mode development`,
+    'build:client:dev': async () => `NODE_ENV=development ${await run('build-progress')} --mode development`,
     'build:start:dev': () => run(['build:client:dev', 'start:dev']),
-    'watch:client': () => `nodemon -w client -x "${run('build:client')}"`,
-    'watch:client:dev': () => `NODE_ENV=development "${run('watch:client')}"`,
+    'watch:client': async () => `nodemon -w client -x "${await run('build:client')}"`,
+    'watch:client:dev': async () => `NODE_ENV=development "${await run('watch:client')}"`,
     'mkdir': () => 'mkdirp dist dist-dev',
     'clean': () => 'rimraf dist dist-dev',
 };

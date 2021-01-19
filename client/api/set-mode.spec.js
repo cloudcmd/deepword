@@ -33,7 +33,7 @@ test('client: setMode: createModel', (t) => {
     
     setMode.call(ctx, mode);
     
-    t.ok(createModel.calledWith(value, mode), 'should call createModel');
+    t.calledWith(createModel, [value, mode], 'should call createModel');
     t.end();
 });
 
@@ -47,7 +47,7 @@ test('client: setMode: setModel', (t) => {
     
     setMode.call(ctx);
     
-    t.ok(setModel.calledWith(model), 'should call setModel');
+    t.calledWith(setModel, [model], 'should call setModel');
     t.end();
 });
 

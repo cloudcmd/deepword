@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const {stat} = require('fs').promises;
+const {stat} = require('fs/promises');
 
 const tryToCatch = require('try-to-catch');
 
