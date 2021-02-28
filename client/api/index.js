@@ -1,13 +1,20 @@
 import {inherits} from 'util';
 
-import {patch, write, prefix} from 'restafary/client';
+import {
+    patch,
+    write,
+    prefix,
+} from 'restafary/client';
 import * as load from 'load.js';
 import Emitify from 'emitify';
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify';
 
-import {enableVim, disableVim} from './vim';
+import {
+    enableVim,
+    disableVim,
+} from './vim';
 import goToLine from './go-to-line';
 import _initSocket from './_init-socket';
 import showMessage from './show-message';

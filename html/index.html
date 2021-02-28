@@ -8,10 +8,11 @@
         @font-face {
             font-family     : 'Droid Sans Mono';
             src             : url(https://themes.googleusercontent.com/static/fonts/droidsansmono/v5/ns-m2xQYezAtqh7ai59hJTwtzT4qNq-faudv5qbO9-U.eot);
-            src             : local('Droid Sans Mono'),
-                                local('DroidSansMono'),
-                                url(/font/DroidSansMono.eot) format('embedded-opentype'),
-                                url(https://themes.googleusercontent.com/static/fonts/droidsansmono/v5/ns-m2xQYezAtqh7ai59hJTwtzT4qNq-faudv5qbO9-U.eot?#iefix) format('embedded-opentype'),
+            src             :
+                local('Droid Sans Mono'),
+                local('DroidSansMono'),
+                url(/font/DroidSansMono.eot) format('embedded-opentype'),
+                url(https://themes.googleusercontent.com/static/fonts/droidsansmono/v5/ns-m2xQYezAtqh7ai59hJTwtzT4qNq-faudv5qbO9-U.eot?#iefix) format('embedded-opentype'),
                                 url(https://themes.googleusercontent.com/static/fonts/droidsansmono/v5/ns-m2xQYezAtqh7ai59hJTwtzT4qNq-faudv5qbO9-U.eot) format('embedded-opentype'),
                                 url(https://themes.googleusercontent.com/static/fonts/droidsansmono/v5/ns-m2xQYezAtqh7ai59hJUYuTAAIFFn5GTWtryCmBQ4.woff) format('woff'),
                                 local('Consolas');
@@ -25,7 +26,7 @@
         }
         
         body {
-            margin: 0
+            margin: 0;
         }
         .deepword-msg {
             font-family: 'Droid Sans Mono';
@@ -36,16 +37,17 @@
     <div data-name="container"></div>
     <script src="/deepword/deepword.js"></script>
     <script>
+        /* global deepword */
         window.addEventListener('load', function load() {
             'use strict';
             
-            deepword('[data-name=container]', function(editor) {
+            deepword('[data-name=container]', (editor) => {
                 window.editor = editor;
                 
                 editor.setOptions({
                     fontSize: '16px',
                     fontFamily: 'Droid Sans Mono',
-                    contextmenu: true
+                    contextmenu: true,
                 });
             });
             

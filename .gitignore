@@ -5,8 +5,8 @@ dist
 dist-dev
 .nyc_output
 yarn-error.log
-.putoutcache
 
 # vim
 *.swp.*
 *.swp
+coverage
