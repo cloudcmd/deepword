@@ -143,6 +143,8 @@ MIT
 
 [NPMIMGURL]: https://img.shields.io/npm/v/deepword.svg?style=flat
 [DependencyStatusIMGURL]: https://img.shields.io/david/cloudcmd/deepword.svg?style=flat
+[BuildStatusURL]: https://github.com/cloudcmd/deepword/actions?query=workflow%3A%22Node+CI%22 "Build Status"
+[BuildStatusIMGURL]: https://github.com/cloudcmd/deepword/workflows/Node%20CI/badge.svg
 [LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
 [NPM_INFO_IMG]: https://nodei.co/npm/deepword.png?downloads=true&&stars&&downloadRank "npm install deepword"
 [NPMURL]: https://npmjs.org/package/deepword "npm"
@@ -150,5 +152,3 @@ MIT
 [LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
 [CoverageURL]: https://coveralls.io/github/cloudcmd/deepword?branch=master
 [CoverageIMGURL]: https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github
-[BuildStatusIMGURL]: https://img.shields.io/travis/cloudcmd/deepword/master.svg?style=flat
-[BuildStatusURL]: https://travis-ci.org/cloudcmd/deepword "Build Status"
