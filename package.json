@@ -95,7 +95,7 @@
     "smalltalk": "^4.0.2",
     "socket.io-client": "^3.1.0",
     "style-loader": "^3.3.4",
-    "supertape": "^5.0.0",
+    "supertape": "^10.0.0",
     "try-catch": "^3.0.0",
     "url-loader": "^4.0.0",
     "util": "^0.12.3",
