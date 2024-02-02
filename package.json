@@ -75,7 +75,7 @@
     "daffy": "^1.0.3",
     "emitify": "^4.0.1",
     "es6-promise": "^4.0.5",
-    "es6-promisify": "^6.0.1",
+    "es6-promisify": "^7.0.0",
     "eslint": "^7.2.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-putout": "^7.2.0",
