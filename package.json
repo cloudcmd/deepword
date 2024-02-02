@@ -90,7 +90,7 @@
     "nodemon": "^2.0.1",
     "nyc": "^15.0.0",
     "path-browserify": "^1.0.1",
-    "putout": "^15.3.1",
+    "putout": "^35.0.4",
     "rimraf": "^3.0.0",
     "smalltalk": "^4.0.2",
     "socket.io-client": "^3.1.0",
