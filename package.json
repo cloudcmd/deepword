@@ -101,12 +101,12 @@
     "try-catch": "^3.0.0",
     "url-loader": "^4.0.0",
     "util": "^0.12.3",
-    "webpack": "^5.2.0",
+    "webpack": "^5.90.1",
     "webpack-cli": "^4.1.0",
     "zipio": "^1.0.2"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
