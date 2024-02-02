@@ -8,7 +8,7 @@ const tryToCatch = require('try-to-catch');
 const test = require('supertape');
 const {reRequire} = require('mock-require');
 
-const resolvePath = require('./resolve-path');
+const resolvePath = require('./resolve-path.cjs');
 
 const {stat} = fs.promises;
 
@@ -25,6 +25,7 @@ test('resolve-path: module installed in inner directory', async (t) => {
     mock();
     
     const name = await resolvePath('monaco-editor');
+    
     t.equal(name, expect, 'should return path in inner directory');
     t.end();
     
@@ -33,7 +34,8 @@ test('resolve-path: module installed in inner directory', async (t) => {
 
 test('resolve-path: module installed in outer directory', async (t) => {
     mockFirstError();
-    const resolvePath = reRequire('./resolve-path');
+    
+    const resolvePath = reRequire('./resolve-path.cjs');
     const name = await resolvePath('monaco');
     
     t.ok(name, 'should return path in outer directory');
@@ -72,4 +74,3 @@ function mock(...args) {
 function unmock() {
     fs.promises.stat = stat;
 }
-

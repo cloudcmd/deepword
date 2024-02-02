@@ -1,6 +1,7 @@
 'use strict';
 
-const DIR_ROOT = __dirname + '/..';
+const process = require('node:process');
+
 const path = require('path');
 
 const restafary = require('restafary');
@@ -9,9 +10,10 @@ const socketFile = require('socket-file');
 const {Router} = require('express');
 const currify = require('currify');
 
-const resolvePath = require('./resolve-path');
-const editFn = require('./edit');
-
+const resolvePath = require('./resolve-path.cjs');
+const editFn = require('./edit.cjs');
+const isUndefined = (a) => typeof a === 'undefined';
+const DIR_ROOT = `${__dirname}/..`;
 const deepword = currify(_deepword);
 const optionsFn = currify(configFn);
 const restboxFn = currify(_restboxFn);
@@ -43,16 +45,25 @@ module.exports = (options) => {
         root,
     } = options;
     
-    router.route(prefix + '/*')
+    router
+        .route(`${prefix}/*`)
         .all(cut(prefix))
         .get(deepword(prefix))
         .get(optionsFn(options))
         .get(monaco)
         .get(editFn)
-        .get(restboxFn({root, dropbox, dropboxToken}))
+        .get(restboxFn({
+            root,
+            dropbox,
+            dropboxToken,
+        }))
         .get(restafaryFn(root))
         .get(staticFn)
-        .put(restboxFn({root, dropbox, dropboxToken}))
+        .put(restboxFn({
+            root,
+            dropbox,
+            dropboxToken,
+        }))
         .put(restafaryFn(root));
     
     return router;
@@ -75,10 +86,10 @@ module.exports.listen = (socket, options) => {
 };
 
 function checkOption(isOption) {
-    if (typeof isOption === 'function')
+    if (isFn(isOption))
         return isOption();
     
-    if (typeof isOption === 'undefined')
+    if (isUndefined(isOption))
         return true;
     
     return isOption;
@@ -104,7 +115,8 @@ function configFn(o, req, res, next) {
     if (req.url.indexOf('/options.json'))
         return next();
     
-    res .type('json')
+    res
+        .type('json')
         .send({
             diff,
             zip,
@@ -120,9 +132,8 @@ function _restboxFn({root, dropbox, dropboxToken}, req, res, next) {
     const prefix = '/api/v1';
     const indexOf = url.indexOf.bind(url);
     const not = (fn) => (a) => !fn(a);
-    const is = [
-        `/api/v1`,
-    ].some(not(indexOf));
+    
+    const is = [`/api/v1`].some(not(indexOf));
     
     if (!is)
         return next();
@@ -158,9 +169,7 @@ function monaco(req, res, next) {
     const sendFile = res.sendFile.bind(res);
     
     const replace = (path) => req.url.replace('/monaco', path);
-    const sendError = (error) => res
-        .status(404)
-        .send(error);
+    const sendError = (error) => res.status(404).send(error);
     
     resolvePath('monaco-editor')
         .then(replace)
@@ -172,4 +181,3 @@ function staticFn(req, res) {
     const file = path.normalize(DIR_ROOT + req.url);
     res.sendFile(file);
 }
-

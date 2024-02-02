@@ -1,36 +1,30 @@
 name: Node CI
-
-on: [push, pull_request]
-
+on:
+  - push
+  - pull_request
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [14.x, 15.x]
-
+        node-version:
+          - 18.x
+          - 20.x
+          - 21.x
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    
-    - name: Install Redrun
-      run:
-        npm i redrun -g
-    
-    - name: Install
-      run:
-        npm install
-    
-    - name: Bootstrap
-      run:
-        redrun bootstrap
-    
-    - name: Lint
-      run:
-        redrun lint
-    
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Redrun
+        run: bun i redrun -g --no-save
+      - name: Install
+        run: bun i --no-save
+      - name: Bootstrap
+        run: redrun bootstrap
+      - name: Lint
+        run: redrun lint

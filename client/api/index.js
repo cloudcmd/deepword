@@ -1,5 +1,4 @@
-import {inherits} from 'util';
-
+import {inherits} from 'node:util';
 import {
     patch,
     write,
@@ -10,27 +9,25 @@ import Emitify from 'emitify';
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify';
-
 import {
     enableVim,
     disableVim,
-} from './vim';
-import goToLine from './go-to-line';
-import _initSocket from './_init-socket';
-import showMessage from './show-message';
-import setMode from './set-mode';
-import setModeForPath from './set-mode-for-path';
-import save from './save';
-import _onSave from './_on-save';
-import _addCommands from './_add-commands';
-import evaluate from './evaluate';
+} from './vim.js';
+import goToLine from './go-to-line.js';
+import _initSocket from './_init-socket.js';
+import showMessage from './show-message/index.js';
+import setMode from './set-mode.js';
+import setModeForPath from './set-mode-for-path.js';
+import save from './save.js';
+import _onSave from './_on-save.js';
+import _addCommands from './_add-commands.js';
+import evaluate from './evaluate.js';
 import {
     copyToClipboard,
     cutToClipboard,
     pastFromClipboard,
-} from './clipboard';
-
-import story from './story';
+} from './clipboard.js';
+import story from './story.js';
 
 export default currify(Deepword);
 
@@ -47,7 +44,6 @@ function Deepword(element, options, eddy) {
     this._monaco = monaco;
     this._TITLE = 'Deepword';
     this._element = element;
-    
     /* monaco editor bigger then element */
     this._element.style.overflow = 'hidden';
     
@@ -122,10 +118,7 @@ Deepword.prototype.getValue = function() {
 };
 
 Deepword.prototype.getCursor = function() {
-    const {
-        column,
-        lineNumber,
-    } = this._eddy.getPosition();
+    const {column, lineNumber} = this._eddy.getPosition();
     
     return {
         column,
@@ -161,8 +154,8 @@ Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;
     
     this._options = _options || await load.json(`${_prefix}/options.json`);
-    
     //return Promise.resolve(this._options);
+    
     return this._options;
 };
 
@@ -171,9 +164,8 @@ Deepword.prototype.setOption = function(name, value) {
     
     options[name] = value;
     
-    if (name === 'keyMap') {
+    if (name === 'keyMap')
         this.setKeyMap(value);
-    }
     
     this._eddy.updateOptions(options);
     
@@ -213,15 +205,12 @@ Deepword.prototype._diff = function(value) {
 };
 
 Deepword.prototype._doDiff = async function(path) {
-    const {
-        _value,
-        _story,
-    } = this;
-    const ifEqual = (equal) => {
-        return !equal ? '' : this._diff(_value);
-    };
+    const {_value, _story} = this;
     
-    return _story.checkHash(path)
+    const ifEqual = (equal) => !equal ? '' : this._diff(_value);
+    
+    return _story
+        .checkHash(path)
         .then(ifEqual)
         .catch(ifEqual);
 };
@@ -259,4 +248,3 @@ Deepword.prototype._showMessageOnce = function(msg) {
     this.showMessage(msg);
     this._showedOnce = true;
 };
-

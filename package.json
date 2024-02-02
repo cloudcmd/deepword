@@ -2,7 +2,8 @@
   "name": "deepword",
   "version": "8.0.1",
   "description": "Web editor based on Monaco",
-  "main": "server/index.js",
+  "main": "server/index.cjs",
+  "type": "module",
   "bin": {
     "deepword": "bin/deepword.js"
   },
@@ -84,6 +85,7 @@
     "jssha": "^3.1.0",
     "load.js": "^3.0.2",
     "madrun": "^10.0.1",
+    "mini-css-extract-plugin": "^2.8.0",
     "mkdirp": "^3.0.1",
     "mock-require": "^3.0.3",
     "monaco-vim": "^0.4.1",

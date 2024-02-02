@@ -1,9 +1,8 @@
-'use strict';
-
-const test = require('supertape');
-const stub = require('@cloudcmd/stub');
-
-const setMode = require('./set-mode');
+import {
+    test,
+    stub,
+} from 'supertape';
+import setMode from './set-mode.js';
 
 test('client: setMode: return this', (t) => {
     const ctx = getContext();
@@ -18,7 +17,7 @@ test('client: setMode: getValue', (t) => {
     const {getValue} = ctx;
     setMode.call(ctx);
     
-    t.ok(getValue.calledWith(), 'should call getValue');
+    t.calledWithNoArgs(getValue, 'should call getValue');
     t.end();
 });
 
@@ -57,7 +56,7 @@ test('client: setMode: focus', (t) => {
     
     setMode.call(ctx);
     
-    t.ok(focus.calledWith(), 'should call focus');
+    t.calledWithNoArgs(focus, 'should call focus');
     t.end();
 });
 
@@ -74,6 +73,7 @@ function getContext() {
     const editor = {
         createModel,
     };
+    
     const _monaco = {
         editor,
     };
@@ -86,4 +86,3 @@ function getContext() {
         getValue,
     };
 }
-

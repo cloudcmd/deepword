@@ -13,15 +13,17 @@ module.exports = async (req, res, next) => {
     const [error, data] = await tryToCatch(readEdit);
     
     if (error)
-        return res.status(404)
+        return res
+            .status(404)
             .send(error.message);
     
-    res .type('json')
+    res
+        .type('json')
         .send(data);
 };
 
 async function readEdit() {
-    const homePath = HOME + '/.deepword.json';
+    const homePath = `${HOME}/.deepword.json`;
     const [error, edit] = await tryToCatch(readjson, homePath);
     
     if (!error)
@@ -35,4 +37,3 @@ async function readEdit() {
     
     return Edit;
 }
-

@@ -1,14 +1,12 @@
 /* global io*/
 import {alert} from 'smalltalk';
 import {applyPatch} from 'daffy';
-
 import {promisify} from 'es6-promisify';
 
 const getHost = () => {
     const l = location;
-    const href = l.origin || l.protocol + '//' + l.host;
     
-    return href;
+    return l.origin || l.protocol + '//' + l.host;
 };
 
 export default function _initSocket(prefix = '', socketPath = '') {
@@ -26,7 +24,7 @@ export default function _initSocket(prefix = '', socketPath = '') {
     const socket = io.connect(href, {
         'max reconnection attempts': 2 ** 32,
         'reconnection limit': FIVE_SECONDS,
-        'path': socketPath + '/socket.io',
+        'path': `${socketPath}/socket.io`,
     });
     
     socket.on('reject', () => {
@@ -86,4 +84,3 @@ export default function _initSocket(prefix = '', socketPath = '') {
         alert(this._TITLE, error);
     });
 }
-

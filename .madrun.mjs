@@ -3,7 +3,7 @@ import {run} from 'madrun';
 export default {
     'start': () => 'bin/deepword.js package.json',
     'start:dev': () => 'NODE_ENV=development npm start',
-    'test': () => 'tape \'{client,common,server}/**/*.spec.js\'',
+    'test': () => `tape '{client,common,server}/**/*.spec.js'`,
     'coverage': () => 'c8 npm test',
     'report': () => 'c8 report --reporter=lcov',
     'watcher:test': () => 'nodemon -e spec.js -w client -w server -w common -x ',
@@ -12,7 +12,12 @@ export default {
     'fresh:lint': () => run('lint', '--fresh'),
     'lint:fresh': () => run('lint', '--fresh'),
     'wisdom': () => run('build'),
-    'build': () => run(['clean', 'mkdir', 'build:client*', 'cp:*']),
+    'build': () => run([
+        'clean',
+        'mkdir',
+        'build:client*',
+        'cp:*',
+    ]),
     'cp:socket.io:dist': () => 'cp node_modules/socket.io-client/dist/socket.io.js dist/socket.io.js',
     'cp:socket.io:dist-dev': () => 'cp node_modules/socket.io-client/dist/socket.io.js dist-dev/socket.io.js',
     'cp:socket.io.map:dist': () => 'cp node_modules/socket.io-client/dist/socket.io.js.map dist/socket.io.js.map',
@@ -27,4 +32,3 @@ export default {
     'mkdir': () => 'mkdirp dist dist-dev',
     'clean': () => 'rimraf dist dist-dev',
 };
-

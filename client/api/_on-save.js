@@ -14,20 +14,24 @@ export default function _onSave(error, text) {
         if (error.message)
             msg = error.message + '\n' + msg;
         else
-            msg = 'Can\'t save.' + msg;
+            msg = `Can't save.${msg}`;
         
-        confirm(this._TITLE, msg).then(() => {
-            write(_filename, _value, onSave);
-        }).catch(empty).then(() => {
-            this.focus();
-        });
+        confirm(this._TITLE, msg)
+            .then(() => {
+                write(_filename, _value, onSave);
+            })
+            .catch(empty)
+            .then(() => {
+                this.focus();
+            });
     } else {
         this.showMessage(text);
         
-        this._story.setData(_filename, _value)
+        this
+            ._story
+            .setData(_filename, _value)
             .setHash(_filename, this.sha());
         
         this.emit('save', _value.length);
     }
 }
-

@@ -5,7 +5,7 @@ const getErrorMsg = (isJS, value) => {
     if (!isJS)
         return 'Evaluation supported for JavaScript only';
     
-    const [error] = tryCatch(Function(value));
+    const [error] = tryCatch(Function, value);
     
     return error;
 };
@@ -21,7 +21,5 @@ export default function evaluate() {
     if (!msg)
         return;
     
-    alert(this._TITLE, msg)
-        .then(focus);
+    alert(this._TITLE, msg).then(focus);
 }
-

@@ -4,7 +4,6 @@ const addId = (a) => {
 };
 
 export default function _addCommands() {
-    debugger;
     const {_monaco, _eddy} = this;
     const {KeyCode, KeyMod} = _monaco;
     
@@ -21,10 +20,7 @@ export default function _addCommands() {
         KeyS,
     } = KeyCode;
     
-    const {
-        CtrlCmd,
-        WinCtrl,
-    } = KeyMod;
+    const {CtrlCmd, WinCtrl} = KeyMod;
     
     const actions = [{
         id: 'evaluate',
@@ -47,4 +43,3 @@ export default function _addCommands() {
         .map(addId)
         .forEach(addAction);
 }
-

@@ -5,6 +5,7 @@ export default function goToLine() {
         if (e)
             throw e;
     };
+    
     const msg = 'Enter line number:';
     const {_eddy, _TITLE} = this;
     const {lineNumber} = _eddy.getPosition();
@@ -29,4 +30,3 @@ export default function goToLine() {
     
     return this;
 }
-

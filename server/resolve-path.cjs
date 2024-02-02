@@ -4,6 +4,7 @@ const path = require('path');
 const {stat} = require('fs/promises');
 
 const tryToCatch = require('try-to-catch');
+const isString = (a) => typeof a === 'string';
 
 module.exports = async (name) => {
     check(name);
@@ -18,7 +19,7 @@ module.exports = async (name) => {
 };
 
 function check(name) {
-    if (typeof name !== 'string')
+    if (!isString(name))
         throw Error('name should be string!');
 }
 
@@ -29,4 +30,3 @@ async function resolveModule(...dirs) {
     
     return dir;
 }
-

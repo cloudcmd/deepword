@@ -11,8 +11,8 @@ export const disableVim = () => {
 
 export const enableVim = (editor, el) => {
     const statusEl = el.querySelector('#deepword-vim');
+    
     statusEl.innerHTML = '';
     
     vimMode = initVimMode(editor, statusEl);
 };
-

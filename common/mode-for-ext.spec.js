@@ -1,12 +1,10 @@
-'use strict';
-
-const tryCatch = require('try-catch');
-
-const modeForExt = require('./mode-for-ext');
-const test = require('supertape');
+import tryCatch from 'try-catch';
+import modeForExt from './mode-for-ext.js';
+import test from 'supertape';
 
 test('mode-for-ext: args: ext', (t) => {
     const [error] = tryCatch(modeForExt);
+    
     t.equal(error.message, 'ext should be string!', 'should throw when ext not string ');
     t.end();
 });
@@ -25,7 +23,6 @@ test('mode-for-ext: found', (t) => {
     }];
     
     t.equal(modeForExt('.js', langs), 'javascript', 'should return name of a language');
-    
     t.end();
 });
 
@@ -36,7 +33,5 @@ test('mode-for-ext: not found', (t) => {
     }];
     
     t.equal(modeForExt('.js', langs), '', 'should return empty string');
-    
     t.end();
 });
-

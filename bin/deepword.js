@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 
-'use strict';
+import {createRequire} from 'node:module';
+import {dirname} from 'node:path';
+import process from 'node:process';
+import fs from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import http from 'node:http';
 
-const fs = require('fs');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const require = createRequire(import.meta.url);
 const [name] = process.argv.slice(2);
 
 if (!name)
@@ -12,9 +19,9 @@ else if (/^(-v|--v)$/.test(name))
 else if (/^(-h|--help)$/.test(name))
     help();
 else
-    checkFile(name, (error) => {
+    checkFile(name, async (error) => {
         if (!error)
-            return main(name);
+            return await main(name);
         
         console.error(error.message);
     });
@@ -28,27 +35,22 @@ function getPath(name) {
     return name;
 }
 
-function main(name) {
+async function main(name) {
     const filename = getPath(name);
-    const DIR = __dirname + '/../html/';
-    const deepword = require('..');
-    const http = require('http');
-    const express = require('express');
+    const DIR = `${__dirname}/../html/`;
+    const {default: deepword} = await import('../server/index.cjs');
+    const {default: express} = await import('express');
     const io = require('socket.io');
     
     const app = express();
     const server = http.createServer(app);
     
     const {env} = process;
+    const port = env.PORT || 1337;
+    const ip = env.IP || '0.0.0.0';
     
-    const port = env.PORT || /* c9           */
-                    env.app_port || /* nodester     */
-                    env.VCAP_APP_PORT || /* cloudfoundry */
-                    1337;
-    const ip = env.IP || /* c9           */
-                '0.0.0.0';
-    
-    app .use(express.static(DIR))
+    app
+        .use(express.static(DIR))
         .use(deepword({
             diff: true,
             zip: true,

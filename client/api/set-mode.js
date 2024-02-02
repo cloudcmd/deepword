@@ -1,10 +1,5 @@
-'use strict';
-
-module.exports = function setMode(mode) {
-    const {
-        _monaco,
-        _eddy,
-    } = this;
+export default function setMode(mode) {
+    const {_monaco, _eddy} = this;
     
     const {createModel} = _monaco.editor;
     
@@ -15,5 +10,4 @@ module.exports = function setMode(mode) {
     _eddy.focus();
     
     return this;
-};
-
+}

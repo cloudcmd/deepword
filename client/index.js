@@ -1,9 +1,10 @@
-'use strict';
+import {default as api} from './api/index.js';
+import {promisify} from 'es6-promisify';
+import currify from 'currify';
+import load from 'load.js';
 
-const {default: api} = require('./api');
-const {promisify} = require('es6-promisify');
-const currify = require('currify');
-const load = require('load.js');
+const isString = (a) => typeof a === 'string';
+const isFn = (a) => typeof a === 'function';
 
 const transformName = currify((prefix, name) => {
     return `${prefix}/monaco/${name}`;
@@ -11,16 +12,14 @@ const transformName = currify((prefix, name) => {
 
 const noArg = (fn) => () => fn(null);
 
-module.exports = (el, options, callback = options) => {
-    if (typeof options === 'function')
+export default (el, options, callback = options) => {
+    if (isFn(options))
         options = {};
     
-    if (typeof el === 'string')
+    if (isString(el))
         el = document.querySelector(el);
     
-    const {
-        prefix = '/deepword',
-    } = options;
+    const {prefix = '/deepword'} = options;
     
     /*eslint no-console: ["error", { allow: ["error"] }] */
     const log = (e) => console.error(e);
@@ -45,6 +44,7 @@ module.exports = (el, options, callback = options) => {
 
 function createStatus(parent) {
     const el = document.createElement('div');
+    
     el.id = 'deepword-vim';
     
     parent.appendChild(el);
@@ -71,7 +71,9 @@ function loadMonaco(prefix, fn) {
     const vs = transformName(prefix, 'min/vs');
     
     require.config({
-        paths: {vs},
+        paths: {
+            vs,
+        },
     });
     
     require(['vs/editor/editor.main'], noArg(fn));
@@ -80,10 +82,7 @@ function loadMonaco(prefix, fn) {
 const init = currify(async (prefix, el) => {
     const {monaco} = window;
     
-    const {
-        theme = 'vs',
-        ...options
-    } = await load(`${prefix}/edit.json`);
+    const {theme = 'vs', ...options} = await load(`${prefix}/edit.json`);
     
     const editor = monaco.editor.create(el, {
         minimap: {
@@ -105,9 +104,8 @@ const init = currify(async (prefix, el) => {
 });
 
 function parseElement(el) {
-    if (typeof el === 'string')
+    if (isString(el))
         return document.querySelector(el);
     
     return el;
 }
-

@@ -1,13 +1,13 @@
-'use strict';
+import currify from 'currify';
 
-const currify = require('currify');
+const isString = (a) => typeof a === 'string';
 
 const byExtension = currify((ext, options) => {
     const {extensions} = options;
-    return extensions.includes(ext);
+    return extensions?.includes(ext);
 });
 
-module.exports = (ext, langs) => {
+export default (ext, langs) => {
     check(ext, langs);
     
     const empty = {
@@ -22,10 +22,9 @@ module.exports = (ext, langs) => {
 };
 
 function check(ext, langs) {
-    if (typeof ext !== 'string')
+    if (!isString(ext))
         throw Error('ext should be string!');
     
     if (!Array.isArray(langs))
         throw Error('langs should be an array!');
 }
-

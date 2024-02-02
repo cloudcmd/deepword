@@ -21,10 +21,8 @@ export default function showMessage(text) {
 
 function createMsg() {
     const wrapper = document.createElement('div');
-    const html = '<div class="deepword-msg">/div>';
     
-    wrapper.innerHTML = html;
+    wrapper.innerHTML = '<div class="deepword-msg">/div>';
     
     return wrapper.firstChild;
 }
-

@@ -1,17 +1,19 @@
-'use strict';
+import wraptile from 'wraptile';
+import {promisify} from 'es6-promisify';
+import _zipio from 'zipio';
 
-const wraptile = require('wraptile');
-const {promisify} = require('es6-promisify');
-const zipio = promisify(require('zipio'));
+const isString = (a) => typeof a === 'string';
+const zipio = promisify(_zipio);
 
 const setValue = wraptile(_setValue);
 
-module.exports = function() {
-    save.call(this)
+export default function() {
+    save
+        .call(this)
         .then(setValue(this));
     
     return this;
-};
+}
 
 async function save() {
     const value = this.getValue();
@@ -32,6 +34,7 @@ async function save() {
         return this._write(_filename, value);
     
     const zipedValue = await zipio(value);
+    
     return this._write(`${_filename}?unzip`, zipedValue);
 }
 
@@ -43,7 +46,7 @@ function checkPatch(length, maxSize, patch) {
     const patchLength = patch?.length || 0;
     const isLessMaxLength = length < maxSize;
     const isLessLength = isLessMaxLength && patchLength < length;
-    const isStr = typeof patch === 'string';
+    const isStr = isString(patch);
     
     return patch && isStr && isLessLength;
 }

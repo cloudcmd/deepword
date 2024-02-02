@@ -1,14 +1,21 @@
-'use strict';
+import {createRequire} from 'node:module';
+import path, {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import process, {env} from 'node:process';
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const path = require('path');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const require = createRequire(import.meta.url);
 const dir = './client';
-
-const {env} = process;
 const isDev = env.NODE_ENV === 'development';
 
 const dist = path.resolve(__dirname, 'dist');
 const distDev = path.resolve(__dirname, 'dist-dev');
 const devtool = isDev ? 'eval' : 'source-map';
+
+process.env.NODE_DEBUG = '';
 
 const rules = [{
     test: /\.js$/,
@@ -34,7 +41,7 @@ const rules = [{
     use: ['file-loader'],
 }];
 
-module.exports = {
+export default {
     devtool,
     entry: {
         deepword: `${dir}/index.js`,
@@ -45,6 +52,7 @@ module.exports = {
         path: isDev ? distDev : dist,
         pathinfo: isDev,
         libraryTarget: 'var',
+        libraryExport: 'default',
         devtoolModuleFilenameTemplate,
     },
     module: {
@@ -56,10 +64,19 @@ module.exports = {
             util: require.resolve('util'),
         },
     },
+    plugins: [
+        new webpack.EnvironmentPlugin([
+            'NODE_ENV',
+            'NODE_DEBUG',
+        ]),
+        new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+            resource.request = resource.request.replace(/^node:/, '');
+        }),
+        new MiniCssExtractPlugin(),
+    ],
 };
 
 function devtoolModuleFilenameTemplate(info) {
     const resource = info.absoluteResourcePath.replace(__dirname + path.sep, '');
     return `file://deepword/${resource}`;
 }
-
