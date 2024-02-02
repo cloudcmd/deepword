@@ -87,7 +87,7 @@
     "mkdirp": "^3.0.1",
     "mock-require": "^3.0.3",
     "monaco-vim": "^0.4.1",
-    "nodemon": "^2.0.1",
+    "nodemon": "^3.0.3",
     "nyc": "^15.0.0",
     "path-browserify": "^1.0.1",
     "putout": "^35.0.4",
