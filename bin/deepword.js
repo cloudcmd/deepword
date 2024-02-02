@@ -56,7 +56,7 @@ function main(name) {
     
     server.listen(port, ip);
     
-    const socket = io.listen(server);
+    const socket = io(server);
     const edSocket = deepword.listen(socket);
     
     edSocket.on('connection', () => {
