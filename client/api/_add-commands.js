@@ -4,6 +4,7 @@ const addId = (a) => {
 };
 
 export default function _addCommands() {
+    debugger;
     const {_monaco, _eddy} = this;
     const {KeyCode, KeyMod} = _monaco;
     
@@ -15,9 +16,9 @@ export default function _addCommands() {
     const run = (fn) => () => this.isKey() && fn();
     
     const {
-        KEY_E,
-        KEY_G,
-        KEY_S,
+        KeyE,
+        KeyG,
+        KeyS,
     } = KeyCode;
     
     const {
@@ -28,17 +29,17 @@ export default function _addCommands() {
     const actions = [{
         id: 'evaluate',
         label: 'Evaluate',
-        keybindings: [CtrlCmd | KEY_E, WinCtrl | KEY_E],
+        keybindings: [CtrlCmd | KeyE, WinCtrl | KeyE],
         run: run(evaluate),
     }, {
         id: 'goToLine',
         label: 'Go To Line',
-        keybindings: [CtrlCmd | KEY_G, WinCtrl | KEY_G],
+        keybindings: [CtrlCmd | KeyG, WinCtrl | KeyG],
         run: goToLine,
     }, {
         id: 'save',
         label: 'Save',
-        keybindings: [CtrlCmd | KEY_S, WinCtrl | KEY_S],
+        keybindings: [CtrlCmd | KeyS, WinCtrl | KeyS],
         run: run(save),
     }];
     
