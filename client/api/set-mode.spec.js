@@ -1,7 +1,4 @@
-import {
-    test,
-    stub,
-} from 'supertape';
+import {test, stub} from 'supertape';
 import setMode from './set-mode.js';
 
 test('client: setMode: return this', (t) => {

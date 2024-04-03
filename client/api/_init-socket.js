@@ -44,11 +44,7 @@ export default function _initSocket(prefix = '', socketPath = '') {
     });
     
     socket.on('patch', (name, patch, hash) => {
-        const wrongFile = name !== _filename;
         const wrongHash = hash !== _story.getHash(name);
-        
-        if (wrongFile || wrongHash)
-            return;
         
         const {
             _filename,
@@ -59,6 +55,11 @@ export default function _initSocket(prefix = '', socketPath = '') {
             moveCursorTo,
             sha,
         } = this;
+        
+        const wrongFile = name !== _filename;
+        
+        if (wrongFile || wrongHash)
+            return;
         
         const value = applyPatch(getValue(), patch);
         

@@ -1,7 +1,7 @@
-import {createRequire} from 'module';
+import {createRequire} from 'node:module';
 import path, {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {env} from 'node:process';
+import process, {env} from 'node:process';
 import webpack from 'webpack';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +17,7 @@ const clean = (array) => array.filter(notEmpty);
 const {resolve} = createRequire(import.meta.url);
 
 const {NODE_ENV} = process.env;
+
 process.env.NODE_DEBUG = '';
 process.env.NODE_ENV = NODE_ENV || '';
 
@@ -60,17 +61,20 @@ export default {
     module: {
         rules,
     },
-   resolve: {
+    resolve: {
         fallback: {
             path: resolve('path-browserify'),
             util: resolve('util'),
         },
-   },
+    },
     plugins: [
-       new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
-            resource.request = resource.request.replace(/^node:/, "");
-       }),
-       new webpack.EnvironmentPlugin(['NODE_ENV', 'NODE_DEBUG']),
+        new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
+            resource.request = resource.request.replace(/^node:/, '');
+        }),
+        new webpack.EnvironmentPlugin([
+            'NODE_ENV',
+            'NODE_DEBUG',
+        ]),
     ],
 };
 

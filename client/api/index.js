@@ -9,10 +9,7 @@ import Emitify from 'emitify';
 import {createPatch} from 'daffy';
 import jssha from 'jssha';
 import currify from 'currify';
-import {
-    enableVim,
-    disableVim,
-} from './vim.js';
+import {enableVim, disableVim} from './vim.js';
 import goToLine from './go-to-line.js';
 import _initSocket from './_init-socket.js';
 import showMessage from './show-message/index.js';
