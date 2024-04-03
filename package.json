@@ -1,6 +1,6 @@
 {
   "name": "deepword",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "Web editor based on Monaco",
   "main": "server/index.cjs",
   "type": "module",
