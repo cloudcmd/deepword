@@ -81,9 +81,7 @@ function loadMonaco(prefix, fn) {
 
 const init = currify(async (prefix, el) => {
     const {monaco} = window;
-    
     const {theme = 'vs', ...options} = await load(`${prefix}/edit.json`);
-    
     const editor = monaco.editor.create(el, {
         minimap: {
             enabled: false,
