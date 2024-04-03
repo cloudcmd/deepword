@@ -2,7 +2,7 @@
   "name": "deepword",
   "version": "9.0.3",
   "description": "Web editor based on Monaco",
-  "main": "server/index.cjs",
+  "main": "server/index.js",
   "type": "module",
   "bin": {
     "deepword": "bin/deepword.js"

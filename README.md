@@ -1,5 +1,15 @@
 # Deepword [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
+[NPMIMGURL]: https://img.shields.io/npm/v/deepword.svg?style=flat
+[BuildStatusURL]: https://github.com/cloudcmd/deepword/actions?query=workflow%3A%22Node+CI%22 "Build Status"
+[BuildStatusIMGURL]: https://github.com/cloudcmd/deepword/workflows/Node%20CI/badge.svg
+[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[NPM_INFO_IMG]: https://nodei.co/npm/deepword.png?downloads=true&&stars&&downloadRank "npm install deepword"
+[NPMURL]: https://npmjs.org/package/deepword "npm"
+[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
+[CoverageURL]: https://coveralls.io/github/cloudcmd/deepword?branch=master
+[CoverageIMGURL]: https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github
+
 Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https://microsoft.github.io/monaco-editor/ "Monaco").
 
 ![Deepword](https://raw.githubusercontent.com/cloudcmd/deepword/master/img/deepword.png "Deepword")
@@ -61,8 +71,9 @@ For this purpuse API could be used.
 Middleware of `deepword`. Options could be omitted.
 
 ```js
-const deepword = require('deepword');
-const express = require('express');
+import deepword from 'deepword';
+import express from 'express';
+
 const app = express();
 
 app.use(deepword({
@@ -81,8 +92,8 @@ app.listen(31_337);
 Could be used with [socket.io](http://socket.io "Socket.io") to handle editor events with.
 
 ```js
-const io = require('socket.io');
-const socket = io.listen(server);
+import {Server} from 'socket.io';
+const socket = new Server(server);
 
 deepword.listen(socket, {
     prefixSocket: '/deepword', // optional
@@ -141,13 +152,3 @@ For more information you could always look into `html` and `bin` directory.
 ## License
 
 MIT
-
-[NPMIMGURL]: https://img.shields.io/npm/v/deepword.svg?style=flat
-[BuildStatusURL]: https://github.com/cloudcmd/deepword/actions?query=workflow%3A%22Node+CI%22 "Build Status"
-[BuildStatusIMGURL]: https://github.com/cloudcmd/deepword/workflows/Node%20CI/badge.svg
-[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPM_INFO_IMG]: https://nodei.co/npm/deepword.png?downloads=true&&stars&&downloadRank "npm install deepword"
-[NPMURL]: https://npmjs.org/package/deepword "npm"
-[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
-[CoverageURL]: https://coveralls.io/github/cloudcmd/deepword?branch=master
-[CoverageIMGURL]: https://coveralls.io/repos/cloudcmd/deepword/badge.svg?branch=master&service=github

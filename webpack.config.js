@@ -80,5 +80,5 @@ export default {
 
 function devtoolModuleFilenameTemplate(info) {
     const resource = info.absoluteResourcePath.replace(__dirname + path.sep, '');
-    return `file://edward/${resource}`;
+    return `file://deepword/${resource}`;
 }

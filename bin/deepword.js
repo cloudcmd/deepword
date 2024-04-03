@@ -38,9 +38,9 @@ function getPath(name) {
 async function main(name) {
     const filename = getPath(name);
     const DIR = `${__dirname}/../html/`;
-    const {default: deepword} = await import('../server/index.cjs');
+    const {default: deepword} = await import('../server/index.js');
     const {default: express} = await import('express');
-    const io = require('socket.io');
+    const {Server} = await import('socket.io');
     
     const app = express();
     const server = http.createServer(app);
@@ -58,7 +58,7 @@ async function main(name) {
     
     server.listen(port, ip);
     
-    const socket = io(server);
+    const socket = new Server(server);
     const edSocket = deepword.listen(socket);
     
     edSocket.on('connection', () => {

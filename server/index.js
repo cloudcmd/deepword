@@ -1,20 +1,21 @@
-'use strict';
+import path, {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import process from 'node:process';
+import restafary from 'restafary';
+import restbox from 'restbox';
+import socketFile from 'socket-file';
+import {Router} from 'express';
+import currify from 'currify';
+import resolvePath from './resolve-path.js';
+import editFn from './edit.js';
 
-const process = require('node:process');
+const {assign} = Object;
 
-const path = require('path');
-
-const restafary = require('restafary');
-const restbox = require('restbox');
-const socketFile = require('socket-file');
-const {Router} = require('express');
-const currify = require('currify');
-
-const resolvePath = require('./resolve-path.cjs');
-const editFn = require('./edit.cjs');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const isUndefined = (a) => typeof a === 'undefined';
 const DIR_ROOT = `${__dirname}/..`;
-const deepword = currify(_deepword);
+const deepwordMiddleware = currify(_deepwordMiddleware);
 const optionsFn = currify(configFn);
 const restboxFn = currify(_restboxFn);
 const restafaryFn = currify(_restafaryFn);
@@ -34,7 +35,9 @@ const cut = currify((prefix, req, res, next) => {
     next();
 });
 
-module.exports = (options) => {
+export default deepword;
+
+function deepword(options) {
     options = options || {};
     
     const router = Router();
@@ -48,7 +51,7 @@ module.exports = (options) => {
     router
         .route(`${prefix}/*`)
         .all(cut(prefix))
-        .get(deepword(prefix))
+        .get(deepwordMiddleware(prefix))
         .get(optionsFn(options))
         .get(monaco)
         .get(editFn)
@@ -67,9 +70,9 @@ module.exports = (options) => {
         .put(restafaryFn(root));
     
     return router;
-};
+}
 
-module.exports.listen = (socket, options) => {
+export const listen = (socket, options) => {
     options = options || {};
     
     const {
@@ -85,6 +88,10 @@ module.exports.listen = (socket, options) => {
     });
 };
 
+assign(deepword, {
+    listen,
+});
+
 function checkOption(isOption) {
     if (isFn(isOption))
         return isOption();
@@ -95,7 +102,7 @@ function checkOption(isOption) {
     return isOption;
 }
 
-function _deepword(prefix, req, res, next) {
+function _deepwordMiddleware(prefix, req, res, next) {
     const regExp = /^\/deepword\.js(\.map)?$/;
     
     if (regExp.test(req.url))
@@ -181,3 +188,4 @@ function staticFn(req, res) {
     const file = path.normalize(DIR_ROOT + req.url);
     res.sendFile(file);
 }
+
