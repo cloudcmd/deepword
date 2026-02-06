@@ -1,5 +1,5 @@
 import {alert} from 'smalltalk';
-import tryCatch from 'try-catch';
+import {tryCatch} from 'try-catch';
 
 const getErrorMsg = (isJS, value) => {
     if (!isJS)
@@ -11,7 +11,7 @@ const getErrorMsg = (isJS, value) => {
 };
 
 export default function evaluate() {
-    const isJS = /\.js$/.test(this._filename);
+    const isJS = this._filename.endsWith('.js');
     
     const getValue = this.getValue.bind(this);
     const focus = this.focus.bind(this);

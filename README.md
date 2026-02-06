@@ -71,7 +71,7 @@ For this purpuse API could be used.
 Middleware of `deepword`. Options could be omitted.
 
 ```js
-import deepword from 'deepword';
+import {deepword} from 'deepword';
 import express from 'express';
 
 const app = express();
@@ -93,6 +93,7 @@ Could be used with [socket.io](http://socket.io "Socket.io") to handle editor ev
 
 ```js
 import {Server} from 'socket.io';
+
 const socket = new Server(server);
 
 deepword.listen(socket, {

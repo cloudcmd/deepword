@@ -1,8 +1,8 @@
 import path, {dirname} from 'node:path';
 import {promisify} from 'node:util';
-import tryToCatch from 'try-to-catch';
-import test from 'supertape';
 import {fileURLToPath} from 'node:url';
+import {tryToCatch} from 'try-to-catch';
+import test from 'supertape';
 import resolvePath from './resolve-path.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -61,4 +61,3 @@ test('resolve-path: module not installed', async (t) => {
     t.ok(e, 'should reject when module not found');
     t.end();
 });
-

@@ -27,7 +27,7 @@ else
     });
 
 function getPath(name) {
-    const reg = /^(~|\/)/;
+    const reg = /^[~/]/;
     
     if (!reg.test(name))
         name = process.cwd() + '/' + name;
@@ -38,7 +38,7 @@ function getPath(name) {
 async function main(name) {
     const filename = getPath(name);
     const DIR = `${__dirname}/../html/`;
-    const {default: deepword} = await import('../server/index.js');
+    const {deepword} = await import('../server/index.js');
     const {default: express} = await import('express');
     const {Server} = await import('socket.io');
     
@@ -90,9 +90,7 @@ function version() {
     console.log(`v${info().version}`);
 }
 
-function info() {
-    return require('../package');
-}
+const info = () => require('../package');
 
 function usage() {
     console.log(`Usage: ${info().name} [filename]`);

@@ -36,7 +36,7 @@ function Deepword(element, options, eddy) {
     
     Emitify.call(this);
     
-    const {monaco} = window;
+    const {monaco} = globalThis;
     
     this._monaco = monaco;
     this._TITLE = 'Deepword';

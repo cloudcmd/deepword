@@ -5,7 +5,8 @@ export default function showMessage(text) {
     let {_elementMsg} = this;
     
     if (!_elementMsg) {
-        this._elementMsg = _elementMsg = createMsg();
+        this._elementMsg = createMsg();
+        ({_elementMsg} = this);
         this._element.appendChild(this._elementMsg);
     }
     

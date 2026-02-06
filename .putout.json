@@ -1,7 +1,8 @@
 {
     "match": {
-        "client/index.js": {
-            "remove-console": "off"
+        "client": {
+            "remove-console": "off",
+            "nodejs/declare": "off"
         }
     }
 }

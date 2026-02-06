@@ -1,6 +1,6 @@
-import tryCatch from 'try-catch';
-import modeForExt from './mode-for-ext.js';
+import {tryCatch} from 'try-catch';
 import test from 'supertape';
+import modeForExt from './mode-for-ext.js';
 
 test('mode-for-ext: args: ext', (t) => {
     const [error] = tryCatch(modeForExt);

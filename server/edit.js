@@ -1,7 +1,7 @@
 import {createRequire} from 'node:module';
 import os from 'node:os';
 import readjson from 'readjson';
-import tryToCatch from 'try-to-catch';
+import {tryToCatch} from 'try-to-catch';
 
 const require = createRequire(import.meta.url);
 const Edit = require('../json/edit.json');

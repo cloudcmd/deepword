@@ -1,7 +1,7 @@
 import path, {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import process from 'node:process';
-import restafary from 'restafary';
+import {restafary} from 'restafary';
 import restbox from 'restbox';
 import socketFile from 'socket-file';
 import {Router} from 'express';
@@ -35,9 +35,7 @@ const cut = currify((prefix, req, res, next) => {
     next();
 });
 
-export default deepword;
-
-function deepword(options) {
+export function deepword(options) {
     options = options || {};
     
     const router = Router();
@@ -49,7 +47,7 @@ function deepword(options) {
     } = options;
     
     router
-        .route(`${prefix}/*`)
+        .route(`${prefix}/*path`)
         .all(cut(prefix))
         .get(deepwordMiddleware(prefix))
         .get(optionsFn(options))
@@ -176,7 +174,9 @@ function monaco(req, res, next) {
     const sendFile = res.sendFile.bind(res);
     
     const replace = (path) => req.url.replace('/monaco', path);
-    const sendError = (error) => res.status(404).send(error);
+    const sendError = (error) => res
+        .status(404)
+        .send(error);
     
     resolvePath('monaco-editor')
         .then(replace)
@@ -188,4 +188,3 @@ function staticFn(req, res) {
     const file = path.normalize(DIR_ROOT + req.url);
     res.sendFile(file);
 }
-

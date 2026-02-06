@@ -1,8 +1,7 @@
 import {fileURLToPath} from 'node:url';
 import path, {dirname} from 'node:path';
 import {stat as _stat} from 'node:fs/promises';
-
-import tryToCatch from 'try-to-catch';
+import {tryToCatch} from 'try-to-catch';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

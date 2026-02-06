@@ -1,7 +1,7 @@
-import {default as api} from './api/index.js';
 import {promisify} from 'es6-promisify';
 import currify from 'currify';
 import load from 'load.js';
+import api from './api/index.js';
 
 const isString = (a) => typeof a === 'string';
 const isFn = (a) => typeof a === 'function';
@@ -51,7 +51,7 @@ function createStatus(parent) {
 }
 
 async function loadSocket(prefix) {
-    if (window.io)
+    if (globalThis.io)
         return;
     
     await load.js(`${prefix}/dist/socket.io.js`);
@@ -67,7 +67,7 @@ async function loadAll(prefix) {
 }
 
 function loadMonaco(prefix, fn) {
-    const {require} = window;
+    const {require} = globalThis;
     const vs = transformName(prefix, 'min/vs');
     
     require.config({
@@ -80,7 +80,7 @@ function loadMonaco(prefix, fn) {
 }
 
 const init = currify(async (prefix, el) => {
-    const {monaco} = window;
+    const {monaco} = globalThis;
     const {theme = 'vs', ...options} = await load(`${prefix}/edit.json`);
     const editor = monaco.editor.create(el, {
         minimap: {
