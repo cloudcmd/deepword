@@ -99,7 +99,7 @@
     "url-loader": "^4.0.0",
     "util": "^0.12.3",
     "webpack": "^5.90.1",
-    "webpack-cli": "^5.1.4",
+    "webpack-cli": "^6.0.1",
     "zipio": "^1.0.2"
   },
   "engines": {
