@@ -31,12 +31,11 @@ const rules = clean([{
         'style-loader',
         'css-loader',
         'clean-css-loader', {
-            loader: "clean-css-loader",
+            loader: 'clean-css-loader',
             options: {
-              skipWarn: true,
-            }
-        }
-    ],
+                skipWarn: true,
+            },
+        }],
 }, {
     test: /\.(png|gif|svg|woff|woff2|eot|ttf)$/,
     use: {
