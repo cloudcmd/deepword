@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 
-import {createRequire} from 'node:module';
-import {dirname} from 'node:path';
 import process from 'node:process';
 import fs from 'node:fs';
-import {fileURLToPath} from 'node:url';
 import http from 'node:http';
+import {fileURLToPath} from 'node:url';
+import {dirname} from 'node:path';
+import info from '../package.json' with {
+    type: 'json',
+};
+import bin from '../json/bin.json' with {
+    type: 'json',
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const require = createRequire(import.meta.url);
 const [name] = process.argv.slice(2);
 
 if (!name)
@@ -52,9 +56,9 @@ async function main(name) {
     app
         .use(express.static(DIR))
         .use(deepword({
-            diff: true,
-            zip: true,
-        }));
+        diff: true,
+        zip: true,
+    }));
     
     server.listen(port, ip);
     
@@ -87,18 +91,14 @@ function checkFile(name, callback) {
 }
 
 function version() {
-    console.log(`v${info().version}`);
+    console.log(`v${info.version}`);
 }
 
-const info = () => require('../package');
-
 function usage() {
-    console.log(`Usage: ${info().name} [filename]`);
+    console.log(`Usage: ${info.name} [filename]`);
 }
 
 function help() {
-    const bin = require('../json/bin');
-    
     usage();
     console.log('Options:');
     
