@@ -3,6 +3,10 @@
         "client": {
             "remove-console": "off",
             "nodejs/declare": "off"
+        },
+        "e2e": {
+            "tape/jest": "off",
+            "tape/convert-emitter-to-promise": "off"
         }
     }
 }

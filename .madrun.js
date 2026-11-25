@@ -8,6 +8,7 @@ export default {
     'report': () => 'c8 report --reporter=lcov',
     'watcher:test': () => 'nodemon -e spec.js -w client -w server -w common -x ',
     'fix:lint': () => run('lint', '--fix'),
+    'test:e2e': () => 'playwright test',
     'lint': () => 'putout .',
     'fresh:lint': () => run('lint', '--fresh'),
     'lint:fresh': () => run('lint', '--fresh'),
