@@ -78,7 +78,7 @@
     "es6-promise": "^4.0.5",
     "es6-promisify": "^7.0.0",
     "eslint": "^10.0.0",
-    "eslint-plugin-n": "^17.23.2",
+    "eslint-plugin-n": "^18.6.0",
     "eslint-plugin-putout": "^30.0.2",
     "fast-async": "^6.3.7",
     "file-loader": "^6.0.0",
