@@ -1,13 +1,14 @@
-package-lock.json
-node_modules
-npm-debug.log
-dist
-dist-dev
-.nyc_output
-yarn-error.log
-
-# vim
 *.swp.*
 *.swp
-coverage
+*.log
+*.lock
+
+.nyc_output
 .idea
+
+package-lock.json
+
+node_modules
+dist
+dist-dev
+coverage

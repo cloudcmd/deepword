@@ -60,6 +60,7 @@ test('client: setMode: focus', (t) => {
 function getContext() {
     const focus = stub();
     const setModel = stub();
+    
     const _eddy = {
         setModel,
         focus,

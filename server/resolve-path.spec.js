@@ -35,10 +35,11 @@ test('resolve-path: module installed in outer directory', async (t) => {
     const stat = promisify((name, fn) => {
         if (onceError) {
             fn();
-        } else {
-            onceError = true;
-            fn(Error('some error'));
+            return;
         }
+        
+        onceError = true;
+        fn(Error('some error'));
     });
     
     const name = await resolvePath('monaco', {

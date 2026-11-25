@@ -12,6 +12,7 @@ const getHost = () => {
 export default function _initSocket(prefix = '', socketPath = '') {
     const href = `${getHost()}${prefix}`;
     const FIVE_SECONDS = 5000;
+    
     const socketPatch = promisify((name, data, fn) => {
         socket.emit('patch', name, data);
         fn();

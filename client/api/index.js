@@ -41,6 +41,7 @@ function Deepword(element, options, eddy) {
     this._monaco = monaco;
     this._TITLE = 'Deepword';
     this._element = element;
+    
     /* monaco editor bigger then element */
     this._element.style.overflow = 'hidden';
     
@@ -151,8 +152,8 @@ Deepword.prototype._loadOptions = async function() {
     const {_prefix, _options} = this;
     
     this._options = _options || await load.json(`${_prefix}/options.json`);
-    //return Promise.resolve(this._options);
     
+    //return Promise.resolve(this._options);
     return this._options;
 };
 

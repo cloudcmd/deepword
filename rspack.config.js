@@ -27,15 +27,12 @@ const rules = clean([{
     loader: 'babel-loader',
 }, {
     test: /\.css$/,
-    use: [
-        'style-loader',
-        'css-loader',
-        'clean-css-loader', {
-            loader: 'clean-css-loader',
-            options: {
-                skipWarn: true,
-            },
-        }],
+    use: ['style-loader', 'css-loader', 'clean-css-loader', {
+        loader: 'clean-css-loader',
+        options: {
+            skipWarn: true,
+        },
+    }],
 }, {
     test: /\.(png|gif|svg|woff|woff2|eot|ttf)$/,
     type: 'asset',

@@ -26,7 +26,10 @@ export default {
     'build:client': () => run('build-progress', '--mode production'),
     'build:start': () => run(['build:client', 'start']),
     'build:client:dev': async () => `NODE_ENV=development ${await run('build-progress')} --mode development`,
-    'build:start:dev': () => run(['build:client:dev', 'start:dev']),
+    'build:start:dev': () => run([
+        'build:client:dev',
+        'start:dev',
+    ]),
     'watch:client': async () => `nodemon -w client -x "${await run('build:client')}"`,
     'watch:client:dev': async () => `NODE_ENV=development "${await run('watch:client')}"`,
     'mkdir': () => 'mkdirp dist dist-dev',

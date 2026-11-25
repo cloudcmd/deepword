@@ -1,16 +1,15 @@
-.*
-client
-common
 *.spec.js
-img
-yarn-error.log
-
-# vim files
 *.swp.*
 *.swp
+*.config.*
+*.log
+*.lock
+
+.*
 
 rspack.config.js
 
-
+client
+common
+img
 coverage
-*.config.*

@@ -25,7 +25,7 @@ Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https
 npm i deepword -g
 ```
 
-![NPM\_INFO][NPM_INFO_IMG]
+![NPM_INFO][NPM_INFO_IMG]
 
 ## Command line parameters
 

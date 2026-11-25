@@ -56,9 +56,9 @@ async function main(name) {
     app
         .use(express.static(DIR))
         .use(deepword({
-        diff: true,
-        zip: true,
-    }));
+            diff: true,
+            zip: true,
+        }));
     
     server.listen(port, ip);
     
@@ -67,10 +67,12 @@ async function main(name) {
     
     edSocket.on('connection', () => {
         fs.readFile(name, 'utf8', (error, data) => {
-            if (error)
+            if (error) {
                 console.error(error.message);
-            else
-                edSocket.emit('file', filename, data);
+                return;
+            }
+            
+            edSocket.emit('file', filename, data);
         });
     });
     
