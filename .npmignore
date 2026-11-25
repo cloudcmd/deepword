@@ -9,7 +9,7 @@ yarn-error.log
 *.swp.*
 *.swp
 
-webpack.config.js
+rspack.config.js
 
 
 coverage

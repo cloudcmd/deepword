@@ -22,7 +22,7 @@ export default {
     'cp:socket.io:dist-dev': () => 'cp node_modules/socket.io-client/dist/socket.io.js dist-dev/socket.io.js',
     'cp:socket.io.map:dist': () => 'cp node_modules/socket.io-client/dist/socket.io.js.map dist/socket.io.js.map',
     'cp:socket.io.map:dist-dev': () => 'cp node_modules/socket.io-client/dist/socket.io.js.map dist-dev/socket.io.js.map',
-    'build-progress': () => 'webpack --progress',
+    'build-progress': () => 'rspack build',
     'build:client': () => run('build-progress', '--mode production'),
     'build:start': () => run(['build:client', 'start']),
     'build:client:dev': async () => `NODE_ENV=development ${await run('build-progress')} --mode development`,

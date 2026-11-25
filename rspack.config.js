@@ -2,7 +2,7 @@ import {createRequire} from 'node:module';
 import path, {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import process, {env} from 'node:process';
-import webpack from 'webpack';
+import {rspack} from '@rspack/core';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,10 +38,10 @@ const rules = clean([{
         }],
 }, {
     test: /\.(png|gif|svg|woff|woff2|eot|ttf)$/,
-    use: {
-        loader: 'url-loader',
-        options: {
-            limit: 50_000,
+    type: 'asset',
+    parser: {
+        dataUrlCondition: {
+            maxSize: 50_000,
         },
     },
 }]);
@@ -65,17 +65,23 @@ export default {
     module: {
         rules,
     },
+    performance: {
+        hints: false,
+    },
     resolve: {
+        alias: {
+            'monaco-editor/esm/vs/editor/editor.api': 'monaco-editor/editor/editor.api',
+        },
         fallback: {
             path: resolve('path-browserify'),
             util: resolve('util'),
         },
     },
     plugins: [
-        new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
+        new rspack.NormalModuleReplacementPlugin(/node:/, (resource) => {
             resource.request = resource.request.replace(/^node:/, '');
         }),
-        new webpack.EnvironmentPlugin([
+        new rspack.EnvironmentPlugin([
             'NODE_ENV',
             'NODE_DEBUG',
         ]),
