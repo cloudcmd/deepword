@@ -58,7 +58,7 @@
     "monaco-editor": "^0.58.0",
     "readjson": "^2.0.1",
     "restafary": "^13.0.1",
-    "restbox": "^4.0.1",
+    "restbox": "^5.0.1",
     "socket-file": "^8.0.0",
     "socket.io": "^4.7.4",
     "try-to-catch": "^4.0.5"
