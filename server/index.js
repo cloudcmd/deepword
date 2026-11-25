@@ -2,7 +2,7 @@ import path, {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import process from 'node:process';
 import {restafary} from 'restafary';
-import restbox from 'restbox';
+import {restbox} from 'restbox';
 import {socketFile} from 'socket-file';
 import {Router} from 'express';
 import currify from 'currify';
