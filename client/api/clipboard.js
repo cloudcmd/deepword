@@ -1,11 +1,11 @@
 export function copyToClipboard() {
-    document.execComand('copy');
+    document.execCommand('copy');
     return this;
 }
 
 export function cutToClipboard() {
     this.focus();
-    document.execComand('cut');
+    document.execCommand('cut');
     
     return this;
 }

@@ -17,7 +17,7 @@ Web editor used in [Cloud Commander](http://cloudcmd.io) based on [Monaco](https
 ## Features
 
 - Syntax highlighting based on extension of file for over 30 languages.
-- Configurable options ([edit.json](json/edit.json) could be overriden by `~/.deepword.json`) according to [monaco editor options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html)
+- Configurable options ([edit.json](json/edit.json) could be overridden by `~/.deepword.json`) according to [monaco editor options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html)
 
 ## Install
 
@@ -62,7 +62,7 @@ To override `theme` use `theme` options in `~/.deepword.json`. Themes can be:
 ## API
 
 Deepword could be used as middleware for [express](http://expressjs.com "Express").
-For this purpuse API could be used.
+For this purpose API could be used.
 
 ### Server
 
